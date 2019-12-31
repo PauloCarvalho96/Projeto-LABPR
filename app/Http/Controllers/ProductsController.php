@@ -2,11 +2,21 @@
 
 namespace App\Http\Controllers;
 
-use App\Employee;
+use App\Product;
 use Illuminate\Http\Request;
 
-class EmployeesController extends Controller
+class ProductsController extends Controller
 {
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -14,10 +24,10 @@ class EmployeesController extends Controller
      */
     public function index()
     {
-        $employees = Employee::orderBy('created_at', 'desc')->paginate(5);
+        $products = Product::orderBy('created_at', 'desc')->paginate(5);
 
-        return view('employee.index', [
-            'employees' => $employees,
+        return view('product.index', [
+            'products' => $products,
         ]);
     }
 
@@ -28,7 +38,7 @@ class EmployeesController extends Controller
      */
     public function create()
     {
-        return view('employee.create');
+        return view('product.create');
     }
 
     /**
@@ -40,13 +50,12 @@ class EmployeesController extends Controller
     public function store(Request $request)
     {
         //Create a Employee
-        $employee = new Employee;
-        $employee->first_name = $request->firstName;
-        $employee->last_name = $request->lastName;
-        $employee->salary = $request->salary;
-        $employee->save(); // save it to the database.
+        $product = new Product;
+        $product->nome = $request->nome;
+        $product->categoria = $request->categoria;
+        $product->save(); // save it to the database.
         //Redirect to a specified route
-        return redirect()->route('employees.index');
+        return redirect()->route('products.index');
     }
 
     /**
@@ -57,9 +66,9 @@ class EmployeesController extends Controller
      */
     public function show($id)
     {
-        $employee = Employee::findOrFail($id);
-        return view('employee.show', [
-            'employee' => $employee,
+        $product = Product::findOrFail($id);
+        return view('product.show', [
+            'product' => $product,
         ]);
     }
 
@@ -71,10 +80,10 @@ class EmployeesController extends Controller
      */
     public function edit($id)
     {
-        //Find a Employee by it's ID
-        $employee = Employee::findOrFail($id);
-        return view('employee.edit', [
-            'employee' => $employee,
+        //Find a Product by it's ID
+        $product = Product::findOrFail($id);
+        return view('product.edit', [
+            'product' => $product,
         ]);
     }
 
@@ -87,13 +96,12 @@ class EmployeesController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //Delete the Employee
-        $employee = Employee::findOrFail($id);
-        $employee->first_name = $request->firstName;
-        $employee->last_name = $request->lastName;
-        $employee->salary = $request->salary;
-        $employee->save(); //Can be used for both creating and updating
-        return redirect()->route('employees.show', $id);
+        //Delete a product
+        $product = Product::findOrFail($id);
+        $product->nome = $request->nome;
+        $product->categoria = $request->categoria;
+        $product->save(); //Can be used for both creating and updating
+        return redirect()->route('products.show', $id);
     }
 
     /**
@@ -104,11 +112,11 @@ class EmployeesController extends Controller
      */
     public function destroy($id)
     {
-        //Delete the Employee
-        $employee = Employee::findOrFail($id);
-        $employee->delete();
+        //Delete a product
+        $product = Product::findOrFail($id);
+        $product->delete();
         //Redirect to a specified route
         return redirect()
-            ->route('employees.index');
+            ->route('products.index');
     }
 }

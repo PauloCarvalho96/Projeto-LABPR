@@ -1,9 +1,8 @@
 @extends('layouts.app')
 @section('content')
-    <h3 class="text-center">{{$employee->first_name}} {{$employee->last_name}}</h3>
-    <p>{{$employee->salary}}&euro;</p>
+    <h3 class="text-center">{{$product->nome}} {{$product->categoria}}</h3>
     <br>
-    <a href="{{route('employees.edit',$employee->id)}}" class="btn btn-primary float-left">Update</a>
+    <a href="{{route('products.edit',$product->id)}}" class="btn btn-primary float-left">Update</a>
     <a href="#" class="btn btn-danger float-right" data-toggle="modal" data-target="#delete-modal">Delete</a>
     <div class="clearfix"></div>
     <div class="modal fade" id="delete-modal">
@@ -25,7 +24,7 @@
         </div>
         </div>
     </div>
-    <form method="POST" id="delete-form" action="{{route('employees.destroy',$employee->id)}}">
+    <form method="POST" id="delete-form" action="{{route('products.destroy',$product->id)}}">
         @csrf
         @method('DELETE')
     </form>

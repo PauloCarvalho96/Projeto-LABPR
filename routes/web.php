@@ -17,27 +17,22 @@ Route::get('/', function () {
 
 Auth::routes();
 
-//Route::get('/', "PagesController@index");
-
 Route::get('/index', "PagesController@index")->name("pages.index");
 Route::get('/about', "PagesController@about")->name("pages.about");
 
 // SELECT
-Route::get('/employees','EmployeesController@index')->name('employees.index');
+Route::get('/products','ProductsController@index')->name('products.index');
 // FORM TO INSERT
-Route::get('/employees/create','EmployeesController@create')->name('employees.create');
+Route::get('/products/create','ProductsController@create')->name('products.create');
 // INSERT
-Route::post('/employees','EmployeesController@store')->name('employees.store'); // making a post request
+Route::post('/products','ProductsController@store')->name('products.store'); // making a post request
 // SELECT BY ID
-Route::get('/employees/{id}','EmployeesController@show')->name('employees.show');
+Route::get('/products/{id}','ProductsController@show')->name('products.show');
 // FORM TO UPDATE
-Route::get('/employees/{id}/edit','EmployeesController@edit')->name('employees.edit');
+Route::get('/products/{id}/edit','ProductsController@edit')->name('products.edit');
 // UPDATE BY ID
-Route::put('/employees/{id}','EmployeesController@update')->name('employees.update'); // making a put request
+Route::put('/products/{id}','ProductsController@update')->name('products.update'); // making a put request
 // DELETE BY ID
-Route::delete('/employees/{id}','EmployeesController@destroy')->name('employees.destroy'); // making a delete request
-
-
-//Route::resource('/employees','EmployeesController');
+Route::delete('/products/{id}','ProductsController@destroy')->name('products.destroy'); // making a delete request
 
 

@@ -10,10 +10,10 @@
                     <a href="{{route('pages.index')}}" class="nav-link">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a href="{{route('employees.index')}}" class="nav-link">Show</a>
+                    <a href="{{route('products.index')}}" class="nav-link">Show</a>
                 </li>
                 <li class="nav-item">
-                    <a href="{{route('employees.create')}}" class="nav-link">Create</a>
+                    <a href="{{route('products.create')}}" class="nav-link">Create</a>
                 </li>
                 <li class="nav-item">
                     <a href="{{route('pages.about')}}" class="nav-link">About</a>
