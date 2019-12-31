@@ -1,8 +1,6 @@
 <nav class="navbar navbar-expand-md navbar-light navbar-laravel">
     <div class="container">
-        <a class="navbar-brand" href="{{ url('/') }}">
-            {{ config('app.name', 'Laravel') }}
-        </a>
+        <a class="navbar-brand" href="{{ url('/') }}">Homepage</a>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <!-- Left Side Of Navbar -->
             <ul class="navbar-nav mr-auto">
@@ -10,16 +8,16 @@
                     <a href="{{route('pages.index')}}" class="nav-link">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a href="{{route('products.index')}}" class="nav-link">Show</a>
+                    <a href="{{route('products.index')}}" class="nav-link">Show Products</a>
                 </li>
                 <li class="nav-item">
-                    <a href="{{route('products.create')}}" class="nav-link">Create</a>
+                    <a href="{{route('products.create')}}" class="nav-link">Add Products</a>
                 </li>
                 <li class="nav-item">
                     <a href="{{route('pages.about')}}" class="nav-link">About</a>
                 </li>
-                <li>
-                    <a class="dropdown-item" href="{{ route('logout') }}"
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('logout') }}"
                     onclick="event.preventDefault();
                                   document.getElementById('logout-form').submit();">
                      {{ __('Logout') }}

@@ -10,7 +10,7 @@
         </div>
         <div class="form-group">
             <label for="lastName">Category:</label>
-            <input type="text" name="categoria" id="title" class="form-control" value="{{ old('categoria') ? : $product->nome }}" placeholder="Enter the category">
+            <input type="text" name="categoria" id="title" class="form-control" value="{{ old('categoria') ? : $product->categoria }}" placeholder="Enter the category">
         </div>
         <button type="submit" class="btn btn-primary">Update</button>
     </form>

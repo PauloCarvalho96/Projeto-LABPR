@@ -1,4 +1,5 @@
 @extends('layouts.app')
+
 @section('content')
     <h3 class="text-center">{{$product->nome}} {{$product->categoria}}</h3>
     <br>
@@ -28,4 +29,5 @@
         @csrf
         @method('DELETE')
     </form>
+
 @endsection
