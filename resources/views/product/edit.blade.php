@@ -9,10 +9,18 @@
             <input type="text" name="nome" id="title" class="form-control" value="{{ old('nome') ? : $product->nome }}" placeholder="Enter the name">
         </div>
         <div class="form-group">
-            <label for="category">Category:</label>
-            <input type="text" name="categoria" id="title" class="form-control" value="{{ old('categoria') ? : $product->categoria }}" placeholder="Enter the category">
-        </div>
-
+            <label for="category"></label>
+                <select name="categoria" class="form-control" id="title">
+                    <option value="" disabled selected>Category</option>
+                    <option name="categoria">Laptop</option>
+                    <option name="categoria">Desktop</option>
+                    <option name="categoria">Apple</option>
+                    <option name="categoria">Tablets</option>
+                    <option name="categoria">Smartphones</option>
+                    <option name="categoria">Smartwatches</option>
+                    <option name="categoria">Gaming</option>
+                </select>
+            </div>
         <div class="form-group">
             <label for="description">Description</label>
             <textarea name="descricao" placeholder="Enter the description" class="form-control" id="exampleFormControlTextarea1" rows="3">

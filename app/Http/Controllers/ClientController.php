@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
-class PagesController extends Controller
-{
+use Illuminate\Http\Request;
 
+class ClientController extends Controller
+{
     /**
      * Create a new controller instance.
      *
@@ -15,14 +16,8 @@ class PagesController extends Controller
         $this->middleware('auth');
     }
 
-    public function index()
+    public function home_client()
     {
-        return view("index");
+        return view("client.client_homepage");
     }
-
-    public function about()
-    {
-        return view("about");
-    }
-
 }
