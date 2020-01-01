@@ -5,17 +5,15 @@
         @csrf {{-- <- Required for protection or the form is rejected --}}
         <div class="form-group">
             <label for="name">Name</label>
-            <input type="text" name="nome" id="title" class="form-control" value="{{old('nome')}}" placeholder="Enter the name">
+            <input type="text" name="nome" id="title" class="form-control" placeholder="Enter the name">
         </div>
         <div class="form-group">
             <label for="category">Category</label>
-            <input type="text" name="categoria" id="title" class="form-control" value="{{old('categoria')}}" placeholder="Enter the category">
+            <input type="text" name="categoria" id="title" class="form-control"  placeholder="Enter the category">
         </div>
         <div class="form-group">
             <label for="description">Description</label>
-            <textarea name="descricao" placeholder="Enter the description" class="form-control" id="exampleFormControlTextarea1" rows="3">
-                {{old('descricao')}}
-            </textarea>
+            <textarea name="descricao" placeholder="Enter the description" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
         </div>
         <div class="form-group">
             <label for="price">Price</label>
