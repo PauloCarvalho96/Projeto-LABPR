@@ -53,6 +53,8 @@ class ProductsController extends Controller
         $product = new Product;
         $product->nome = $request->nome;
         $product->categoria = $request->categoria;
+        $product->descricao = $request->descricao;
+        $product->preco = $request->preco;
         $product->save(); // save it to the database.
         //Redirect to a specified route
         return redirect()->route('products.index');
@@ -100,6 +102,8 @@ class ProductsController extends Controller
         $product = Product::findOrFail($id);
         $product->nome = $request->nome;
         $product->categoria = $request->categoria;
+        $product->descricao = $request->descricao;
+        $product->preco = $request->preco;
         $product->save(); //Can be used for both creating and updating
         return redirect()->route('products.show', $id);
     }

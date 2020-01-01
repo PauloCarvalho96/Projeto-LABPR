@@ -1,7 +1,10 @@
 @extends('layouts.app')
 
 @section('content')
-    <h3 class="text-center">{{$product->nome}} {{$product->categoria}}</h3>
+    <h5>{{$product->nome}}</h5><br>
+    <h5>{{$product->categoria}}</h5><br>
+    <h5>{{$product->descricao}}</h5><br>
+    <p>{{$product->preco}}&euro;</p>
     <br>
     <a href="{{route('products.edit',$product->id)}}" class="btn btn-primary float-left">Update</a>
     <a href="#" class="btn btn-danger float-right" data-toggle="modal" data-target="#delete-modal">Delete</a>

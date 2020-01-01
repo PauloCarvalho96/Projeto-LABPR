@@ -17,6 +17,8 @@ class CreateProductsTable extends Migration
             $table->bigIncrements('id');
             $table->char('nome', 100);
             $table->char('categoria',100);
+            $table->text('descricao');
+            $table->double('preco');
             $table->timestamps();
         });
     }
