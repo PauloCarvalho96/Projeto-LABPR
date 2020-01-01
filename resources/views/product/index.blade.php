@@ -6,9 +6,9 @@
     @forelse($products as $product)
     <li class="list-group-item my-2">
         <a href="{{route('products.show',$product->id)}}">
-            <h5>{{$product->nome}}</h5><br>
-            <h5>{{$product->categoria}}</h5><br>
-            <p>{{$product->preco}}&euro;</p>
+            <h5>Name: {{$product->nome}}</h5><br>
+            <h5>Category: {{$product->categoria}}</h5><br>
+            <p>Price: {{$product->preco}}&euro;</p>
             <small class="float-right">{{$product->created_at->diffForHumans()}}</small>
         </a>
     </li>
