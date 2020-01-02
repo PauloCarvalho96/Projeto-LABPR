@@ -19,7 +19,7 @@ Route::get('/', function () {
 
 # CLIENT #
 
-Route::get('/client', "ClientController@home_client")->name("pages.client");
+Route::get('/client', "ClientController@home_client")->name("client.client_home");
 
 # ADMIN #
 
