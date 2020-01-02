@@ -20,4 +20,16 @@ class ClientController extends Controller
     {
         return view("client.client_homepage");
     }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function edit_client()
+    {
+        //Find a Product by it's ID
+        return view("client.edit_client");
+    }
 }

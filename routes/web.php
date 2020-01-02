@@ -19,7 +19,8 @@ Route::get('/', function () {
 
 # CLIENT #
 
-Route::get('/client', "ClientController@home_client")->name("pages.client");
+Route::get('/client', "ClientController@home_client")->name("client.home_client");
+Route::get('/client/edit_client', "ClientController@edit_client")->name("client.edit_client");
 
 # ADMIN #
 
