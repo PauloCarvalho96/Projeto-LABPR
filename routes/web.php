@@ -20,7 +20,9 @@ Route::get('/', function () {
 # CLIENT #
 
 Route::get('/client', "ClientController@home_client")->name("client.home_client");
+// FORM TO UPDATE
 Route::get('/client/edit_client', "ClientController@edit_client")->name("client.edit_client");
+// UPDATE BY ID
 
 # ADMIN #
 
