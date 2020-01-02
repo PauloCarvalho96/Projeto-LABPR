@@ -19,15 +19,7 @@ Route::get('/', function () {
 });
 
 
-#Route::get('/change', function () {
-#    return view('auth/changepassword');
-#});
-
-
 # CLIENT #
-
-#Route::get('/changePassword','PagesController@showChangePasswordForm')->name("client.home_client");
-
 Route::get('/client', "ClientController@home_client")->name("client.home_client");
 // FORM TO UPDATE
 Route::get('/changePassword','ClientController@showChangePasswordForm')->name('client.showChangePasswordForm');

@@ -1,11 +1,10 @@
-@extends('layouts.app_homepage')
+@extends('layouts.app_client_homepage')
 @section('content')
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card">
-                    <div class="card-header">Change password</div>
-
+                    <div class="card-header">Edit Profile</div>
                     <div class="card-body">
                         @if (session('error'))
                             <div class="alert alert-danger">
@@ -17,6 +16,22 @@
                                 {{ session('success') }}
                             </div>
                         @endif
+                        <div class="form-group">
+                                <label for="name" class="col-md-4 control-label">Name</label>
+                                <div class="col-md-6">
+                                    <input id="name" type="text" class="form-control" name="new_name" required>
+
+                     
+                                </div>
+                        </div>
+                        <div class="form-group">
+                                <label for="email" class="col-md-4 control-label">Email</label>
+                                <div class="col-md-6">
+                                    <input id="email" type="text" class="form-control" name="new_email" required>
+
+                     
+                                </div>
+                        </div>
                         <form class="form-horizontal" method="POST" action="{{ route('changePassword') }}">
                             {{ csrf_field() }}
 
