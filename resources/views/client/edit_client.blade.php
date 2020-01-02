@@ -6,15 +6,35 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link rel="stylesheet" href="{{asset('css/app.css')}}"> {{-- <- your css --}}
-    <title>@yield('title','Client Page')</title>
+    <title>@yield('title','Edit Profile')</title>
 </head>
 <body>
     @include('inc.navbar_client')
-    
     <main class="container mt-4">
-        @yield('content')
+        <h3 class="text-center">Edit Profile</h3>
+            <form action="" method="post">
+                @csrf
+                @method('PUT')
+                <div class="form-group">
+                    <label for="name">Name:</label>
+                    <input type="text" name="name" id="title" class="form-control"  placeholder="Enter the name">
+                </div>
+                <div class="form-group">
+                    <label for="email">email</label>
+                    <input type="text" name="email" id="title" class="form-control"  placeholder="Enter email">
+                </div>
+                <div class="form-group">
+                    <label for="password">password</label>
+                    <input type="password" name="password" id="title" class="form-control"  placeholder="Enter password">
+                </div>
+                <div class="form-group">
+                    <label for="confirm_password">confirm password</label>
+                    <input type="password" name="confirm_password" id="title" class="form-control"  placeholder="Enter password confirm">
+                </div>
+                <button type="submit" class="btn btn-primary">Update</button>
+            </form>
     </main>
-
+    
     
     @include('inc.footer')
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>

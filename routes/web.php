@@ -11,15 +11,29 @@
 |
 */
 
+
 Auth::routes();
 
 Route::get('/', function () {
     return view('welcome');
 });
 
+
+#Route::get('/change', function () {
+#    return view('auth/changepassword');
+#});
+
+
 # CLIENT #
 
-Route::get('/client', "ClientController@home_client")->name("client.client_home");
+#Route::get('/changePassword','PagesController@showChangePasswordForm')->name("client.home_client");
+
+Route::get('/client', "ClientController@home_client")->name("client.home_client");
+// FORM TO UPDATE
+Route::get('/changePassword','ClientController@showChangePasswordForm')->name('client.showChangePasswordForm');
+Route::post('/changePassword','ClientController@changePassword')->name('changePassword');
+#Route::get('/client/edit_client', "ClientController@edit_client")->name("client.edit_client");
+// UPDATE BY ID
 
 # ADMIN #
 
