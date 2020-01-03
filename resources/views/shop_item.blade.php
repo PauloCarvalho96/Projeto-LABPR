@@ -43,6 +43,7 @@
             <h3 class="card-title">{{$product->nome}}</h3>
             <h4>{{$product->preco}}&euro;</h4>
             <p class="card-text">{{$product->descricao}}</p>
+            <a href="/">Voltar</a>
           </div>
         </div>
 

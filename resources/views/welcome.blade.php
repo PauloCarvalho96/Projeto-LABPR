@@ -98,7 +98,6 @@
                 <h5>Category: {{$product->categoria}}</h5><br>
               </h4>
               <h5><p>Price: {{$product->preco}}&euro;</p></h5>
-              <p class="card-text">{{$product->descricao}}</p>
               </div>
               <div class="card-footer">
                 <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
