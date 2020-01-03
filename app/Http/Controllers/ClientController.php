@@ -28,11 +28,6 @@ class ClientController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-  #  public function edit_client()
-   # {
-   #     //Find a Product by it's ID
-    #    return view("client.edit_client");
-   # }
     
     public function showChangePasswordForm(){
         return view('auth.changepassword');

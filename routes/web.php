@@ -14,26 +14,16 @@
 
 Auth::routes();
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
-
-#Route::get('/change', function () {
-#    return view('auth/changepassword');
-#});
-
+# PAGINA INICIAL 
+Route::get('/', "WelcomeController@welcome")->name("welcome");
+// SHOP ITEM 
+Route::get('/shop/{id}', "WelcomeController@shop_item")->name("welcome.shop_item");
 
 # CLIENT #
-
-#Route::get('/changePassword','PagesController@showChangePasswordForm')->name("client.home_client");
-
 Route::get('/client', "ClientController@home_client")->name("client.home_client");
-// FORM TO UPDATE
+// FORM TO UPDATE CLIENT
 Route::get('/changePassword','ClientController@showChangePasswordForm')->name('client.showChangePasswordForm');
 Route::post('/changePassword','ClientController@changePassword')->name('changePassword');
-#Route::get('/client/edit_client', "ClientController@edit_client")->name("client.edit_client");
-// UPDATE BY ID
 
 # ADMIN #
 

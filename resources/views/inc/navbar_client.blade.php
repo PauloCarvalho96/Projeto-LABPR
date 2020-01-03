@@ -8,7 +8,7 @@
                     <a href="{{route('client.home_client')}}" class="nav-link">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a href="{{route('client.showChangePasswordForm')}}" class="nav-link">{{auth()->user()->name}}</a>
+                    <a href="{{route('client.showChangePasswordForm')}}" class="nav-link">Edit Profile</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('logout') }}"
