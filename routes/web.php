@@ -14,17 +14,15 @@
 
 Auth::routes();
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
+Route::get('/', "WelcomeController@welcome")->name("welcome");
 
 # CLIENT #
 Route::get('/client', "ClientController@home_client")->name("client.home_client");
 // FORM TO UPDATE CLIENT
 Route::get('/changePassword','ClientController@showChangePasswordForm')->name('client.showChangePasswordForm');
 Route::post('/changePassword','ClientController@changePassword')->name('changePassword');
-// SELECT
+
+// SELECT (NAO É PRECISO USAR ---- ELIMINAR ESTE ROUTE E TODOS OS CONTROLLERS QUE ELE USE E VIEWS TAMBEM !!!!!!!!!!!!!!!!!!)
 Route::get('/showproducts','ProductsController@show_products')->name('products.show_products');
 
 # ADMIN #
