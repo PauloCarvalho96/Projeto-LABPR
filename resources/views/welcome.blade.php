@@ -8,7 +8,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Laravel</title>
+        <title>Welcome</title>
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
@@ -90,7 +90,7 @@
         @forelse($products as $product)
           <div class="col-lg-4 col-md-6 mb-4">
             <div class="card h-100">
-              <a href="{{route('products.show',$product->id)}}"><img class="card-img-top" src="http://placehold.it/700x400" alt="">
+              <a href="{{route('welcome.shop_item',$product->id)}}"><img class="card-img-top" src="http://placehold.it/700x400" alt="">
               <div class="card-body">
               <h4 class="card-title">
                 <h5>{{$product->nome}}</h5><br>

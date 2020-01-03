@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Product;
+
 class WelcomeController extends Controller
 {
 
@@ -20,7 +21,7 @@ class WelcomeController extends Controller
     {
         $product = Product::findOrFail($id);
         return view('shop_item',[
-            'products' => $products,
+            'product' => $product,
         ]);
     }
 }
