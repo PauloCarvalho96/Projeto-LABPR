@@ -21,11 +21,11 @@ Route::get('/', function () {
 
 # CLIENT #
 Route::get('/client', "ClientController@home_client")->name("client.home_client");
-// FORM TO UPDATE
+// FORM TO UPDATE CLIENT
 Route::get('/changePassword','ClientController@showChangePasswordForm')->name('client.showChangePasswordForm');
 Route::post('/changePassword','ClientController@changePassword')->name('changePassword');
-#Route::get('/client/edit_client', "ClientController@edit_client")->name("client.edit_client");
-// UPDATE BY ID
+// SELECT
+Route::get('/showproducts','ProductsController@show_products')->name('products.show_products');
 
 # ADMIN #
 

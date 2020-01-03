@@ -31,6 +31,16 @@ class ProductsController extends Controller
         ]);
     }
 
+    public function show_products()
+    {
+        $products = Product::orderBy('created_at', 'desc')->paginate(5);
+
+        return view('product.showproducts', [
+            'products' => $products,
+        ]);
+    }
+
+
     /**
      * Show the form for creating a new resource.
      *

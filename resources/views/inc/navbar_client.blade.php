@@ -8,6 +8,9 @@
                     <a href="{{route('client.home_client')}}" class="nav-link">Home</a>
                 </li>
                 <li class="nav-item">
+                    <a href="{{route('products.show_products')}}" class="nav-link">Show Products</a>
+                </li>
+                <li class="nav-item">
                     <a href="{{route('client.showChangePasswordForm')}}" class="nav-link">{{auth()->user()->name}}</a>
                 </li>
                 <li class="nav-item">
