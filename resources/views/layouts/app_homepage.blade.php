@@ -7,9 +7,21 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link rel="stylesheet" href="{{asset('css/app.css')}}"> {{-- <- your css --}}
     <title>@yield('title','Homepage')</title>
+
+     <!-- Fonts -->
+     <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
+
+     <!-- Styles -->
+     <link rel="stylesheet" href="{{asset('css/homepage.css')}}"> {{-- <- your css --}}
+
+     <!-- Bootstrap core CSS -->
+     <link href="{{asset('css/bootstrap.min.css')}}" rel="stylesheet">
+
 </head>
 <body>
     {{-- That's how you write a comment in blade --}}
+
+    @include('inc.navbar_homepage')
 
     <main class="container mt-4">
         @yield('content')

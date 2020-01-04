@@ -17,7 +17,6 @@
                             </div>
                         @endif
 
-
                         <form class="form-horizontal" method="POST" action="{{ route('changeDataUser') }}">
                             {{ csrf_field() }}
 
