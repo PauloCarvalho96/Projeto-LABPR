@@ -2,7 +2,7 @@
     @if (Route::has('login'))
         <div class="top-right links">
             @auth
-                <a href="{{ url('/index') }}">{{Auth::user()->name}}</a>
+                <a href="{{ url('/index') }}">Bem vindo, {{Auth::user()->name}}</a>
             @else
                 <a href="{{ route('login') }}">Login</a>
 
