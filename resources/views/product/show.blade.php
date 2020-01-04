@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
+    <img class="rounded mx-auto d-block" src="{{asset('img/products/'.$product->imagem)}}" alt="">
     <h5>Name: {{$product->nome}}</h5><br>
     <h5>Category: {{$product->categoria}}</h5><br>
     <h5>Description:<br>{{$product->descricao}}</h5><br>

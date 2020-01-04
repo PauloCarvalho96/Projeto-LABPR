@@ -1,9 +1,13 @@
 @extends('layouts.app')
 @section('content')
     <h3 class="text-center">Edit product</h3>
-    <form action="{{route('products.update',$product->id)}}" method="post">
+    <form action="{{route('products.update',$product->id)}}" method="post" enctype="multipart/form-data">
         @csrf
         @method('PUT')
+        <div class="form-group">
+            <label for="exampleFormControlFile1">Image</label>
+            <input type="file" name="imagem" class="form-control-file" id="exampleFormControlFile1">
+        </div>
         <div class="form-group">
             <label for="name">Name:</label>
             <input type="text" name="nome" id="title" class="form-control" value="{{ old('nome') ? : $product->nome }}" placeholder="Enter the name">

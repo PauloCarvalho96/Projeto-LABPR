@@ -47,14 +47,14 @@
 
       <div class="col-lg-3">
 
-        <a href="/"><h1 class="my-4">Shop Tech</h1></a>
+        <a href="/"><img class="img-thumbnail" src="{{asset('img/logo.png')}}" alt=""></a>
             <div class="list-group">
-                <a href="{{route('welcome.products_category',$category='Laptop')}}" class="list-group-item">Laptop</a>
-                <a href="{{route('welcome.products_category',$category='Desktop')}}" class="list-group-item">Desktop</a>
-                <a href="{{route('welcome.products_category',$category='Tablets')}}" class="list-group-item">Tablets</a>
-                <a href="{{route('welcome.products_category',$category='Smartphones')}}" class="list-group-item">Smartphones</a>
-                <a href="{{route('welcome.products_category',$category='Smartwatches')}}" class="list-group-item">Smartwatches</a>
-                <a href="{{route('welcome.products_category',$category='Monitores')}}" class="list-group-item">Monitores</a>
+                <a href="{{route('welcome.products_category',$category='Laptop')}}" class="list-group-item list-group-item-action list-group-item-dark">Laptop</a>
+                <a href="{{route('welcome.products_category',$category='Desktop')}}" class="list-group-item list-group-item-action list-group-item-dark">Desktop</a>
+                <a href="{{route('welcome.products_category',$category='Tablets')}}" class="list-group-item list-group-item-action list-group-item-dark">Tablets</a>
+                <a href="{{route('welcome.products_category',$category='Smartphones')}}" class="list-group-item list-group-item-action list-group-item-dark">Smartphones</a>
+                <a href="{{route('welcome.products_category',$category='Smartwatches')}}" class="list-group-item list-group-item-action list-group-item-dark">Smartwatches</a>
+                <a href="{{route('welcome.products_category',$category='Monitores')}}" class="list-group-item list-group-item-action list-group-item-dark">Monitores</a>
             </div>
 
             <div class="my-4">
@@ -81,13 +81,13 @@
           </ol>
           <div class="carousel-inner" role="listbox">
             <div class="carousel-item active">
-              <img class="d-block img-fluid" src="http://placehold.it/900x350" alt="First slide">
+              <img class="d-block img-fluid" src="{{asset('img/banner/banner1.png')}}" alt="First slide">
             </div>
             <div class="carousel-item">
-              <img class="d-block img-fluid" src="http://placehold.it/900x350" alt="Second slide">
+              <img class="d-block img-fluid" src="{{asset('img/banner/banner2.png')}}" alt="Second slide">
             </div>
             <div class="carousel-item">
-              <img class="d-block img-fluid" src="http://placehold.it/900x350" alt="Third slide">
+              <img class="d-block img-fluid" src="{{asset('img/banner/banner3.png')}}" alt="Third slide">
             </div>
           </div>
           <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
@@ -104,7 +104,7 @@
         @forelse($products as $product)
           <div class="col-lg-4 col-md-6 mb-4">
             <div class="card h-100">
-              <a href="{{route('welcome.shop_item',$product->id)}}"><img class="card-img-top" src="http://placehold.it/700x400" alt="">
+              <a href="{{route('welcome.shop_item',$product->id)}}"><img class="card-img-top" src="{{asset('img/products/'.$product->imagem)}}" alt="">
               <div class="card-body">
               <h4 class="card-title">
                 <h5>{{$product->nome}}</h5><br>

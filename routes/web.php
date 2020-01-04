@@ -20,7 +20,7 @@ Route::get('/shop/{id}', "WelcomeController@shop_item")->name("welcome.shop_item
 // SELECT CATEGORY
 Route::get('/category/{category}', "WelcomeController@products_category")->name("welcome.products_category");
 
-// SEARCH RESULTS -> EM TESTES
+// SEARCH RESULTS
 Route::post('/search', "WelcomeController@search")->name("welcome.search");
 
 # CLIENT #

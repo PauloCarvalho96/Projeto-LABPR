@@ -49,8 +49,17 @@ class ProductsController extends Controller
      */
     public function store(Request $request)
     {
-        //Create a Employee
+        //Create a Product
         $product = new Product;
+
+        if($request->hasFile('imagem')){
+            $file = $request->file('imagem');
+            $extension = $file->getClientOriginalExtension();
+            $filename = time().'.'.$extension;
+            $file->move(public_path('img/products'),$filename);
+            $product->imagem = $filename;
+        }
+
         $product->nome = $request->nome;
         $product->categoria = $request->categoria;
         $product->descricao = $request->descricao;
@@ -98,10 +107,21 @@ class ProductsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //Delete a product
         $product = Product::findOrFail($id);
+
+        if($request->hasFile('imagem')){
+            $file = $request->file('imagem');
+            $extension = $file->getClientOriginalExtension();
+            $filename = time().'.'.$extension;
+            $file->move(public_path('img/products'),$filename);
+            $product->imagem = $filename;
+        }
+
+        if($request->has('categoria')){
+            $product->categoria = $request->categoria;
+        }
+
         $product->nome = $request->nome;
-        $product->categoria = $request->categoria;
         $product->descricao = $request->descricao;
         $product->preco = $request->preco;
         $product->save(); //Can be used for both creating and updating

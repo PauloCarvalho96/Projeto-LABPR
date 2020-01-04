@@ -42,3 +42,8 @@ html, body {
 .m-b-md {
     margin-bottom: 30px;
 }
+
+.carousel {
+    width:900px;
+    height:350px;
+  }
