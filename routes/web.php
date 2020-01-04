@@ -11,21 +11,24 @@
 */
 Auth::routes();
 
-# PAGINA INICIAL 
+# PAGINA INICIAL
 Route::get('/', "WelcomeController@welcome")->name("welcome");
-// SHOP ITEM 
+
+// SHOP ITEM
 Route::get('/shop/{id}', "WelcomeController@shop_item")->name("welcome.shop_item");
+
 // SEARCH RESULTS -> AINDA NAO ESTA A FUNCIONAR, PERCEBER MELHOR O PORQUE !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-Route::post('/search', "WelcomeController@search")->name("welcome.search");
+#Route::post('/search', "WelcomeController@search")->name("welcome.search");
 
 # CLIENT #
 Route::get('/client', "ClientController@home_client")->name("client.home_client");
+
 // FORM TO UPDATE CLIENT
 Route::get('/changePassword','ClientController@showChangePasswordForm')->name('client.showChangePasswordForm');
 Route::post('/changePassword','ClientController@changePassword')->name('changePassword');
+Route::post('/changeDataUser','ClientController@changeDataUser')->name('changeDataUser');
 
-# ADMIN #
-
+# ADMIN # -> So o admin consegue aceder a estas paginas
 Route::get('/index', "PagesController@index")->name("pages.index")->middleware('is_admin');
 Route::get('/about', "PagesController@about")->name("pages.about")->middleware('is_admin');
 

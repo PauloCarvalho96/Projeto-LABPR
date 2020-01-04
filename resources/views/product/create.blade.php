@@ -13,11 +13,10 @@
                     <option value="" disabled selected>Category</option>
                     <option name="categoria">Laptop</option>
                     <option name="categoria">Desktop</option>
-                    <option name="categoria">Apple</option>
                     <option name="categoria">Tablets</option>
                     <option name="categoria">Smartphones</option>
                     <option name="categoria">Smartwatches</option>
-                    <option name="categoria">Gaming</option>
+                    <option name="categoria">Monitores</option>
                 </select>
             </div>
         <div class="form-group">

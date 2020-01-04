@@ -16,22 +16,35 @@
                                 {{ session('success') }}
                             </div>
                         @endif
-                        <div class="form-group">
-                                <label for="name" class="col-md-4 control-label">Name</label>
-                                <div class="col-md-6">
-                                    <input id="name" type="text" class="form-control" name="new_name" required>
 
-                     
-                                </div>
+
+                        <form class="form-horizontal" method="POST" action="{{ route('changeDataUser') }}">
+                            {{ csrf_field() }}
+
+                        <div class="form-group">
+                            <label for="name" class="col-md-4 control-label">Name</label>
+                            <div class="col-md-6">
+                                <input id="new_name" type="text" class="form-control" name="new_name" value="{{Auth::user()->name}}" required>
+                            </div>
                         </div>
                         <div class="form-group">
-                                <label for="email" class="col-md-4 control-label">Email</label>
-                                <div class="col-md-6">
-                                    <input id="email" type="text" class="form-control" name="new_email" required>
-
-                     
-                                </div>
+                            <label for="password" class="col-md-4 control-label">Confirm Password</label>
+                            <div class="col-md-6">
+                                <input id="password_check" type="password" class="form-control" name="password_check" required>
+                            </div>
                         </div>
+
+                        <div class="form-group">
+                            <div class="col-md-6 col-md-offset-4">
+                                <button type="submit" class="btn btn-primary">
+                                    Change Data
+                                </button>
+                            </div>
+                        </div>
+
+                        </form>
+
+
                         <form class="form-horizontal" method="POST" action="{{ route('changePassword') }}">
                             {{ csrf_field() }}
 
