@@ -47,11 +47,14 @@
 
       <div class="col-lg-3">
 
-        <h1 class="my-4">Shop Tech</h1>
+        <a href="/"><h1 class="my-4">Shop Tech</h1></a>
             <div class="list-group">
-                <a href="#" class="list-group-item">Category 1</a>
-                <a href="#" class="list-group-item">Category 2</a>
-                <a href="#" class="list-group-item">Category 3</a>
+                <a href="{{route('welcome.products_category',$category='Laptop')}}" class="list-group-item">Laptop</a>
+                <a href="{{route('welcome.products_category',$category='Desktop')}}" class="list-group-item">Desktop</a>
+                <a href="{{route('welcome.products_category',$category='Tablets')}}" class="list-group-item">Tablets</a>
+                <a href="{{route('welcome.products_category',$category='Smartphones')}}" class="list-group-item">Smartphones</a>
+                <a href="{{route('welcome.products_category',$category='Smartwatches')}}" class="list-group-item">Smartwatches</a>
+                <a href="{{route('welcome.products_category',$category='Monitores')}}" class="list-group-item">Monitores</a>
             </div>
 
             <div class="my-4">

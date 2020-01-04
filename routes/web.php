@@ -17,6 +17,9 @@ Route::get('/', "WelcomeController@welcome")->name("welcome");
 // SHOP ITEM
 Route::get('/shop/{id}', "WelcomeController@shop_item")->name("welcome.shop_item");
 
+// SELECT CATEGORY
+Route::get('/category/{category}', "WelcomeController@products_category")->name("welcome.products_category");
+
 // SEARCH RESULTS -> AINDA NAO ESTA A FUNCIONAR, PERCEBER MELHOR O PORQUE !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 #Route::post('/search', "WelcomeController@search")->name("welcome.search");
 
