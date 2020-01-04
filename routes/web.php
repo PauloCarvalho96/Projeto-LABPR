@@ -20,8 +20,8 @@ Route::get('/shop/{id}', "WelcomeController@shop_item")->name("welcome.shop_item
 // SELECT CATEGORY
 Route::get('/category/{category}', "WelcomeController@products_category")->name("welcome.products_category");
 
-// SEARCH RESULTS -> AINDA NAO ESTA A FUNCIONAR, PERCEBER MELHOR O PORQUE !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-#Route::post('/search', "WelcomeController@search")->name("welcome.search");
+// SEARCH RESULTS -> EM TESTES
+Route::post('/search', "WelcomeController@search")->name("welcome.search");
 
 # CLIENT #
 Route::get('/client', "ClientController@home_client")->name("client.home_client");
