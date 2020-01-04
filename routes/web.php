@@ -1,5 +1,4 @@
 <?php
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -10,14 +9,14 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-
 Auth::routes();
 
 # PAGINA INICIAL 
 Route::get('/', "WelcomeController@welcome")->name("welcome");
 // SHOP ITEM 
 Route::get('/shop/{id}', "WelcomeController@shop_item")->name("welcome.shop_item");
+// SEARCH RESULTS -> AINDA NAO ESTA A FUNCIONAR, PERCEBER MELHOR O PORQUE !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+Route::post('/search', "WelcomeController@search")->name("welcome.search");
 
 # CLIENT #
 Route::get('/client', "ClientController@home_client")->name("client.home_client");
