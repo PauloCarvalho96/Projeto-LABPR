@@ -47,23 +47,24 @@
 
       <div class="col-lg-3">
 
-        <h1 class="my-4">Shop Name</h1>
-        <div class="list-group">
-          <a href="#" class="list-group-item">Category 1</a>
-          <a href="#" class="list-group-item">Category 2</a>
-          <a href="#" class="list-group-item">Category 3</a>
-        </div>
-        <form action="/search" method="POST" role="search">
+        <h1 class="my-4">Shop Tech</h1>
+            <div class="list-group">
+                <a href="#" class="list-group-item">Category 1</a>
+                <a href="#" class="list-group-item">Category 2</a>
+                <a href="#" class="list-group-item">Category 3</a>
+            </div>
+
+            <div class="my-4">
+                <form action="/search" method="POST" role="search">
 			      {{ csrf_field() }}
 			      <div class="input-group">
-			      	<input type="text" class="form-control" name="q"
-					    placeholder="Search Itens"> <span class="input-group-btn">
-					    <button type="submit" class="btn btn-default">
-						     <span class="glyphicon glyphicon-search"></span>
-					    </button>
+			      	<input type="text" class="form-control" name="q" placeholder="Search Itens">
+					    <button type="submit" class="btn btn-primary">Search</button>
 				        </span>
-		      	</div>
-		      </form>
+		      	    </div>
+                </form>
+            </div>
+
       </div>
       <!-- /.col-lg-3 -->
 
@@ -116,10 +117,13 @@
           </div>
           @empty
             <h4 class="text-center">No Products Found!</h4>
-          @endforelse          
+          @endforelse
 
         </div>
         <!-- /.row -->
+        <div class="d-flex justify-content-center">
+            {{$products->links()}}
+        </div>
 
       </div>
       <!-- /.col-lg-9 -->

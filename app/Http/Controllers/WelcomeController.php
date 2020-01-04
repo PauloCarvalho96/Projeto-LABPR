@@ -7,10 +7,14 @@ use App\Product;
 
 class WelcomeController extends Controller
 {
-
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function welcome()
     {
-        $products = Product::orderBy('created_at', 'desc')->paginate(5);
+        $products = Product::orderBy('created_at', 'desc')->paginate(9);
 
         return view('welcome',[
             'products' => $products,
@@ -27,7 +31,7 @@ class WelcomeController extends Controller
 
     public function search()
     {
-        $q = Input::get ( 'q' ); /////// INPUT NAO FUNCIONA NAO SEI PQ !!!!!!!!!!!!!!!! Q é o nome do input usado na view 
+        $q = Input::get ( 'q' ); /////// INPUT NAO FUNCIONA NAO SEI PQ !!!!!!!!!!!!!!!! Q é o nome do input usado na view
         if($q != ""){
             $product = Product::where ( 'name', 'LIKE', '%' . $q . '%' )->get ();
             if (count ( $product ) > 0)
