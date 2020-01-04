@@ -27,7 +27,7 @@ class WelcomeController extends Controller
 
     public function search()
     {
-        $q = Input::get ( 'q' );
+        $q = Input::get ( 'q' ); /////// INPUT NAO FUNCIONA NAO SEI PQ !!!!!!!!!!!!!!!! Q é o nome do input usado na view 
         if($q != ""){
             $product = Product::where ( 'name', 'LIKE', '%' . $q . '%' )->get ();
             if (count ( $product ) > 0)
