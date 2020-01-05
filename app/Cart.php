@@ -21,10 +21,11 @@ class Cart
     public function add($item, $id){
         $storedItem = ['qty' => 0, 'preco' => $item->preco, 'item' => $item];
 
+        //verifica se existe produtos no carrinho
         if($this->items){
             //verifica se o item ja existe no carrinho
             if(array_key_exists($id,$this->items)){
-                //se existir entao guarda o mesmo item (substitui o que foi inicialmente criado)
+                //se existir entao guarda o mesmo item (recupera os dados desse item)
                 $storedItem = $this->items[$id];
             }
         }
@@ -34,7 +35,6 @@ class Cart
         $this->items[$id] = $storedItem;
         //incrementa a quantidade
         $this->total_quantity++;
-        //incrementa o preço
         $this->total_preco += $item->preco;
     }
 }

@@ -42,7 +42,7 @@
               @endif
               </tbody>
             </table>
-                <strong>Total: {{ $totalPrice }}&euro;</strong>
+                <strong>Total: {{ $totalPrice ?? '' }}&euro;</strong>
           </div>
         </div>
             <div class="card-footer">

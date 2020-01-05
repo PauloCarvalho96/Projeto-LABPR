@@ -48,3 +48,8 @@ html, body {
     width:900px;
     height:350px;
   }
+
+
+.col-lg-9{
+    margin-top: 20px;
+}
