@@ -10,12 +10,53 @@
 </head>
 <body>
     @include('inc.navbar_client')
-    
+
     <main class="container mt-4">
-        @yield('content')
+
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+          <h6 class="m-0 font-weight-bold text-primary">Shopping Cart</h6>
+        </div>
+        <div class="card-body">
+          <div class="table-responsive">
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+              <thead>
+                <tr>
+                  <th>Quantity</th>
+                  <th>Name</th>
+                  <th>Price</th>
+                </tr>
+              </thead>
+              <tbody>
+                @if(Session::has('cart'))
+                @foreach ($products as $product)
+                <tr>
+                    <td>{{ $product['qty'] }}</td>
+                    <td>{{ $product['item']['nome'] }}</td>
+                    <td>{{ $product['preco'] }}&euro;</td>
+                    <td><a href="#">Delete</a></td>
+                </tr>
+                @endforeach
+              @else
+                    <h1>No Items in Cart!</h1>
+              @endif
+              </tbody>
+            </table>
+                <strong>Total: {{ $totalPrice }}&euro;</strong>
+          </div>
+        </div>
+            <div class="card-footer">
+                <a class="btn btn-primary" href="#" >Checkout</a>
+            </div>
+      </div>
+
+    </div>
+    <!-- /.container-fluid -->
+  </div>
+
     </main>
 
-    
+
     @include('inc.footer')
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>

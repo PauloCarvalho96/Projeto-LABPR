@@ -21,15 +21,23 @@ Route::get('/shop/{id}', "WelcomeController@shop_item")->name("welcome.shop_item
 Route::get('/category/{category}', "WelcomeController@products_category")->name("welcome.products_category");
 
 // SEARCH RESULTS
-Route::post('/search', "WelcomeController@search")->name("welcome.search");
+Route::get('/search', "WelcomeController@search")->name("welcome.search");
 
 # CLIENT #
-Route::get('/client', "ClientController@home_client")->name("client.home_client");
+Route::get('/client', "ClientController@getCart")->name("client.home_client");
 
 // FORM TO UPDATE CLIENT
 Route::get('/changePassword','ClientController@showChangePasswordForm')->name('client.showChangePasswordForm');
 Route::post('/changePassword','ClientController@changePassword')->name('changePassword');
 Route::post('/changeDataUser','ClientController@changeDataUser')->name('changeDataUser');
+
+# CARRINHO DE COMPRAS
+// ADICIONAR AO CARRINHO
+Route::get('/add_to_cart/{id}','ClientController@getAddToCart')->name('product.addToCart');
+// ELIMINAR DO CARRINHO
+Route::get('/remove_from_cart/{id}','ClientController@getRemoveCart')->name('product.removeFromCart');
+// VER CARRINHO DE COMPRAS
+Route::get('/shopping_cart','ClientController@getCart')->name('product.shoppingCart');
 
 # ADMIN # -> So o admin consegue aceder a estas paginas
 Route::get('/index', "PagesController@index")->name("pages.index")->middleware('is_admin');

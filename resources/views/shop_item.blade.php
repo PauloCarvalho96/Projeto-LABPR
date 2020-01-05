@@ -46,15 +46,19 @@
             </form>
         </div>
       </div>
+
       <!-- /.col-lg-3 -->
       <div class="col-lg-9">
+        <a class="btn btn-primary" href="/">Voltar</a>
         <div class="card mt-4">
           <img class="card-img-top img-fluid" src="{{asset('img/products/'.$product->imagem)}}" alt="">
           <div class="card-body">
             <h3 class="card-title">{{$product->nome}}</h3>
             <h4>{{$product->preco}}&euro;</h4>
             <p class="card-text">{{$product->descricao}}</p>
-            <a href="/">Voltar</a>
+            <div class="card-footer">
+                <a class="btn btn-primary" href="#">Add to Cart</a>
+              </div>
           </div>
         </div>
     </div>

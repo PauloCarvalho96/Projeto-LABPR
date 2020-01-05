@@ -40,7 +40,7 @@
             </div>
 
             <div class="my-4">
-                <form action="/search" method="POST" role="search">
+                <form action="/search" method="GET" role="search">
 			      {{ csrf_field() }}
 			      <div class="input-group">
 			      	<input type="text" class="form-control" name="q" placeholder="Search Itens">
@@ -96,7 +96,7 @@
               <h5><p>Price: {{$product->preco}}&euro;</p></h5>
               </div>
               <div class="card-footer">
-                <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
+                <a class="btn btn-primary" href="{{ route('product.addToCart' , ['id' => $product->id]) }}" >Add to Cart</a>
               </div>
             </div>
           </div>

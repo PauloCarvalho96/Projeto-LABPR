@@ -2,9 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Product;
 use Illuminate\Http\Request;
 use Auth;
 use Hash;
+use Session;
+use App\Cart;
+
 class ClientController extends Controller
 {
     /**
@@ -69,4 +73,27 @@ class ClientController extends Controller
         $user->save();
         return redirect()->back()->with("success","Data changed successfully !");
     }
+
+    //funçao para adicionar produtos ao carrinho do cliente
+    public function getAddToCart(Request $request, $id){
+        $product = Product::findOrFail($id);
+        //verifica se o oldCart existe, senao fica a null
+        $oldCart = Session::has('cart') ? Session::get('cart') : null;
+        $cart = new Cart($oldCart);
+        $cart->add($product,$product->id);
+
+        $request->session()->put('cart',$cart);
+        return redirect()->route('welcome');
+    }
+
+    public function getCart(){
+        if(!Session::has('cart')){
+            return view('client.client_homepage', ['products' => null]);
+        }
+
+        $oldCart = Session::get('cart');
+        $cart = new Cart($oldCart);
+        return view('client.client_homepage', ['products' => $cart->items, 'totalPrice' => $cart->total_preco]);
+    }
+
 }

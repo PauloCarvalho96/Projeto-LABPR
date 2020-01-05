@@ -5,7 +5,7 @@
             <!-- Left Side Of Navbar -->
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item">
-                    <a href="{{route('client.home_client')}}" class="nav-link">Home</a>
+                    <a href="{{ route('product.shoppingCart') }}" class="nav-link">Cart</a>
                 </li>
                 <li class="nav-item">
                     <a href="{{route('client.showChangePasswordForm')}}" class="nav-link">Edit Profile</a>

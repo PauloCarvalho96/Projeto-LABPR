@@ -2,6 +2,10 @@
     @if (Route::has('login'))
         <div class="top-right links">
             @auth
+                <a href="{{ route('product.shoppingCart') }}">
+                    <span class="badge">{{ Session::has('cart') ? Session::get('cart')->total_quantity : '' }}</span>
+                        Cart
+                </a>
                 <a href="{{ url('/index') }}">Bem vindo, {{Auth::user()->name}}</a>
             @else
                 <a href="{{ route('login') }}">Login</a>
