@@ -4,6 +4,7 @@
     <form action="{{route('products.update',$product->id)}}" method="post" enctype="multipart/form-data">
         @csrf
         @method('PUT')
+
         <div class="form-group">
             <label for="exampleFormControlFile1">Image</label>
             <input type="file" name="imagem" class="form-control-file" id="exampleFormControlFile1">
@@ -40,4 +41,5 @@
 
         <button type="submit" class="btn btn-primary">Update</button>
     </form>
+
 @endsection
