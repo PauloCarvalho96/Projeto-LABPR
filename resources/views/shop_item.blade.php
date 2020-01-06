@@ -55,7 +55,7 @@
           <div class="card-body">
             <h3 class="card-title">{{$product->nome}}</h3>
             <h4>{{$product->preco}}&euro;</h4>
-            <p class="card-text">{{$product->descricao}}</p>
+            <p class="card-text">{!!$product->descricao!!}</p>
 
             @auth
               @if(!auth()->user()->is_admin)

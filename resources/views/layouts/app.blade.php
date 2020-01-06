@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link rel="stylesheet" href="{{asset('css/app.css')}}"> {{-- <- your css --}}
+    <script src="https://cdn.ckeditor.com/4.13.1/standard/ckeditor.js"></script>
     <title>@yield('title','Admin Page')</title>
 </head>
 <body>
