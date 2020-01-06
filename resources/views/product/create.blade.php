@@ -23,10 +23,15 @@
                     <option name="categoria">Monitores</option>
                 </select>
             </div>
+
         <div class="form-group">
             <label for="description">Description</label>
-            <textarea name="descricao" placeholder="Enter the description" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+            <textarea name="descricao"></textarea>
+                <script>
+                        CKEDITOR.replace('descricao');
+                </script>
         </div>
+
         <div class="form-group">
             <label for="price">Price</label>
             <input type="text" name="preco" id="title" class="form-control" value="{{old('preco')}}" placeholder="Enter the price">
