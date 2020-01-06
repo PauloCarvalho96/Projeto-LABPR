@@ -95,9 +95,21 @@
               </h4>
               <h5><p>Price: {{$product->preco}}&euro;</p></h5>
               </div>
+
+              @auth
+              @if(!auth()->user()->is_admin)
               <div class="card-footer">
                 <a class="btn btn-primary" href="{{ route('product.addToCart' , ['id' => $product->id]) }}" >Add to Cart</a>
               </div>
+              @endauth
+
+              @else
+              <div class="card-footer">
+                <a class="btn btn-primary" href="{{ route('product.addToCart' , ['id' => $product->id]) }}" >Add to Cart</a>
+              </div>
+
+              @endif
+
             </div>
           </div>
           @empty

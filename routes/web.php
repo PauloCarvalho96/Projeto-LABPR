@@ -35,7 +35,7 @@ Route::post('/changeDataUser','ClientController@changeDataUser')->name('changeDa
 // ADICIONAR AO CARRINHO
 Route::get('/add_to_cart/{id}','ClientController@getAddToCart')->name('product.addToCart');
 // ELIMINAR DO CARRINHO
-Route::get('/remove_from_cart/{id}','ClientController@getRemoveCart')->name('product.removeFromCart');
+#Route::get('/remove_from_cart/{id}','ClientController@getRemoveCart')->name('product.removeFromCart');
 // VER CARRINHO DE COMPRAS
 Route::get('/shopping_cart','ClientController@getCart')->name('product.shoppingCart');
 
