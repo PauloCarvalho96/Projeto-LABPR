@@ -56,9 +56,21 @@
             <h3 class="card-title">{{$product->nome}}</h3>
             <h4>{{$product->preco}}&euro;</h4>
             <p class="card-text">{{$product->descricao}}</p>
-            <div class="card-footer">
-                <a class="btn btn-primary" href="#">Add to Cart</a>
+
+            @auth
+              @if(!auth()->user()->is_admin)
+              <div class="card-footer">
+                <a class="btn btn-primary" href="{{ route('product.addToCart' , ['id' => $product->id]) }}" >Add to Cart</a>
               </div>
+              @endauth
+
+              @else
+              <div class="card-footer">
+                <a class="btn btn-primary" href="{{ route('product.addToCart' , ['id' => $product->id]) }}" >Add to Cart</a>
+              </div>
+
+              @endif
+
           </div>
         </div>
     </div>
