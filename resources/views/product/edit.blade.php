@@ -15,7 +15,7 @@
         <div class="form-group">
             <label for="category"></label>
                 <select name="categoria" class="form-control" id="title">
-                    <option value="" disabled selected>Category</option>
+                    <option value="categoria" disabled selected>{{ old('nome') ? : $product->categoria }}</option>
                     <option name="categoria">Laptop</option>
                     <option name="categoria">Desktop</option>
                     <option name="categoria">Tablets</option>
@@ -24,12 +24,15 @@
                     <option name="categoria">Monitores</option>
                 </select>
             </div>
-        <div class="form-group">
-            <label for="description">Description</label>
-            <textarea name="descricao" placeholder="Enter the description" class="form-control" id="exampleFormControlTextarea1" rows="3">
-                {{old('descricao') ? : $product->descricao }}
-            </textarea>
-        </div>
+
+            <div class="form-group">
+                <label for="description">Description</label>
+                <textarea name="descricao">{{old('descricao') ? : $product->descricao }}</textarea>
+                    <script>
+                            CKEDITOR.replace('descricao');
+                    </script>
+            </div>
+
         <div class="form-group">
             <label for="price">Price</label>
             <input type="text" name="preco" id="title" class="form-control" value="{{old('preco') ? : $product->preco }}" placeholder="Enter the price">
