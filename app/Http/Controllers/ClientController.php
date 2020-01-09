@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Product;
 use Illuminate\Http\Request;
 use Auth;
-use Darryldecode\Cart\Cart;
 use Hash;
 use Session;
 
@@ -83,7 +82,6 @@ class ClientController extends Controller
         $product = Product::findOrFail($id);
         \Cart::add($product->id,$product->nome,$product->preco,1);
         $cart = \Cart::getContent();
-        //var_dump($carts);
         return view('client.client_homepage',['products' => $cart]);
     }
 
