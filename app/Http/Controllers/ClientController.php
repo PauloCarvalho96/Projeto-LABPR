@@ -92,8 +92,8 @@ class ClientController extends Controller
     }
 
     public function lessItem($id){
-        \Cart::update($id,-1);
-        $carts = \Cart::getContent();
-        return view('client.client_homepage',['products' => $carts]);
+        \Cart::update($id,['quantity'=>-1]);
+        $cart = \Cart::getContent();
+        return view('client.client_homepage',['products' => $cart]);
     }
 }
