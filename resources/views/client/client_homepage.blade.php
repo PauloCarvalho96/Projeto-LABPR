@@ -44,7 +44,7 @@
               @endif
               </tbody>
             </table>
-                <strong>Total: {{ \Cart::getSubTotalWithoutConditions() }}&euro;</strong>
+                <strong>Total: {{ \Cart::getSubTotal() }}&euro;</strong>
           </div>
         </div>
             <div class="card-footer">

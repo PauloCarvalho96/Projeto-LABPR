@@ -3,7 +3,7 @@
         <div class="top-right links">
             @auth
                 @if(!auth()->user()->is_admin)
-                <a href="{{ route('product.shoppingCart') }}">{{ Session::has('cart') ? Session::get('cart')->total_quantity : '' }} Cart</a>
+                <a href="{{ route('product.shoppingCart') }}">{{ Cart::getTotalQuantity() }} Cart</a>
                 @endif
 
                 <a href="{{ url('/index') }}">Bem vindo, {{Auth::user()->name}}</a>
