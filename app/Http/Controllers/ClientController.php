@@ -83,7 +83,6 @@ class ClientController extends Controller
         $product = Product::findOrFail($id);
         \Cart::add($product->id,$product->nome,$product->preco,1);
         $cart = \Cart::getContent();
-        //var_dump($carts);
         return view('client.client_homepage',['products' => $cart]);
     }
 
@@ -92,11 +91,11 @@ class ClientController extends Controller
         $cart = \Cart::getContent();
         return view('client.client_homepage',['products' => $cart]);
     }
-    public function lessItem($id){
-        $product = \Cart::get($id);
-        //\Cart::update($product,$product->quantity--);
+
+
+    //////////////////////////////////////////    public function lessItem($id){
+        \Cart::update($id,-1);
         $carts = \Cart::getContent();
-        //return view('client.client_homepage',['products' => $carts]);
-        var_dump($carts);
+        return view('client.client_homepage',['products' => $carts]);
     }
 }
