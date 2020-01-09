@@ -31,12 +31,11 @@
                 @if($products)
                 @foreach ($products as $product)
                 <tr>
-                    <td>{{ $product->quantity }}</td>
+                    <td><a type = "button" href="{{route('product.lessItem',$product->id)}}">-</a>{{ $product->quantity }} <a href="{{route('product.addToCart',$product->id)}}">+</a></td>
                     <td>{{ $product->name }}</td>
                     <td>{{ $product->price }}</td>
 
                      <td><a href="{{route('product.removeFromCart',$product->id)}}">Delete</a></td>
-
                 </tr>
                 @endforeach
               @else
@@ -44,7 +43,7 @@
               @endif
               </tbody>
             </table>
-                <strong>Total: {{ \Cart::getSubTotal() }}&euro;</strong>
+                <strong>Quantidade Total:{{ \Cart::getTotalQuantity()}}<br>Total: {{ \Cart::getSubTotal() }}&euro;</strong>
           </div>
         </div>
             <div class="card-footer">

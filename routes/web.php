@@ -38,6 +38,7 @@ Route::get('/add_to_cart/{id}','ClientController@addCart')->name('product.addToC
 Route::get('/shopping_cart','ClientController@getCart')->name('product.shoppingCart');
 // ELIMINAR DO CARRINHO
 Route::get('/remove_from_cart/{id}','ClientController@deleteCart')->name('product.removeFromCart');
+Route::get('/lessItem/{id}','ClientController@lessItem')->name('product.lessItem');
 // UPDATE DO CARRINHO
 Route::get('/update_from_cart/{id}','ClientController@updateCart')->name('product.updateFromCart');
 
