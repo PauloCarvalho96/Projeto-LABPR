@@ -33,13 +33,15 @@ Route::post('/changeDataUser','ClientController@changeDataUser')->name('changeDa
 
 # CARRINHO DE COMPRAS
 // ADICIONAR AO CARRINHO
-#Route::get('/add_to_cart/{id}','ClientController@getAddToCart')->name('product.addToCart');
-// ELIMINAR DO CARRINHO
-#Route::get('/remove_from_cart/{id}','ClientController@removeProduct')->name('product.removeFromCart');
+Route::get('/add_to_cart/{id}','ClientController@addCart')->name('product.addToCart');
 // VER CARRINHO DE COMPRAS
-#Route::get('/shopping_cart','ClientController@getCart')->name('product.shoppingCart');
-Route::get('/cart/{id}','CartController@create')->name("cart.create");
-Route::get('/carts','CartController@index')->name("cart.index");
+Route::get('/shopping_cart','ClientController@getCart')->name('product.shoppingCart');
+// ELIMINAR DO CARRINHO
+Route::get('/remove_from_cart/{id}','ClientController@deleteCart')->name('product.removeFromCart');
+Route::get('/lessItem/{id}','ClientController@lessItem')->name('product.lessItem');
+// UPDATE DO CARRINHO
+Route::get('/update_from_cart/{id}','ClientController@updateCart')->name('product.updateFromCart');
+
 # ADMIN # -> So o admin consegue aceder a estas paginas
 Route::get('/index', "PagesController@index")->name("pages.index")->middleware('is_admin');
 Route::get('/about', "PagesController@about")->name("pages.about")->middleware('is_admin');

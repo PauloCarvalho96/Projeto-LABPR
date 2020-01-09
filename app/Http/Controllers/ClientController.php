@@ -5,9 +5,9 @@ namespace App\Http\Controllers;
 use App\Product;
 use Illuminate\Http\Request;
 use Auth;
+use Darryldecode\Cart\Cart;
 use Hash;
 use Session;
-use App\Cart;
 
 class ClientController extends Controller
 {
@@ -72,5 +72,31 @@ class ClientController extends Controller
         $user->name = $request->get('new_name');
         $user->save();
         return redirect()->back()->with("success","Data changed successfully !");
+    }
+
+    public function getCart(){
+        $cart = \Cart::getContent();
+        return view('client.client_homepage', ['products' => $cart]);
+    }
+
+    public function addCart($id){
+        $product = Product::findOrFail($id);
+        \Cart::add($product->id,$product->nome,$product->preco,1);
+        $cart = \Cart::getContent();
+        //var_dump($carts);
+        return view('client.client_homepage',['products' => $cart]);
+    }
+
+    public function deleteCart($id){
+        \Cart::remove($id);
+        $cart = \Cart::getContent();
+        return view('client.client_homepage',['products' => $cart]);
+    }
+    public function lessItem($id){
+        $product = \Cart::get($id);
+        //\Cart::update($product,$product->quantity--);
+        $carts = \Cart::getContent();
+        //return view('client.client_homepage',['products' => $carts]);
+        var_dump($carts);
     }
 }

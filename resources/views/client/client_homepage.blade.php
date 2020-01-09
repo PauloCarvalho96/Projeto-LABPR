@@ -28,15 +28,19 @@
                 </tr>
               </thead>
               <tbody>
-              @foreach($cartItems as $cartItem)
+                @if($products)
+                @foreach ($products as $product)
                 <tr>
-                    <td>{{$cartItem->name}}</td>
-                    <td>{{$cartItem->price}}</td>
-                    <td>{{$cartItem->quantity}}</td>
+                    <td><a type = "button" href="{{route('product.lessItem',$product->id)}}">-</a>{{ $product->quantity }} <a href="{{route('product.addToCart',$product->id)}}">+</a></td>
+                    <td>{{ $product->name }}</td>
+                    <td>{{ $product->price }}</td>
+
+                     <td><a href="{{route('product.removeFromCart',$product->id)}}">Delete</a></td>
                 </tr>
                 @endforeach
               </tbody>
             </table>
+                <strong>Quantidade Total:{{ \Cart::getTotalQuantity()}}<br>Total: {{ \Cart::getSubTotal() }}&euro;</strong>
           </div>
         </div>
             <div class="card-footer">
