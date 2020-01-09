@@ -1,12 +1,18 @@
 @extends('layouts.app')
 
 @section('content')
+
+<div class="card h-100">
+
     <img class="rounded mx-auto d-block" src="{{asset('img/products/'.$product->imagem)}}" alt="">
-    <h5>Name: {{$product->nome}}</h5><br>
-    <h5>Category: {{$product->categoria}}</h5><br>
-    <h5>Description:<br>{!!$product->descricao!!}</h5><br>
-    <p>Price: {{$product->preco}}&euro;</p>
+    <h5> <strong><u>Name:</u></strong> {{$product->nome}}</h5><br>
+    <h5> <strong><u>Category:</u></strong> {{$product->categoria}}</h5><br>
+    <h5> <strong><u>Description:</u></strong> <br>{!!$product->descricao!!}</h5><br>
+    <h5> <strong><u>Price:</u></strong>  {{$product->preco}}&euro;</h5>
     <br>
+
+</div>
+
     <a href="{{route('products.edit',$product->id)}}" class="btn btn-primary float-left">Update</a>
     <a href="#" class="btn btn-danger float-right" data-toggle="modal" data-target="#delete-modal">Delete</a>
     <div class="clearfix"></div>
