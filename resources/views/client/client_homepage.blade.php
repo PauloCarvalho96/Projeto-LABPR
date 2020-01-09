@@ -38,6 +38,7 @@
                      <td><a href="{{route('product.removeFromCart',$product->id)}}">Delete</a></td>
                 </tr>
                 @endforeach
+                @endif
               </tbody>
             </table>
                 <strong>Quantidade Total:{{ \Cart::getTotalQuantity()}}<br>Total: {{ \Cart::getSubTotal() }}&euro;</strong>
