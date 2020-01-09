@@ -73,15 +73,4 @@ class ClientController extends Controller
         $user->save();
         return redirect()->back()->with("success","Data changed successfully !");
     }
-
-    public function getCart(){
-        if(!Session::has('cart')){
-            return view('client.client_homepage', ['products' => null]);
-        }
-
-        $oldCart = Session::get('cart');
-        $cart = new Cart($oldCart);
-        return view('client.client_homepage', ['products' => $cart->items, 'totalPrice' => $cart->total_preco]);
-    }
-
 }

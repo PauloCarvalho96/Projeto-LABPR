@@ -22,27 +22,21 @@
             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
               <thead>
                 <tr>
-                  <th>Quantity</th>
                   <th>Name</th>
                   <th>Price</th>
+                  <th>quantidade</th>
                 </tr>
               </thead>
               <tbody>
-                @if(Session::has('cart'))
-                @foreach ($products as $product)
+              @foreach($cartItems as $cartItem)
                 <tr>
-                    <td>{{ $product['qty'] }}</td>
-                    <td>{{ $product['item']['nome'] }}</td>
-                    <td>{{ $product['preco'] }}&euro;</td>
-                <td><a href="{{ route('product.removeFromCart', ['id' => $product['item']['id']]) }}">Delete</a></td>
+                    <td>{{$cartItem->name}}</td>
+                    <td>{{$cartItem->price}}</td>
+                    <td>{{$cartItem->quantity}}</td>
                 </tr>
                 @endforeach
-              @else
-                    <h1>No Items in Cart!</h1>
-              @endif
               </tbody>
             </table>
-                <strong>Total: {{ $totalPrice ?? '' }}&euro;</strong>
           </div>
         </div>
             <div class="card-footer">

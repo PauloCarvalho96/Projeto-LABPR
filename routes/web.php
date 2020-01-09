@@ -37,8 +37,9 @@ Route::post('/changeDataUser','ClientController@changeDataUser')->name('changeDa
 // ELIMINAR DO CARRINHO
 #Route::get('/remove_from_cart/{id}','ClientController@removeProduct')->name('product.removeFromCart');
 // VER CARRINHO DE COMPRAS
-Route::get('/shopping_cart','ClientController@getCart')->name('product.shoppingCart');
-
+#Route::get('/shopping_cart','ClientController@getCart')->name('product.shoppingCart');
+Route::get('/cart/{id}','CartController@create')->name("cart.create");
+Route::get('/carts','CartController@index')->name("cart.index");
 # ADMIN # -> So o admin consegue aceder a estas paginas
 Route::get('/index', "PagesController@index")->name("pages.index")->middleware('is_admin');
 Route::get('/about', "PagesController@about")->name("pages.about")->middleware('is_admin');
