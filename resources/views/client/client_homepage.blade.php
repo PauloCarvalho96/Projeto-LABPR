@@ -28,13 +28,15 @@
                 </tr>
               </thead>
               <tbody>
-                @if(Session::has('cart'))
+                @if($products)
                 @foreach ($products as $product)
                 <tr>
-                    <td>{{ $product['qty'] }}</td>
-                    <td>{{ $product['item']['nome'] }}</td>
-                    <td>{{ $product['preco'] }}&euro;</td>
-                <td><a href="{{ route('product.removeFromCart', ['id' => $product['item']['id']]) }}">Delete</a></td>
+                    <td>{{ $product->quantity }}</td>
+                    <td>{{ $product->name }}</td>
+                    <td>{{ $product->price }}</td>
+
+                     <td><a href="{{route('product.removeFromCart',$product->id)}}">Delete</a></td>
+
                 </tr>
                 @endforeach
               @else
@@ -42,7 +44,7 @@
               @endif
               </tbody>
             </table>
-                <strong>Total: {{ $totalPrice ?? '' }}&euro;</strong>
+                <strong>Total: {{ \Cart::getSubTotalWithoutConditions() }}&euro;</strong>
           </div>
         </div>
             <div class="card-footer">

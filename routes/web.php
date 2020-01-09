@@ -33,11 +33,13 @@ Route::post('/changeDataUser','ClientController@changeDataUser')->name('changeDa
 
 # CARRINHO DE COMPRAS
 // ADICIONAR AO CARRINHO
-#Route::get('/add_to_cart/{id}','ClientController@getAddToCart')->name('product.addToCart');
-// ELIMINAR DO CARRINHO
-#Route::get('/remove_from_cart/{id}','ClientController@removeProduct')->name('product.removeFromCart');
+Route::get('/add_to_cart/{id}','ClientController@addCart')->name('product.addToCart');
 // VER CARRINHO DE COMPRAS
 Route::get('/shopping_cart','ClientController@getCart')->name('product.shoppingCart');
+// ELIMINAR DO CARRINHO
+Route::get('/remove_from_cart/{id}','ClientController@deleteCart')->name('product.removeFromCart');
+// UPDATE DO CARRINHO
+Route::get('/update_from_cart/{id}','ClientController@updateCart')->name('product.updateFromCart');
 
 # ADMIN # -> So o admin consegue aceder a estas paginas
 Route::get('/index', "PagesController@index")->name("pages.index")->middleware('is_admin');

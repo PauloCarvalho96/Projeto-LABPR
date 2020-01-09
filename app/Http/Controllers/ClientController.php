@@ -5,9 +5,9 @@ namespace App\Http\Controllers;
 use App\Product;
 use Illuminate\Http\Request;
 use Auth;
+use Darryldecode\Cart\Cart;
 use Hash;
 use Session;
-use App\Cart;
 
 class ClientController extends Controller
 {
@@ -75,13 +75,21 @@ class ClientController extends Controller
     }
 
     public function getCart(){
-        if(!Session::has('cart')){
-            return view('client.client_homepage', ['products' => null]);
-        }
+        $cart = \Cart::getContent();
+        return view('client.client_homepage', ['products' => $cart]);
+    }
 
-        $oldCart = Session::get('cart');
-        $cart = new Cart($oldCart);
-        return view('client.client_homepage', ['products' => $cart->items, 'totalPrice' => $cart->total_preco]);
+    public function addCart($id){
+        $product = Product::findOrFail($id);
+        \Cart::add($product->id,$product->nome,$product->preco,1);
+        $cart = \Cart::getContent();
+        return view('client.client_homepage',['products' => $cart]);
+    }
+
+    public function deleteCart($id){
+        \Cart::remove($id);
+        $cart = \Cart::getContent();
+        return view('client.client_homepage',['products' => $cart]);
     }
 
 }
