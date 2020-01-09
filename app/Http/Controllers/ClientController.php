@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Product;
 use Illuminate\Http\Request;
 use Auth;
-use Darryldecode\Cart\Cart;
 use Hash;
 use Session;
 
