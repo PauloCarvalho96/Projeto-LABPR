@@ -74,18 +74,6 @@ class ClientController extends Controller
         return redirect()->back()->with("success","Data changed successfully !");
     }
 
-    //funçao para adicionar produtos ao carrinho do cliente
-    public function getAddToCart(Request $request, $id){
-        $product = Product::findOrFail($id);
-        //verifica se o oldCart existe, senao fica a null
-        $oldCart = Session::has('cart') ? Session::get('cart') : null;
-        $cart = new Cart($oldCart);
-        $cart->add($product,$product->id);
-
-        $request->session()->put('cart',$cart);
-        return redirect()->route('welcome');
-    }
-
     public function getCart(){
         if(!Session::has('cart')){
             return view('client.client_homepage', ['products' => null]);

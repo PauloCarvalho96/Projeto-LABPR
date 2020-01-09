@@ -34,7 +34,7 @@
                     <td>{{ $product['qty'] }}</td>
                     <td>{{ $product['item']['nome'] }}</td>
                     <td>{{ $product['preco'] }}&euro;</td>
-                    <td><a href="#">Delete</a></td>
+                <td><a href="{{ route('product.removeFromCart', ['id' => $product['item']['id']]) }}">Delete</a></td>
                 </tr>
                 @endforeach
               @else
