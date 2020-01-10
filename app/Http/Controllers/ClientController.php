@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Product;
 use Illuminate\Http\Request;
+use Gloudemans\Shoppingcart\Facades\Cart;
 use Auth;
 use Hash;
 use Session;
@@ -74,26 +75,29 @@ class ClientController extends Controller
     }
 
     public function getCart(){
-        $cart = \Cart::getContent();
+        $cart = Cart::getContent();
         return view('client.client_homepage', ['products' => $cart]);
     }
 
     public function addCart($id){
         $product = Product::findOrFail($id);
-        \Cart::add($product->id,$product->nome,$product->preco,1);
-        $cart = \Cart::getContent();
-        return view('client.client_homepage',['products' => $cart]);
+        Cart :: add($id,$product->nome,$product->preco,1);
+        $cart = Cart::getcontent();
+        $user = Auth::user();
+
+       # Cart::store($user); #ESTÁ A DAR ERRO NAO SEI PQ !!!!
+        return view('client.client_homepage',[ 'products' => $cart ]);
     }
 
     public function deleteCart($id){
-        \Cart::remove($id);
-        $cart = \Cart::getContent();
+        Cart::remove($id);
+        $cart = Cart::getContent();
         return view('client.client_homepage',['products' => $cart]);
     }
 
     public function lessItem($id){
-        \Cart::update($id,['quantity'=>-1]);
-        $cart = \Cart::getContent();
+        Cart::update($id,['quantity'=>-1]);
+        $cart = Cart::getContent();
         return view('client.client_homepage',['products' => $cart]);
     }
 }

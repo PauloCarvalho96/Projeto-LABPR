@@ -8,16 +8,16 @@
     "packages": [
         {
             "name": "bumbummen99/shoppingcart",
-            "version": "2.8.6",
+            "version": "2.8.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/bumbummen99/LaravelShoppingcart.git",
-                "reference": "18c89a495b7058d885b7ff143078ca0724c436c7"
+                "reference": "0b3a5071af437ec4c4152dcb0edd1fa97aab3ef9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/bumbummen99/LaravelShoppingcart/zipball/18c89a495b7058d885b7ff143078ca0724c436c7",
-                "reference": "18c89a495b7058d885b7ff143078ca0724c436c7",
+                "url": "https://api.github.com/repos/bumbummen99/LaravelShoppingcart/zipball/0b3a5071af437ec4c4152dcb0edd1fa97aab3ef9",
+                "reference": "0b3a5071af437ec4c4152dcb0edd1fa97aab3ef9",
                 "shasum": ""
             },
             "require": {
@@ -70,7 +70,7 @@
                 "laravel",
                 "shoppingcart"
             ],
-            "time": "2019-11-02T14:57:29+00:00"
+            "time": "2020-01-09T18:30:26+00:00"
         },
         {
             "name": "darryldecode/cart",
