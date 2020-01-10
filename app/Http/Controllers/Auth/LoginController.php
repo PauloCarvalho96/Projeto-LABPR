@@ -53,7 +53,7 @@ class LoginController extends Controller
             if (auth()->user()->is_admin == 1) {
                 return view('index');
             }else{
-                return view('client.client_homepage');
+                return view('client.client_homepage',['products' => null]);
             }
         }else{
             return redirect()->route('login')
