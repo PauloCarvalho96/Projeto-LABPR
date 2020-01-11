@@ -1,3 +1,6 @@
+<!-- Styles -->
+<link rel="stylesheet" href="{{asset('css/navbar.css')}}"> {{-- <- your css --}}
+
 <nav class="navbar navbar-expand-md navbar-light navbar-laravel">
     <div class="container">
         <a class="navbar-brand" href="{{ url('/') }}">Homepage</a>
@@ -6,6 +9,9 @@
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item">
                     <a href="{{ route('product.shoppingCart') }}" class="nav-link">Cart</a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{ route('client.show_orders') }}" class="nav-link">Orders</a>
                 </li>
                 <li class="nav-item">
                     <a href="{{route('client.showChangePasswordForm')}}" class="nav-link">Edit Profile</a>

@@ -138,9 +138,16 @@ class ProductsController extends Controller
     {
         //Delete a product
         $product = Product::findOrFail($id);
+
+        if($product->imagem){
+            $filename = $product->imagem;
+            $path = public_path('img/products/').$filename;
+            unlink($path);  //elimina ficheiro
+        }
+
         $product->delete();
+
         //Redirect to a specified route
-        return redirect()
-            ->route('products.index');
+        return redirect()->route('products.index');
     }
 }

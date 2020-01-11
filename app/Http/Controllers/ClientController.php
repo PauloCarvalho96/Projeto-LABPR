@@ -85,7 +85,6 @@ class ClientController extends Controller
         $cart = Cart::getcontent();
         $user = Auth::user();
 
-       # Cart::store($user); #ESTÁ A DAR ERRO NAO SEI PQ !!!!
         return view('client.client_homepage',[ 'products' => $cart ]);
     }
 
@@ -99,5 +98,9 @@ class ClientController extends Controller
         Cart::update($id,['quantity'=>-1]);
         $cart = Cart::getContent();
         return view('client.client_homepage',['products' => $cart]);
+    }
+
+    public function show_orders(){
+        return view('client.client_orders');
     }
 }

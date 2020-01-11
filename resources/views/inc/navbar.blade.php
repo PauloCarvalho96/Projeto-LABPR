@@ -1,3 +1,6 @@
+<!-- Styles -->
+<link rel="stylesheet" href="{{asset('css/navbar.css')}}"> {{-- <- your css --}}
+
 <nav class="navbar navbar-expand-md navbar-light navbar-laravel">
     <div class="container">
         <a class="navbar-brand" href="{{ url('/') }}">Homepage</a>
@@ -12,9 +15,6 @@
                 </li>
                 <li class="nav-item">
                     <a href="{{route('products.create')}}" class="nav-link">Add Products</a>
-                </li>
-                <li class="nav-item">
-                    <a href="{{route('pages.about')}}" class="nav-link">About</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('logout') }}"

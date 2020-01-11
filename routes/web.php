@@ -26,6 +26,9 @@ Route::get('/search', "WelcomeController@search")->name("welcome.search");
 # CLIENT #
 Route::get('/client', "ClientController@getCart")->name("client.home_client");
 
+// orders client
+Route::get('/show_orders', "ClientController@show_orders")->name("client.show_orders");
+
 // FORM TO UPDATE CLIENT
 Route::get('/changePassword','ClientController@showChangePasswordForm')->name('client.showChangePasswordForm');
 Route::post('/changePassword','ClientController@changePassword')->name('changePassword');
@@ -44,8 +47,6 @@ Route::get('/update_from_cart/{id}','ClientController@updateCart')->name('produc
 
 # ADMIN # -> So o admin consegue aceder a estas paginas
 Route::get('/index', "PagesController@index")->name("pages.index")->middleware('is_admin');
-Route::get('/about', "PagesController@about")->name("pages.about")->middleware('is_admin');
-
 // SELECT
 Route::get('/products','ProductsController@index')->name('products.index')->middleware('is_admin');
 // FORM TO INSERT
