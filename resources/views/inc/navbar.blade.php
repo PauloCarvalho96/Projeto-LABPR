@@ -8,7 +8,7 @@
             <!-- Left Side Of Navbar -->
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item">
-                    <a href="{{route('pages.index')}}" class="nav-link">Home</a>
+                    <a href="{{route('pages.index')}}" class="nav-link">Clients Orders</a>
                 </li>
                 <li class="nav-item">
                     <a href="{{route('products.index')}}" class="nav-link">Show Products</a>

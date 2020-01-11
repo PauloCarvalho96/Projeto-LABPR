@@ -45,6 +45,9 @@ Route::get('/lessItem/{id}','ClientController@lessItem')->name('product.lessItem
 // UPDATE DO CARRINHO
 Route::get('/update_from_cart/{id}','ClientController@updateCart')->name('product.updateFromCart');
 
+// Gerar PDF
+Route::get('/downloadPDFcart','ClientController@downloadPDFcart')->name('client.downloadPDFcart');
+
 # ADMIN # -> So o admin consegue aceder a estas paginas
 Route::get('/index', "PagesController@index")->name("pages.index")->middleware('is_admin');
 // SELECT
@@ -61,5 +64,4 @@ Route::get('/products/{id}/edit','ProductsController@edit')->name('products.edit
 Route::put('/products/{id}','ProductsController@update')->name('products.update')->middleware('is_admin'); // making a put request
 // DELETE BY ID
 Route::delete('/products/{id}','ProductsController@destroy')->name('products.destroy')->middleware('is_admin'); // making a delete request
-
 

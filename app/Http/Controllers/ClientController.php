@@ -8,6 +8,7 @@ use Gloudemans\Shoppingcart\Facades\Cart;
 use Auth;
 use Hash;
 use Session;
+use PDF;
 
 class ClientController extends Controller
 {
@@ -102,5 +103,12 @@ class ClientController extends Controller
 
     public function show_orders(){
         return view('client.client_orders');
+    }
+
+    public function downloadPDFcart(){
+        $cart = Cart::getContent();
+        $pdf = PDF::loadView('client.pdf_cart',['products' => $cart]);
+
+        return $pdf->stream('cart.pdf');
     }
 }

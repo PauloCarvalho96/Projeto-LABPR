@@ -22,9 +22,9 @@
             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
               <thead>
                 <tr>
+                  <th>Quantity</th>
                   <th>Name</th>
                   <th>Price</th>
-                  <th>quantidade</th>
                 </tr>
               </thead>
               <tbody>
@@ -33,7 +33,7 @@
                 <tr>
                     <td><a type = "button" href="{{route('product.lessItem',$product->id)}}">-</a>{{ $product->quantity }} <a href="{{route('product.addToCart',$product->id)}}">+</a></td>
                     <td>{{ $product->name }}</td>
-                    <td>{{ $product->price }}</td>
+                    <td>{{ $product->price }}&euro;</td>
 
                      <td><a href="{{route('product.removeFromCart',$product->id)}}">Delete</a></td>
                 </tr>
@@ -41,7 +41,8 @@
                 @endif
               </tbody>
             </table>
-                <strong>Quantidade Total:{{ \Cart::getTotalQuantity()}}<br>Total: {{ \Cart::getSubTotal() }}&euro;</strong>
+                <strong>Total Quantity: {{ \Cart::getTotalQuantity()}}<br>Total: {{ \Cart::getSubTotal() }}&euro;</strong><br>
+                <a href="{{route('client.downloadPDFcart')}}" target="_blank">Generate PDF</a>
           </div>
         </div>
             <div class="card-footer">
