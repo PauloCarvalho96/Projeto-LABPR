@@ -42,6 +42,10 @@ Route::get('/shopping_cart','ClientController@getCart')->name('product.shoppingC
 // ELIMINAR DO CARRINHO
 Route::get('/remove_from_cart/{id}','ClientController@deleteCart')->name('product.removeFromCart');
 Route::get('/lessItem/{id}','ClientController@lessItem')->name('product.lessItem');
+// CARRINHO
+Route::get('/Checkout','ClientController@getCheckout')->name('product.getCheckout');
+// Checkout (Post pois vai ter de receber os dados do client, cartao de credito, etc)
+Route::post('/Checkout','ClientController@postCheckout')->name('product.postCheckout');
 // UPDATE DO CARRINHO
 Route::get('/update_from_cart/{id}','ClientController@updateCart')->name('product.updateFromCart');
 

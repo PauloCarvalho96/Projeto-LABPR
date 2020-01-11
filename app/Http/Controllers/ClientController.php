@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use Gloudemans\Shoppingcart\Facades\Cart;
 use Auth;
 use Hash;
+use Stripe\Stripe;
+use Stripe\Charge;
 use Session;
 use PDF;
 
@@ -84,7 +86,11 @@ class ClientController extends Controller
         $product = Product::findOrFail($id);
         Cart :: add($id,$product->nome,$product->preco,1);
         $cart = Cart::getcontent();
-        $user = Auth::user();
+
+        #$user = Auth::user()->id;
+        #Cart::store($id);
+
+       # Cart::instance('wishlist')->content();
 
         return view('client.client_homepage',[ 'products' => $cart ]);
     }
@@ -99,6 +105,28 @@ class ClientController extends Controller
         Cart::update($id,['quantity'=>-1]);
         $cart = Cart::getContent();
         return view('client.client_homepage',['products' => $cart]);
+    }
+
+    public function getCheckout(){
+        $cart = Cart::getContent();
+        return view('client.checkout',['products' => $cart]);
+    }
+
+    public function postCheckout(Request $request){
+        Stripe::setApiKey('sk_test_GJLaDZ7n7TxVA8tW0KG5GxWU00ZoNTRwGq');
+        $cart = Cart::getContent();
+        try{
+            Charge::create(array(
+                'amount' => Cart::getSubTotal(),
+                'currency' => 'eur',
+                'source' => $request->input('stripeToken'),
+                'description' => 'My First Test Charge (created for API docs)',
+            ));
+        } catch(\Exception $e){
+           # return redirect()->back()->with("success","Data changed successfully !");
+           # return redirect()->route('client.checkout',['products' => $cart])->with('error'=> $e->getMessage());
+        }
+        return view('client.client_homepage',['products' => $cart])->with('success','Produto Comprado com Sucesso');
     }
 
     public function show_orders(){
