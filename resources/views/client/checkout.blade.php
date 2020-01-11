@@ -2,8 +2,11 @@
 <script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 <!-- Styles -->
+<script src="https://js.stripe.com/v3/"></script>
 <link rel="stylesheet" href="{{asset('css/checkout.css')}}"> {{-- <- your css --}}
 <!------ Include the above in your HEAD tag ---------->
+
+<!-- Styles    <script src=" URL ::to('js/checkout.js')}}"></script>  -->
 
 <div class="container wrapper">
             <div class="row cart-head">
@@ -28,7 +31,8 @@
             <div id="charge-error" class ="alert alert-danger{{ !Session::has('error') ? 'hidden' : ''}}">
                 {{Session::get('error')}}
             </div>
-                <form class="form-horizontal" method="POST" action="{{route('product.postCheckout')}}" id="checkout-form">  <!--FALTA METER O ACTION, MANDA PARA UM ROUTE !!!!!!!!!!!!!!!!!!-->
+        <form class="form-horizontal" method="POST" action="{{route('product.storeCheckout')}}" id="payment-form">
+            {{ csrf_field() }}
                 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 col-md-push-6 col-sm-push-6">
                     <!--REVIEW ORDER-->
                     <div class="panel panel-info">
@@ -105,7 +109,7 @@
                             <div class="form-group">
                                 <div class="col-md-12"><strong>Zip / Postal Code:</strong></div>
                                 <div class="col-md-12">
-                                    <input type="text" name="zip_code" id="zip_code" class="form-control" required>
+                                    <input type="text" name="postalcode" id="postalcode" class="form-control" required>
                                 </div>
                             </div>
                             <div class="form-group">
@@ -134,51 +138,17 @@
                                     </select>
                                 </div>
                             </div>
+
                             <div class="form-group">
-                                <div class="col-md-12" required> <strong>Credit Card Number:</strong></div>
-                                <div class="col-md-12" required><input type="text" class="form-control" name="card-number" id="card-number" required></div>
-                            </div>
-                            <div class="form-group">
-                                <div class="col-md-12" required><strong>Card CVC:</strong></div>
-                                <div class="col-md-12" required><input type="text" class="form-control" name="card-cvc" id="card-cvc" required></div>
-                            </div>
-                            <div class="form-group">
-                                <div class="col-md-12">
-                                    <strong>Expiration Date</strong>
-                                </div>
-                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                                    <select class="form-control" name="card-expiry-month" id="card-expiry-month">
-                                        <option value="">Month</option>
-                                        <option value="01">01</option>
-                                        <option value="02">02</option>
-                                        <option value="03">03</option>
-                                        <option value="04">04</option>
-                                        <option value="05">05</option>
-                                        <option value="06">06</option>
-                                        <option value="07">07</option>
-                                        <option value="08">08</option>
-                                        <option value="09">09</option>
-                                        <option value="10">10</option>
-                                        <option value="11">11</option>
-                                        <option value="12">12</option>
-                                </select>
-                                </div>
-                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                                    <select class="form-control" name="card-expiry-year" id="card-expiry-year">
-                                        <option value="">Year</option>
-                                        <option value="2015">2015</option>
-                                        <option value="2016">2016</option>
-                                        <option value="2017">2017</option>
-                                        <option value="2018">2018</option>
-                                        <option value="2019">2019</option>
-                                        <option value="2020">2020</option>
-                                        <option value="2021">2021</option>
-                                        <option value="2022">2022</option>
-                                        <option value="2023">2023</option>
-                                        <option value="2024">2024</option>
-                                        <option value="2025">2025</option>
-                                </select>
-                                </div>
+                                <label for="card-element">
+                                    <div class="col-md-12"><strong>Credit or debit card:</strong></div>
+                                  </label>
+                                  <div id="card-element">
+                                    <!-- A Stripe Element will be inserted here. -->
+                                  </div>
+                              
+                                  <!-- Used to display form errors. -->
+                                  <div id="card-errors" role="alert"></div>
                             </div>
                             <div class="form-group">
                                 <div class="col-md-12">
@@ -209,5 +179,85 @@
         
             </div>
     </div>
-    <script src="https://js.stripe.com/v3/"></script>
-    <script src="{{URL ::to('js/checkout.js')}}"></script>
+
+        <script>
+            (function(){
+                // Create a Stripe client.
+                var stripe = Stripe('{{config('services.stripe.key')}}');
+
+                // Create an instance of Elements.
+                var elements = stripe.elements();
+
+                // Custom styling can be passed to options when creating an Element.
+                // (Note that this demo uses a wider set of styles than the guide below.)
+                var style = {
+                base: {
+                    color: '#32325d',
+                    fontFamily: '"Helvetica Neue", Helvetica, sans-serif',
+                    fontSmoothing: 'antialiased',
+                    fontSize: '16px',
+                    '::placeholder': {
+                    color: '#aab7c4'
+                    }
+                },
+                invalid: {
+                    color: '#fa755a',
+                    iconColor: '#fa755a'
+                }
+                };
+
+                // Create an instance of the card Element.
+                var card = elements.create('card', {style: style,hidePostalCode: true});
+
+                // Add an instance of the card Element into the `card-element` <div>.
+                card.mount('#card-element');
+
+                // Handle real-time validation errors from the card Element.
+                card.addEventListener('change', function(event) {
+                var displayError = document.getElementById('card-errors');
+                if (event.error) {
+                    displayError.textContent = event.error.message;
+                } else {
+                    displayError.textContent = '';
+                }
+                });
+
+                // Handle form submission.
+                var form = document.getElementById('payment-form');
+                form.addEventListener('submit', function(event) {
+                event.preventDefault();
+
+                var options={
+                    name: document.getElementById('name').value,
+                    address_line1: document.getElementById('address').value,
+                    address_city: document.getElementById('city').value,
+                    address_zip: document.getElementById('postalcode').value
+                }
+                stripe.createToken(card,options).then(function(result) {
+                    if (result.error) {
+                    // Inform the user if there was an error.
+                    var errorElement = document.getElementById('card-errors');
+                    errorElement.textContent = result.error.message;
+                    } else {
+                    // Send the token to your server.
+                    stripeTokenHandler(result.token);
+                    }
+                });
+                });
+
+                // Submit the form with the token ID.
+                function stripeTokenHandler(token) {
+                // Insert the token ID into the form so it gets submitted to the server
+                var form = document.getElementById('payment-form');
+                var hiddenInput = document.createElement('input');
+                hiddenInput.setAttribute('type', 'hidden');
+                hiddenInput.setAttribute('name', 'stripeToken');
+                hiddenInput.setAttribute('value', token.id);
+                form.appendChild(hiddenInput);
+
+                // Submit the form
+                form.submit();
+                }
+
+            })();
+        </script>

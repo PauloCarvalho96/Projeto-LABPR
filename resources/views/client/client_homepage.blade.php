@@ -47,7 +47,7 @@
                 @endif
               </tbody>
             </table>
-                <strong>Total Quantity: {{ \Cart::getTotalQuantity()}}<br>Total: {{ \Cart::getSubTotal() }}&euro;</strong><br>
+                <strong>Total Quantity: {{ Cart::getTotalQuantity()}}<br>Total: {{ Cart::getSubTotal() }}&euro;</strong><br>
                 <a href="{{route('client.downloadPDFcart')}}" target="_blank">Generate PDF</a>
           </div>
         </div>

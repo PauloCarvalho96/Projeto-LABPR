@@ -12,6 +12,7 @@
         "ext-pdo_sqlite": "*",
         "barryvdh/laravel-dompdf": "^0.8.5",
         "bumbummen99/shoppingcart": "^2.8",
+        "cartalyst/stripe-laravel": "^11.0",
         "darryldecode/cart": "~4.0",
         "fideloper/proxy": "^4.0",
         "illuminate/support": "^6.8",

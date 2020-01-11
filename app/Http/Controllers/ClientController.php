@@ -7,8 +7,8 @@ use Illuminate\Http\Request;
 use Gloudemans\Shoppingcart\Facades\Cart;
 use Auth;
 use Hash;
-use Stripe\Stripe;
-use Stripe\Charge;
+use Cartalyst\Stripe\Laravel\Facades\Stripe;
+use Exception;
 use Session;
 use PDF;
 
@@ -89,7 +89,6 @@ class ClientController extends Controller
 
         #$user = Auth::user()->id;
         #Cart::store($id);
-
        # Cart::instance('wishlist')->content();
 
         return view('client.client_homepage',[ 'products' => $cart ]);
@@ -112,23 +111,32 @@ class ClientController extends Controller
         return view('client.checkout',['products' => $cart]);
     }
 
-    public function postCheckout(Request $request){
-        Stripe::setApiKey('sk_test_GJLaDZ7n7TxVA8tW0KG5GxWU00ZoNTRwGq');
+    public function storeCheckout(Request $request){
         $cart = Cart::getContent();
-        try{
-            Charge::create(array(
+        #dd($request->all());
+        #dd($request->stripeToken);
+        try {
+            $charge = Stripe::charges()->create([
                 'amount' => Cart::getSubTotal(),
-                'currency' => 'eur',
-                'source' => $request->input('stripeToken'),
-                'description' => 'My First Test Charge (created for API docs)',
-            ));
-        } catch(\Exception $e){
-           # return redirect()->back()->with("success","Data changed successfully !");
-           # return redirect()->route('client.checkout',['products' => $cart])->with('error'=> $e->getMessage());
-        }
-        return view('client.client_homepage',['products' => $cart])->with('success','Produto Comprado com Sucesso');
-    }
+                'currency' => 'CAD',
+                'source' => $request->stripeToken,
+                'description' => 'Order',
+                'receipt_email' => $request->email,
+                'metadata' => [
+                    //'contents' => $contents,
+                   // 'quantity' => Cart::instance('default')->count(),
+                   // 'discount' => collect(session()->get('coupon'))->toJson(), // NAO TEMOS DESCONTO AINDA !!!!!
+                ],
+            ]);
 
+            return view('client.client_homepage',[ 'products' => $cart ]);
+        } catch (Exception $e) {
+           # $this->addToOrdersTables($request, $e->getMessage());
+           echo "erro";
+            return back()->withErrors('Error! ' . $e->getMessage());
+        }
+    }
+    
     public function show_orders(){
         return view('client.client_orders');
     }
