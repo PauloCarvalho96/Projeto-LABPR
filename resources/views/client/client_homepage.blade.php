@@ -12,7 +12,13 @@
     @include('inc.navbar_client')
 
     <main class="container mt-4">
-
+    @if(Session::has('success'))
+    <div class ="row">
+          <div id="charge-message" class ="alert alert-success">
+              {{Session::get('success')}}
+          </div>
+    </div>
+    @endif
     <div class="card shadow mb-4">
         <div class="card-header py-3">
           <h6 class="m-0 font-weight-bold text-primary">Shopping Cart</h6>
@@ -41,11 +47,11 @@
                 @endif
               </tbody>
             </table>
-                <strong>Quantidade Total:{{ \Cart::getTotalQuantity()}}<br>Total: {{ \Cart::getSubTotal() }}&euro;</strong>
+                <strong>Quantidade Total:{{ Cart::getTotalQuantity()}}<br>Total: {{ Cart::getSubTotal() }}&euro;</strong>
           </div>
         </div>
             <div class="card-footer">
-                <a class="btn btn-primary" href="#" >Checkout</a>
+                <a class="btn btn-primary" href="{{route('product.getCheckout')}}" >Checkout</a>
             </div>
       </div>
 
