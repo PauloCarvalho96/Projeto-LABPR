@@ -60,13 +60,13 @@
             @auth
               @if(!auth()->user()->is_admin)
               <div class="card-footer">
-                <a class="btn btn-primary" href="#" >Add to Cart</a>
+                <a class="btn btn-primary" href="{{ route('product.addToCart',$product->id)}}" >Add to Cart</a>
               </div>
               @endauth
 
               @else
               <div class="card-footer">
-                <a class="btn btn-primary" href="#" >Add to Cart</a>
+                <a class="btn btn-primary" href="{{ route('product.addToCart',$product->id)}}" >Add to Cart</a>
               </div>
 
               @endif
