@@ -1,4 +1,3 @@
-
         <img class="img-thumbnail" src="{{ public_path() }}/img/logo.png" alt="Logo" height="150px">
 
         <div class="card-header py-3">
@@ -15,6 +14,7 @@
                 </tr>
               </thead>
               <tbody>
+                {{!!$products = Cart::getContent()}}
                 @if($products)
                 @foreach ($products as $product)
                 <tr>
