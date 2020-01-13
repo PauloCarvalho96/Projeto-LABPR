@@ -40,7 +40,6 @@
                     <td><a type = "button" href="{{route('product.lessItem',$product->id)}}">-</a>{{ $product->quantity }} <a href="{{route('product.addToCart',$product->id)}}">+</a></td>
                     <td>{{ $product->name }}</td>
                     <td>{{ $product->price }}&euro;</td>
-
                      <td><a href="{{route('product.removeFromCart',$product->id)}}">Delete</a></td>
                 </tr>
                 @endforeach
