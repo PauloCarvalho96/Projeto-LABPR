@@ -1,20 +1,14 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <link rel="stylesheet" href="{{asset('css/app.css')}}"> {{-- <- your css --}}
-    <link href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-    <title>@yield('checkout','Checkout Page')</title>
-    <!-- Styles -->
-    <script src="https://js.stripe.com/v3/"></script>
-    <link rel="stylesheet" href="{{asset('css/checkout.css')}}"> {{-- <- your css --}}
-    <!------ Include the above in your HEAD tag ---------->
-</head>
-<body>
-@include('inc.navbar_client')
-<main class="container mt-4">
-    <div class="container wrapper">
+<link href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<!-- Styles -->
+<script src="https://js.stripe.com/v3/"></script>
+<link rel="stylesheet" href="{{asset('css/checkout.css')}}"> {{-- <- your css --}}
+<!------ Include the above in your HEAD tag ---------->
+
+<!-- Styles    <script src=" URL ::to('js/checkout.js')}}"></script>  -->
+
+<div class="container wrapper">
             <div class="row cart-head">
                 <div class="container">
                 <div class="row">
@@ -22,7 +16,7 @@
                 </div>
                 <div class="row">
                     <div style="display: table; margin: auto;">
-                        <span class="step step_complete"> <a href="#" class="check-bc">Cart</a> <span class="step_line step_complete"> </span> <span class="step_line backline"> </span> </span>
+                    <span class="step step_complete"> <a href="{{route('product.shoppingCart')}}" class="check-bc">Cart</a> <span class="step_line step_complete"> </span> <span class="step_line backline"> </span> </span>
                         <span class="step step_complete"> <a href="#" class="check-bc">Checkout</a> <span class="step_line "> </span> <span class="step_line step_complete"> </span> </span>
                         <span class="step_thankyou check-bc step_complete">Thank you</span>
                     </div>
@@ -267,11 +261,3 @@
 
             })();
         </script>
-        </main>
-        @include('inc.footer')
-        <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
-        <script src="{{asset('js/app.js')}}"></script> {{-- your js --}}
-</body>
-</html>

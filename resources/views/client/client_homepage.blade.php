@@ -47,13 +47,17 @@
                 @endif
               </tbody>
             </table>
+                @if(Cart::getTotalQuantity() > 0)
                 <strong>Total Quantity: {{ Cart::getTotalQuantity()}}<br>Total: {{ Cart::getSubTotal() }}&euro;</strong><br>
                 <a href="{{route('client.downloadPDFcart')}}" target="_blank">Generate PDF</a>
+                @endif
           </div>
         </div>
+            @if(Cart::getTotalQuantity() > 0)
             <div class="card-footer">
                 <a class="btn btn-primary" href="{{route('product.getCheckout')}}" >Checkout</a>
             </div>
+            @endif
       </div>
 
     </div>
