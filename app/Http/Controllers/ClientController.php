@@ -87,10 +87,6 @@ class ClientController extends Controller
         Cart :: add($id,$product->nome,$product->preco,1);
         $cart = Cart::getcontent();
 
-        #$user = Auth::user()->id;
-        #Cart::store($id);
-       # Cart::instance('wishlist')->content();
-
         return view('client.client_homepage',[ 'products' => $cart ]);
     }
 

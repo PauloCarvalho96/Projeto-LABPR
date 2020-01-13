@@ -16,7 +16,7 @@
                 </div>
                 <div class="row">
                     <div style="display: table; margin: auto;">
-                        <span class="step step_complete"> <a href="#" class="check-bc">Cart</a> <span class="step_line step_complete"> </span> <span class="step_line backline"> </span> </span>
+                    <span class="step step_complete"> <a href="{{route('product.shoppingCart')}}" class="check-bc">Cart</a> <span class="step_line step_complete"> </span> <span class="step_line backline"> </span> </span>
                         <span class="step step_complete"> <a href="#" class="check-bc">Checkout</a> <span class="step_line "> </span> <span class="step_line step_complete"> </span> </span>
                         <span class="step_thankyou check-bc step_complete">Thank you</span>
                     </div>
