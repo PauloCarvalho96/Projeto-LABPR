@@ -132,34 +132,40 @@ class ClientController extends Controller
     }
     
     public function sendmail(Request $request){ # Request nao está a ser usado
-        $cart = Cart::getContent();
-        $data["email"]=Auth::user()->email;
-        $data["client_name"]=Auth::user()->name;
-        $data["subject"]="subjet";
+        if (Cart::getTotalQuantity() > 0) {
+            $carts = Cart::getContent();
+            $data["email"]=Auth::user()->email;
+            $data["client_name"]=Auth::user()->name;
+            $data["subject"]="Payment receipt";
 
-        $pdf = PDF::loadView('client.pdf_cart');
+            $pdf = PDF::loadView('client.pdf_cart'); # convem criar outra view porque esta fica toda desformatada, podemos criar uma diferente a mandar imagens dos produtos e tudo
 
-        try{
-            Mail::send('client.pdf_cart', $data, function($message)use($data,$pdf) {
-            $message->to($data["email"], $data["client_name"])
+            try {
+                Mail::send('client.pdf_cart', $data, function ($message) use ($data,$pdf) {
+                    $message->to($data["email"], $data["client_name"])
             ->subject($data["subject"])
             ->attachData($pdf->output(), "cart.pdf");
-            });
-        }catch(JWTException $exception){
-            $this->serverstatuscode = "0";
-            $this->serverstatusdes = $exception->getMessage();
+                });
+            } catch (JWTException $exception) {
+                $this->serverstatuscode = "0";
+                $this->serverstatusdes = $exception->getMessage();
+            }
+            if (Mail::failures()) {
+                $this->statusdesc  =   "Error sending mail";
+                $this->statuscode  =   "0";
+            } else {
+                $this->statusdesc  =   "Message sent Succesfully";
+                $this->statuscode  =   "1";
+            }
+            foreach ($carts as $cart) {
+                Cart::remove($cart->id);
+            }
+            $cart = Cart::getContent();
+            return view('client.client_homepage', ['products' => $cart]);
         }
-        if (Mail::failures()) {
-             $this->statusdesc  =   "Error sending mail";
-             $this->statuscode  =   "0";
-
-        }else{
-           $this->statusdesc  =   "Message sent Succesfully";
-           $this->statuscode  =   "1";
-        }
-         return view('client.client_homepage',['products' => $cart]); ### FALTA DESTRUIR O CARRINHO, TENTEI O DESTROY MAS NAO FUNCIONA
-        ## ERRO GRAVE, SEMPRE QUE RECARREGAMOS A PAGINA COM A ROUTE /sendemail, ele envia um email com o pdf
-        }
+        $cart = Cart::getContent();
+        return view('client.client_homepage', ['products' => $cart]);
+    }
 
     public function show_orders(){
         return view('client.client_orders');

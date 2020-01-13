@@ -7,7 +7,6 @@
 <!------ Include the above in your HEAD tag ---------->
 
 <!-- Styles    <script src=" URL ::to('js/checkout.js')}}"></script>  -->
-
 <div class="container wrapper">
             <div class="row cart-head">
                 <div class="container">
@@ -37,13 +36,15 @@
                     <!--REVIEW ORDER-->
                     <div class="panel panel-info">
                         <div class="panel-heading">
-                            Review Order <div class="pull-right"><small><a class="afix-1" href="#">Edit Cart</a></small></div>
+                            Review Order <div class="pull-right"><small><a class="afix-1" href="{{ route('product.shoppingCart') }}">Edit Cart</a></small></div>
                         </div>
                         <div class="panel-body">
                             @foreach ($products as $product)
+                            {{!!$prod = Product::findOrFail($product->id)}}
                             <div class="form-group">
                                 <div class="col-sm-3 col-xs-3">
-                                    <img class="img-responsive" src="//c1.staticflickr.com/1/466/19681864394_c332ae87df_t.jpg" />
+                                    <!-- COLOCAR IMAGENS CORRETAS -->
+                                    <img class="img-responsive" src={{asset('img/products/'.$prod->imagem)}} />
                                 </div>
                                 <div class="col-sm-6 col-xs-6">
                                     <div class="col-xs-12">{{ $product->name }}</div>
