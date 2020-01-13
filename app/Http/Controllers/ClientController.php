@@ -73,6 +73,12 @@ class ClientController extends Controller
         ]);
         $user = Auth::user();
         $user->name = $request->get('new_name');
+        $user->last_name = $request->get('new_last_name');
+        $user->address = $request->get('new_address');
+        $user->post_number = $request->get('new_post_number');
+        $user->phone_number = $request->get('new_phone_number');
+        $user->city = $request->get('new_city');
+        $user->country = $request->get('new_country');
         $user->save();
         return redirect()->back()->with("success","Data changed successfully !");
     }
@@ -132,7 +138,7 @@ class ClientController extends Controller
             return back()->withErrors('Error! ' . $e->getMessage());
         }
     }
-    
+
     public function show_orders(){
         return view('client.client_orders');
     }

@@ -26,6 +26,49 @@
                                 <input id="new_name" type="text" class="form-control" name="new_name" value="{{Auth::user()->name}}" required>
                             </div>
                         </div>
+
+                        <div class="form-group">
+                            <label for="last_name" class="col-md-4 control-label">Last Name</label>
+                            <div class="col-md-6">
+                                <input id="new_last_name" type="text" class="form-control" name="new_last_name" value="{{Auth::user()->last_name}}">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="address" class="col-md-4 control-label">Adress</label>
+                            <div class="col-md-6">
+                                <input id="new_address" type="text" class="form-control" name="new_address" value="{{Auth::user()->address}}">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="post_number" class="col-md-4 control-label">Post Number</label>
+                            <div class="col-md-6">
+                                <input id="new_post_number" type="text" class="form-control" name="new_post_number" value="{{Auth::user()->post_number}}">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="phone_number" class="col-md-4 control-label">Phone Number</label>
+                            <div class="col-md-6">
+                                <input id="new_phone_number" type="text" class="form-control" name="new_phone_number" value="{{Auth::user()->phone_number}}">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="city" class="col-md-4 control-label">City</label>
+                            <div class="col-md-6">
+                                <input id="new_city" type="text" class="form-control" name="new_city" value="{{Auth::user()->city}}">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="country" class="col-md-4 control-label">Country</label>
+                            <div class="col-md-6">
+                                <input id="new_country" type="text" class="form-control" name="new_country" value="{{Auth::user()->country}}">
+                            </div>
+                        </div>
+
                         <div class="form-group">
                             <label for="password" class="col-md-4 control-label">Confirm Password</label>
                             <div class="col-md-6">
