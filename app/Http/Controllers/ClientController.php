@@ -11,6 +11,7 @@ use Cartalyst\Stripe\Laravel\Facades\Stripe;
 use Exception;
 use Session;
 use PDF;
+use Illuminate\Support\Facades\Mail;
 
 class ClientController extends Controller
 {
@@ -114,9 +115,6 @@ class ClientController extends Controller
     }
 
     public function storeCheckout(Request $request){
-        $cart = Cart::getContent();
-        #dd($request->all());
-        #dd($request->stripeToken);
         try {
             $charge = Stripe::charges()->create([
                 'amount' => Cart::getSubTotal(),
@@ -124,29 +122,51 @@ class ClientController extends Controller
                 'source' => $request->stripeToken,
                 'description' => 'Order',
                 'receipt_email' => $request->email,
-                'metadata' => [
-                    //'contents' => $contents,
-                   // 'quantity' => Cart::instance('default')->count(),
-                   // 'discount' => collect(session()->get('coupon'))->toJson(), // NAO TEMOS DESCONTO AINDA !!!!!
-                ],
             ]);
 
-            return view('client.client_homepage',[ 'products' => $cart ]);
-        } catch (Exception $e) {
-           # $this->addToOrdersTables($request, $e->getMessage());
-           echo "erro";
+            return redirect()->route('order.mail');
+
+        }catch (Exception $e) {
             return back()->withErrors('Error! ' . $e->getMessage());
         }
     }
+    
+    public function sendmail(Request $request){ # Request nao está a ser usado
+        $cart = Cart::getContent();
+        $data["email"]=Auth::user()->email;
+        $data["client_name"]=Auth::user()->name;
+        $data["subject"]="subjet";
+
+        $pdf = PDF::loadView('client.pdf_cart');
+
+        try{
+            Mail::send('client.pdf_cart', $data, function($message)use($data,$pdf) {
+            $message->to($data["email"], $data["client_name"])
+            ->subject($data["subject"])
+            ->attachData($pdf->output(), "cart.pdf");
+            });
+        }catch(JWTException $exception){
+            $this->serverstatuscode = "0";
+            $this->serverstatusdes = $exception->getMessage();
+        }
+        if (Mail::failures()) {
+             $this->statusdesc  =   "Error sending mail";
+             $this->statuscode  =   "0";
+
+        }else{
+           $this->statusdesc  =   "Message sent Succesfully";
+           $this->statuscode  =   "1";
+        }
+         return view('client.client_homepage',['products' => $cart]); ### FALTA DESTRUIR O CARRINHO, TENTEI O DESTROY MAS NAO FUNCIONA
+        ## ERRO GRAVE, SEMPRE QUE RECARREGAMOS A PAGINA COM A ROUTE /sendemail, ele envia um email com o pdf
+        }
 
     public function show_orders(){
         return view('client.client_orders');
     }
 
     public function downloadPDFcart(){
-        $cart = Cart::getContent();
-        $pdf = PDF::loadView('client.pdf_cart',['products' => $cart]);
-
+        $pdf = PDF::loadView('client.pdf_cart');
         return $pdf->stream('cart.pdf');
     }
 }

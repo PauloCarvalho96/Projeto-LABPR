@@ -53,6 +53,8 @@ Route::get('/update_from_cart/{id}','ClientController@updateCart')->name('produc
 // Gerar PDF
 Route::get('/downloadPDFcart','ClientController@downloadPDFcart')->name('client.downloadPDFcart')->middleware('verified');
 
+Route::get('/sendmail','ClientController@sendmail')->name('order.mail')->middleware('verified');
+
 # ADMIN # -> So o admin consegue aceder a estas paginas
 Route::get('/index', "PagesController@index")->name("pages.index")->middleware('is_admin');
 // SELECT

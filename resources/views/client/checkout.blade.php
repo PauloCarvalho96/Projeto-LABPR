@@ -80,45 +80,45 @@
                             <div class="form-group">
                                 <div class="col-md-12"><strong>Country:</strong></div>
                                 <div class="col-md-12">
-                                    <input type="text" class="form-control" name="country" id="country" required>
+                                    <input type="text" class="form-control" name="country" id="country" value="{{Auth::user()->country}}" required>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <div class="col-md-6 col-xs-12">
                                     <strong>First Name:</strong>
-                                    <input type="text" name="name" id="name" class="form-control" required>
+                                    <input type="text" name="name" id="name" class="form-control" value="{{Auth::user()->name}}" required>
                                 </div>
                                 <div class="span1"></div>
                                 <div class="col-md-6 col-xs-12">
                                     <strong>Last Name:</strong>
-                                    <input type="text" name="last_name" id="last_name" class="form-control" required>
+                                    <input type="text" name="last_name" id="last_name" class="form-control" value="{{Auth::user()->last_name}}" required>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <div class="col-md-12"><strong>Address:</strong></div>
                                 <div class="col-md-12">
-                                    <input type="text" name="address" id="address" class="form-control" required>
+                                    <input type="text" name="address" id="address" class="form-control" value="{{Auth::user()->address}}" required>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <div class="col-md-12"><strong>City:</strong></div>
                                 <div class="col-md-12">
-                                    <input type="text" name="city" id="city" class="form-control" required>
+                                    <input type="text" name="city" id="city" class="form-control" value="{{Auth::user()->city}}" required>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <div class="col-md-12"><strong>Zip / Postal Code:</strong></div>
                                 <div class="col-md-12">
-                                    <input type="text" name="postalcode" id="postalcode" class="form-control" required>
+                                    <input type="text" name="postalcode" id="postalcode" class="form-control" value="{{Auth::user()->post_number}}" required>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <div class="col-md-12"><strong>Phone Number:</strong></div>
-                                <div class="col-md-12"><input type="text" name="phone_number" id="phone_number" class="form-control" required></div>
+                                <div class="col-md-12"><input type="text" name="phone_number" id="phone_number" class="form-control"  value="{{Auth::user()->phone_number}}" required></div>
                             </div>
                             <div class="form-group">
                                 <div class="col-md-12"><strong>Email Address:</strong></div>
-                                <div class="col-md-12"><input type="text" name="email_address" id="email_address" class="form-control" required></div>
+                                <div class="col-md-12"><input type="text" name="email_address" id="email_address" class="form-control" value="{{Auth::user()->email}}" required></div>
                             </div>
                         </div>
                     </div>
