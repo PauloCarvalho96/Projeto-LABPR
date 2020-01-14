@@ -22,8 +22,8 @@
                 <tr>
                     <td>{{ $order->order_id}}</td>
                     <td>{{ $order->user_id}}</td>
-                    <td>{{ $order->valor_total}}</td>
-                    <td>{{ $order->pdf}}</td>
+                    <td>{{ $order->valor_total}}&euro;</td>
+                    <td><a href="#">{{ $order->pdf}}</a></td>
                 </tr>
                 @empty
                     <h4 class="text-center">No Orders Found!</h4>

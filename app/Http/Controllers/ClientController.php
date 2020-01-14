@@ -187,7 +187,14 @@ class ClientController extends Controller
     }
 
     public function show_orders(){
-        return view('client.client_orders');
+
+        $user_id = Auth::user()->id;    # id do utilizador
+
+        $orders['orders'] = DB::table('orders')->where('user_id','=',$user_id)->get();  #encomendas com o seu id
+
+        return view('client.client_orders', [
+            'orders' => $orders['orders'],
+        ]);
     }
 
     public function downloadPDFcart(){
