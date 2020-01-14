@@ -24,8 +24,8 @@
                     <p></p>
                 </div>
                 </div>
-            </div>    
-           
+            </div>
+
             <div class="row cart-body">
             <div id="charge-error" class ="alert alert-danger{{ !Session::has('error') ? 'hidden' : ''}}">
                 {{Session::get('error')}}
@@ -87,7 +87,7 @@
                             <div class="form-group">
                                 <div class="col-md-6 col-xs-12">
                                     <strong>First Name:</strong>
-                                    <input type="text" name="name" id="name" class="form-control" value="{{Auth::user()->name}}" required>
+                                    <input type="text" name="name" id="name" class="form-control" value="{{Auth::user()->name}}" readonly>
                                 </div>
                                 <div class="span1"></div>
                                 <div class="col-md-6 col-xs-12">
@@ -119,7 +119,7 @@
                             </div>
                             <div class="form-group">
                                 <div class="col-md-12"><strong>Email Address:</strong></div>
-                                <div class="col-md-12"><input type="text" name="email_address" id="email_address" class="form-control" value="{{Auth::user()->email}}" required></div>
+                                <div class="col-md-12"><input type="text" name="email_address" id="email_address" class="form-control" value="{{Auth::user()->email}}" readonly></div>
                             </div>
                         </div>
                     </div>
@@ -147,7 +147,7 @@
                                   <div id="card-element">
                                     <!-- A Stripe Element will be inserted here. -->
                                   </div>
-                              
+
                                   <!-- Used to display form errors. -->
                                   <div id="card-errors" role="alert"></div>
                             </div>
@@ -177,7 +177,7 @@
                 </form>
             </div>
             <div class="row cart-footer">
-        
+
             </div>
     </div>
 
