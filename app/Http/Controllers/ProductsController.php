@@ -161,4 +161,10 @@ class ProductsController extends Controller
         //Redirect to a specified route
         return redirect()->route('products.index');
     }
+
+    public function show_pdf_order($filename){
+
+        return response()->file(storage_path('app/public/pdf/'.$filename));
+
+    }
 }

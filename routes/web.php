@@ -60,12 +60,18 @@ Route::get('/update_from_cart/{id}','ClientController@updateCart')->name('produc
 // Gerar PDF
 Route::get('/downloadPDFcart','ClientController@downloadPDFcart')->name('client.downloadPDFcart')->middleware('verified');
 
+#mail
 Route::get('/sendmail','ClientController@sendmail')->name('order.mail')->middleware('verified');
+
+#ver pdf
+Route::get('show_pdf_order_client/{id}', 'ClientController@show_pdf_order')->name('client.orderPDF')->middleware('verified');
 
 # ADMIN # -> So o admin consegue aceder a estas paginas
 Route::get('/index', "PagesController@index")->name("pages.index")->middleware('is_admin');
-
+#orders
 Route::get('/orders', "ProductsController@orders")->name("pages.orders")->middleware('is_admin');
+# mostrar pdf encomenda
+Route::get('show_pdf_order/{id}', 'ProductsController@show_pdf_order')->name('products.orderPDF')->middleware('is_admin');
 // SELECT
 Route::get('/products','ProductsController@index')->name('products.index')->middleware('is_admin');
 // FORM TO INSERT
