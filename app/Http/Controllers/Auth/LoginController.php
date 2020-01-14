@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
+use App\Product;
 
 class LoginController extends Controller
 {
@@ -51,7 +52,11 @@ class LoginController extends Controller
         if(auth()->attempt(array('email' => $input['email'], 'password' => $input['password'])))
         {
             if (auth()->user()->is_admin == 1) {
-                return view('index');
+                $products = Product::orderBy('created_at', 'desc')->paginate(9);
+
+                return view('welcome',[
+                    'products' => $products,
+                ]);
             }else{
                 return view('client.client_homepage',['products' => null]);
             }

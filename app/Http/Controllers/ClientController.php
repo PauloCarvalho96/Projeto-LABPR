@@ -9,9 +9,11 @@ use Auth;
 use Hash;
 use Cartalyst\Stripe\Laravel\Facades\Stripe;
 use Exception;
+use Illuminate\Support\Facades\DB;
 use Session;
 use PDF;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Storage;
 
 class ClientController extends Controller
 {
@@ -130,7 +132,7 @@ class ClientController extends Controller
             return back()->withErrors('Error! ' . $e->getMessage());
         }
     }
-    
+
     public function sendmail(Request $request){ # Request nao está a ser usado
         if (Cart::getTotalQuantity() > 0) {
             $carts = Cart::getContent();
@@ -139,6 +141,23 @@ class ClientController extends Controller
             $data["subject"]="Payment receipt";
 
             $pdf = PDF::loadView('client.pdf_cart'); # convem criar outra view porque esta fica toda desformatada, podemos criar uma diferente a mandar imagens dos produtos e tudo
+
+            # guarda pdf no servidor #
+
+            #vai ficar dentro da pasta storage/app/public/pdf
+            $pdf_name = time();
+            Storage::put('public/pdf/'.$pdf_name.'.pdf',$pdf->output());
+
+            # Insere na tabela das orders #
+            $user_id = Auth::user()->id;
+            $filename = $pdf_name.'.pdf';
+            $total_price = Cart::getSubTotal();
+
+            DB::table('orders')->insert([
+                'user_id' => $user_id,
+                'pdf' => $filename,
+                'valor_total' => $total_price,
+                ]);
 
             try {
                 Mail::send('client.pdf_cart', $data, function ($message) use ($data,$pdf) {

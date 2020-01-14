@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class ProductsController extends Controller
 {
@@ -28,6 +29,16 @@ class ProductsController extends Controller
 
         return view('product.index', [
             'products' => $products,
+        ]);
+    }
+
+    public function orders()
+    {
+        $orders['orders'] = DB::table('orders')->get();
+
+
+        return view('product.orders', [
+            'orders' => $orders['orders'],
         ]);
     }
 

@@ -14,17 +14,20 @@
                   <th>Order number</th>
                   <th>User</th>
                   <th>Total Price</th>
-                  <th>State</th>
+                  <th>PDF</th>
                 </tr>
               </thead>
               <tbody>
+                @forelse($orders as $order)
                 <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td><a href="#">Confirm</a></td>
+                    <td>{{ $order->order_id}}</td>
+                    <td>{{ $order->user_id}}</td>
+                    <td>{{ $order->valor_total}}</td>
+                    <td>{{ $order->pdf}}</td>
                 </tr>
+                @empty
+                    <h4 class="text-center">No Orders Found!</h4>
+                @endforelse
               </tbody>
             </table>
           </div>

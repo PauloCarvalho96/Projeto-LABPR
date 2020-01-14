@@ -64,6 +64,8 @@ Route::get('/sendmail','ClientController@sendmail')->name('order.mail')->middlew
 
 # ADMIN # -> So o admin consegue aceder a estas paginas
 Route::get('/index', "PagesController@index")->name("pages.index")->middleware('is_admin');
+
+Route::get('/orders', "ProductsController@orders")->name("pages.orders")->middleware('is_admin');
 // SELECT
 Route::get('/products','ProductsController@index')->name('products.index')->middleware('is_admin');
 // FORM TO INSERT
