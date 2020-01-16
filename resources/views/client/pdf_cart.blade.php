@@ -14,7 +14,7 @@
                 </tr>
               </thead>
               <tbody>
-                {{!!$products = Cart::getContent()}}
+                {{!$products = Cart::getContent()}}
                 @if($products)
                 @foreach ($products as $product)
                 <tr>
