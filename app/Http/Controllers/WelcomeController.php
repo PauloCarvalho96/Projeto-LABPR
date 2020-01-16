@@ -56,6 +56,7 @@ class WelcomeController extends Controller
         return view('welcome',[
             'products' => $products
         ]);
+
     }
 
     public function sortByPriceDescending(){
@@ -65,5 +66,6 @@ class WelcomeController extends Controller
         return view('welcome',[
             'products' => $products
         ]);
+
     }
 }
