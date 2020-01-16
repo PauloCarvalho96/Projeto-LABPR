@@ -4,8 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
-
 class ProductsController extends Controller
 {
     /**
@@ -163,8 +163,14 @@ class ProductsController extends Controller
     }
 
     public function show_pdf_order($filename){
-
         return response()->file(storage_path('app/public/pdf/'.$filename));
-
+    }
+    public function showUsers(){
+        $users = DB::table('users')->where('is_admin','=',false)->orderBy('created_at', 'desc')->paginate(5);
+        return view('product.show_users',['users' => $users]);
+    }
+    public function removeUser($id){
+        DB::table('users')->where('id', '=',$id)->delete();
+        return redirect()->back();
     }
 }

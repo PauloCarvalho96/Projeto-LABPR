@@ -137,32 +137,32 @@
                         </form>
                         <form class="form-horizontal" method="POST" action="{{ route('deleteUser') }}">
                             {{ csrf_field() }}
-                            <div class="form-group{{ $errors->has('new-password') ? ' has-error' : '' }}">
-                                <label for="new-password" class="col-md-4 control-label">Current Password</label>
+                            <div class="form-group{{ $errors->has('password_delete') ? ' has-error' : '' }}">
+                                <label for="password_delete" class="col-md-4 control-label">Current Password</label>
 
                                 <div class="col-md-6">
-                                    <input id="new-password" type="password" class="form-control" name="new-password" required>
+                                    <input id="password_delete" type="password" class="form-control" name="password_delete" required>
 
-                                    @if ($errors->has('new-password'))
+                                    @if ($errors->has('password_delete'))
                                         <span class="help-block">
-                                        <strong>{{ $errors->first('new-password') }}</strong>
+                                        <strong>{{ $errors->first('password_delete') }}</strong>
                                     </span>
                                     @endif
                                 </div>
                             </div>
 
                             <div class="form-group">
-                                <label for="new-password-confirm" class="col-md-4 control-label">Confirm Current Password</label>
+                                <label for="password_confirm_de" class="col-md-4 control-label">Confirm Current Password</label>
 
                                 <div class="col-md-6">
-                                    <input id="new-password-confirm" type="password" class="form-control" name="new-password_confirmation" required>
+                                    <input id="password_confirm_de" type="password" class="form-control" name="password_confirm_de" required>
                                 </div>
                             </div>
 
                             <div class="form-group">
                                 <div class="col-md-6 col-md-offset-4">
-                                    <button type="submit" class="btn btn-primary">
-                                        Change Password
+                                    <button type="submit" class="btn btn-danger" >
+                                        Delete User
                                     </button>
                                 </div>
                             </div>

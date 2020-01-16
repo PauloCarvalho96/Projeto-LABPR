@@ -10,7 +10,6 @@ use Hash;
 use Cartalyst\Stripe\Laravel\Facades\Stripe;
 use Exception;
 use Illuminate\Support\Facades\DB;
-use Session;
 use PDF;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Storage;
@@ -86,8 +85,17 @@ class ClientController extends Controller
         return redirect()->back()->with("success","Data changed successfully !");
     }
 
-    public function deleteUser(){
-        var_dump(Auth::user()->name);
+    public function deleteUser(Request $request){
+        if (!(Hash::check($request->get('password_delete'), Auth::user()->password))) {
+            // The passwords matches
+            return redirect()->back()->with("error","Your current password does not matches with the password you provided. Please try again.");
+        }
+        if (!(Hash::check($request->get('password_confirm_de'), Auth::user()->password))) {
+            // The passwords matches
+            return redirect()->back()->with("error","Your current password does not matches with the password you provided. Please try again.");
+        }
+        DB::table('users')->where('id', '=',Auth::user()->id )->delete();
+        return redirect()->route('welcome');
     }
     public function getCart(){
         $cart = Cart::getContent();
@@ -116,7 +124,7 @@ class ClientController extends Controller
 
     public function getCheckout(){
         $carts = Cart::getContent();
-        if((Cart::getTotalQuantity() )== 0){
+        if((Cart::getTotalQuantity())== 0){
             return redirect()->route('welcome');
         }
         foreach ($carts as $cart){
@@ -142,7 +150,7 @@ class ClientController extends Controller
         }
     }
 
-    public function sendmail(Request $request){ # Request nao está a ser usado
+    public function sendmail(){
         if (Cart::getTotalQuantity() > 0) {
             $carts = Cart::getContent();
             $data["email"]=Auth::user()->email;

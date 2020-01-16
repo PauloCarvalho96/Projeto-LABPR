@@ -69,6 +69,10 @@ Route::get('show_pdf_order_client/{id}', 'ClientController@show_pdf_order')->nam
 
 # ADMIN # -> So o admin consegue aceder a estas paginas
 Route::get('/index', "PagesController@index")->name("pages.index")->middleware('is_admin');
+## Show users
+Route::get('/showUsers', "ProductsController@showUsers")->name("products.showUsers")->middleware('is_admin');
+## Delete Users
+Route::get('/removeUser/{id}', "ProductsController@removeUser")->name("products.removeUser")->middleware('is_admin');
 #orders
 Route::get('/orders', "ProductsController@orders")->name("pages.orders")->middleware('is_admin');
 # mostrar pdf encomenda

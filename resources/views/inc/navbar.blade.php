@@ -17,6 +17,9 @@
                     <a href="{{route('products.create')}}" class="nav-link">Add Products</a>
                 </li>
                 <li class="nav-item">
+                    <a href="{{ route('products.showUsers') }}"class="nav-link">Show Clients</a>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link" href="{{ route('logout') }}"
                     onclick="event.preventDefault();
                                   document.getElementById('logout-form').submit();">
