@@ -9,9 +9,11 @@ use Auth;
 use Hash;
 use Cartalyst\Stripe\Laravel\Facades\Stripe;
 use Exception;
+use Illuminate\Support\Facades\DB;
 use Session;
 use PDF;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Storage;
 
 class ClientController extends Controller
 {
@@ -130,8 +132,8 @@ class ClientController extends Controller
             return back()->withErrors('Error! ' . $e->getMessage());
         }
     }
-    
-    public function sendmail(Request $request){
+
+    public function sendmail(Request $request){ # Request nao está a ser usado
         if (Cart::getTotalQuantity() > 0) {
             $carts = Cart::getContent();
             $data["email"]=Auth::user()->email;
@@ -139,6 +141,23 @@ class ClientController extends Controller
             $data["subject"]="Payment receipt";
 
             $pdf = PDF::loadView('client.pdf_cart');
+
+            # guarda pdf no servidor #
+
+            #vai ficar dentro da pasta storage/app/public/pdf
+            $pdf_name = time();
+            Storage::put('public/pdf/'.$pdf_name.'.pdf',$pdf->output());
+
+            # Insere na tabela das orders #
+            $user_id = Auth::user()->id;
+            $filename = $pdf_name.'.pdf';
+            $total_price = Cart::getSubTotal();
+
+            DB::table('orders')->insert([
+                'user_id' => $user_id,
+                'pdf' => $filename,
+                'valor_total' => $total_price,
+                ]);
 
             try {
                 Mail::send('client.pdf_cart', $data, function ($message) use ($data,$pdf) {
@@ -168,11 +187,24 @@ class ClientController extends Controller
     }
 
     public function show_orders(){
-        return view('client.client_orders');
+
+        $user_id = Auth::user()->id;    # id do utilizador
+
+        $orders['orders'] = DB::table('orders')->where('user_id','=',$user_id)->get();  #encomendas com o seu id
+
+        return view('client.client_orders', [
+            'orders' => $orders['orders'],
+        ]);
     }
 
     public function downloadPDFcart(){
         $pdf = PDF::loadView('client.pdf_cart');
         return $pdf->stream('cart.pdf');
+    }
+
+    public function show_pdf_order($filename){
+
+        return response()->file(storage_path('app/public/pdf/'.$filename));
+
     }
 }

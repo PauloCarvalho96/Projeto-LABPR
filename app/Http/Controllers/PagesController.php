@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use Illuminate\Support\Facades\DB;
 
 class PagesController extends Controller
 {
@@ -17,11 +18,12 @@ class PagesController extends Controller
 
     public function index()
     {
-        return view("index");
+        $orders['orders'] = DB::table('orders')->get();
+
+
+        return view('product.orders', [
+            'orders' => $orders['orders'],
+        ]);
     }
 
-    public function about()
-    {
-        return view("about");
-    }
 }
