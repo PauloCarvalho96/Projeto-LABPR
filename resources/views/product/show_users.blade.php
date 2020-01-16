@@ -7,6 +7,16 @@
           <h6 class="m-0 font-weight-bold text-primary">Show Clients</h6>
         </div>
         <div class="card-body">
+            <div class="my-4">
+                <form action="{{route('products.search_users')}}" method="GET" role="search">
+			      {{ csrf_field() }}
+			      <div class="input-group">
+			      	<input type="text" class="form-control" name="query" placeholder="Search Users by email">
+					    <button type="submit" class="btn btn-primary">Search</button>
+				        </span>
+		      	    </div>
+                </form>
+            </div>
           <div class="table-responsive">
             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
               <thead>

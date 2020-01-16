@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Product;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Http\Request;
+use Request_search;
+
 class ProductsController extends Controller
 {
     /**
@@ -193,6 +195,17 @@ class ProductsController extends Controller
 
         return view('product.orders',[
             'orders' => $orders
+            ]);
+    }
+
+    public function search_users()
+    {
+        $query = Request_search::get ( 'query' );
+
+        $users = DB::table('users')->where([['email','ILIKE','%'.$query.'%'],['is_admin','=',false]])->orderBy('created_at', 'desc')->paginate(9);
+
+        return view('product.show_users',[
+            'users' => $users
             ]);
     }
 }
