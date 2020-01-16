@@ -18,7 +18,7 @@ class CreateProductsTable extends Migration
             $table->text('imagem')->nullable();
             $table->char('nome', 100);
             $table->char('categoria',100);
-            $table->text('descricao');
+            $table->text('descricao')->nullable();
             $table->double('preco');
             $table->timestamps();
         });
