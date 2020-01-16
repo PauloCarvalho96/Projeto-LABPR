@@ -6,7 +6,19 @@
         <div class="card-header py-3">
           <h6 class="m-0 font-weight-bold text-primary">Clients Orders</h6>
         </div>
+
         <div class="card-body">
+            <div class="my-4">
+                <form action="{{ route('products.search_orders') }}" method="GET" role="search">
+                      {{ csrf_field() }}
+                      <div class="input-group">
+                          <input type="text" class="form-control" name="query" placeholder="Search Orders by email">
+                            <button type="submit" class="btn btn-primary">Search</button>
+                            </span>
+                          </div>
+                    </form>
+                </div>
+
           <div class="table-responsive">
             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
               <thead>
@@ -20,9 +32,8 @@
               <tbody>
                 @forelse($orders as $order)
                 <tr>
-                    {{!$client = User::findOrFail($order->user_id)}}
                     <td>{{ $order->order_id }}</td>
-                    <td>{{ $client->email}}</td>
+                    <td>{{ $order->user_email}}</td>
                     <td>{{ $order->valor_total}}&euro;</td>
                     <td><a href="{{ route('products.orderPDF', $order->pdf) }}" target="_blank">{{ $order->pdf}}</a></td>
                 </tr>

@@ -36,10 +36,10 @@
             <a href="{{route('welcome.products_category',$category='Monitores')}}" class="list-group-item list-group-item-action list-group-item-dark">Monitores</a>
         </div>
         <div class="my-4">
-            <form action="/search" method="POST" role="search">
+            <form action="/search" method="GET" role="search">
               {{ csrf_field() }}
               <div class="input-group">
-                  <input type="text" class="form-control" name="q" placeholder="Search Itens">
+                  <input type="text" class="form-control" name="query" placeholder="Search Itens">
                     <button type="submit" class="btn btn-primary">Search</button>
                     </span>
                   </div>
@@ -49,7 +49,7 @@
 
       <!-- /.col-lg-3 -->
       <div class="col-lg-9">
-        <a class="btn btn-primary" href="/">Voltar</a>
+        <a class="btn btn-primary" href="{{ url()->previous() }}">Voltar</a>
         <div class="card mt-4">
           <img class="card-img-top img-fluid" src="{{asset('img/products/'.$product->imagem)}}" alt="">
           <div class="card-body">

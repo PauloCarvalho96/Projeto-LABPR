@@ -39,6 +39,11 @@
                             Review Order <div class="pull-right"><small><a class="afix-1" href="{{ route('product.shoppingCart') }}">Edit Cart</a></small></div>
                         </div>
                         <div class="panel-body">
+
+                            @foreach ($products as $product)
+
+                            {{! $prod = Product::findOrFail($product->id) }}
+
                             <div class="form-group">
                                 <div class="col-sm-3 col-xs-3">
                                     <!-- COLOCAR IMAGENS CORRETAS -->
@@ -52,6 +57,9 @@
                                     <h6><span>€</span>{{ $product->price*$product->quantity }}</h6>
                                 </div>
                             </div>
+
+                            @endforeach
+
                             <div class="form-group"><hr /></div>
                             <div class="form-group">
                                 <div class="col-xs-12">

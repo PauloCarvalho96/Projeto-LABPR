@@ -3,8 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Product;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
+use Request;
 use Illuminate\Support\Facades\DB;
 class ProductsController extends Controller
 {
@@ -172,5 +171,27 @@ class ProductsController extends Controller
     public function removeUser($id){
         DB::table('users')->where('id', '=',$id)->delete();
         return redirect()->back();
+    }
+
+    public function search_products()
+    {
+        $query = Request::get ( 'query' );
+
+        $products = Product::where('nome','ILIKE','%'.$query.'%')->orderBy('created_at', 'desc')->paginate(9);
+
+        return view('product.index',[
+            'products' => $products
+            ]);
+    }
+
+    public function search_orders()
+    {
+        $query = Request::get ( 'query' );
+
+        $orders = DB::table('orders')->where('user_email','ILIKE','%'.$query.'%')->orderBy('created_at', 'desc')->paginate(9);
+
+        return view('product.orders',[
+            'orders' => $orders
+            ]);
     }
 }

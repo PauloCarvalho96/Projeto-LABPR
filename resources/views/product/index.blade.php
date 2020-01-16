@@ -1,7 +1,20 @@
 @extends('layouts.app')
 
 @section('content')
+
 <h2 class="text-center">All Products</h2>
+
+<div class="my-4">
+<form action="{{ route('products.search_products') }}" method="GET" role="search">
+      {{ csrf_field() }}
+      <div class="input-group">
+          <input type="text" class="form-control" name="query" placeholder="Search Itens">
+            <button type="submit" class="btn btn-primary">Search</button>
+            </span>
+          </div>
+    </form>
+</div>
+
 <ul class="list-group py-3 mb-3">
     @forelse($products as $product)
     <li class="list-group-item my-2">

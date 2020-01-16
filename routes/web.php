@@ -18,7 +18,7 @@
 */
 Auth::routes(['verify' => true]);
 
-# PAGINA INICIAL
+# PAGINA INICIAL # -> TODOS TEM ACESSO A ESTAS PÁGINAS
 Route::get('/', "WelcomeController@welcome")->name("welcome");
 
 // SHOP ITEM
@@ -91,4 +91,8 @@ Route::get('/products/{id}/edit','ProductsController@edit')->name('products.edit
 Route::put('/products/{id}','ProductsController@update')->name('products.update')->middleware('is_admin'); // making a put request
 // DELETE BY ID
 Route::delete('/products/{id}','ProductsController@destroy')->name('products.destroy')->middleware('is_admin'); // making a delete request
+// search products
+Route::get('/search_products', "ProductsController@search_products")->name("products.search_products")->middleware('is_admin');
+// search orders by email
+Route::get('/search_orders', "ProductsController@search_orders")->name("products.search_orders")->middleware('is_admin');
 
