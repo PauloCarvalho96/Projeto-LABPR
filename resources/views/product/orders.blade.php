@@ -20,9 +20,8 @@
               <tbody>
                 @forelse($orders as $order)
                 <tr>
-                    {{!$client = User::findOrFail($order->user_id)}}
                     <td>{{ $order->order_id }}</td>
-                    <td>{{ $client->email}}</td>
+                    <td>{{ $order->user_email}}</td>
                     <td>{{ $order->valor_total}}&euro;</td>
                     <td><a href="{{ route('products.orderPDF', $order->pdf) }}" target="_blank">{{ $order->pdf}}</a></td>
                 </tr>

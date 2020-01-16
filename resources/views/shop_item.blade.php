@@ -49,7 +49,7 @@
 
       <!-- /.col-lg-3 -->
       <div class="col-lg-9">
-        <a class="btn btn-primary" href="/">Voltar</a>
+        <a class="btn btn-primary" href="{{ url()->previous() }}">Voltar</a>
         <div class="card mt-4">
           <img class="card-img-top img-fluid" src="{{asset('img/products/'.$product->imagem)}}" alt="">
           <div class="card-body">

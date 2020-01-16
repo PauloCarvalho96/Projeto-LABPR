@@ -96,7 +96,7 @@ class ClientController extends Controller
         Cart :: add($id,$product->nome,$product->preco,1);
         $cart = Cart::getcontent();
 
-        return view('client.client_homepage',[ 'products' => $cart ]);
+        return redirect()->back();
     }
 
     public function deleteCart($id){
@@ -112,14 +112,12 @@ class ClientController extends Controller
     }
 
     public function getCheckout(){
-        $carts = Cart::getContent();
+        $carts['cart'] = Cart::getContent();
         if((Cart::getTotalQuantity() )== 0){
             return redirect()->route('welcome');
         }
-        foreach ($carts as $cart){
-            $prod = Product::findOrFail($cart->id);
-            return view('client.checkout',['product' => $cart],['prod' => $prod]);
-        }
+
+        return view('client.checkout',['products' => $carts['cart']]);
     }
 
     public function storeCheckout(Request $request){
@@ -155,12 +153,12 @@ class ClientController extends Controller
             Storage::put('public/pdf/'.$pdf_name.'.pdf',$pdf->output());
 
             # Insere na tabela das orders #
-            $user_id = Auth::user()->id;
+            $user_email = Auth::user()->email;
             $filename = $pdf_name.'.pdf';
             $total_price = Cart::getSubTotal();
 
             DB::table('orders')->insert([
-                'user_id' => $user_id,
+                'user_email' => $user_email,
                 'pdf' => $filename,
                 'valor_total' => $total_price,
                 ]);
@@ -195,9 +193,9 @@ class ClientController extends Controller
 
     public function show_orders(){
 
-        $user_id = Auth::user()->id;    # id do utilizador
+        $user_email = Auth::user()->email;    # id do utilizador
 
-        $orders['orders'] = DB::table('orders')->where('user_id','=',$user_id)->get();  #encomendas com o seu id
+        $orders['orders'] = DB::table('orders')->where('user_email','=',$user_email)->get();  #encomendas com o seu id
 
         return view('client.client_orders', [
             'orders' => $orders['orders'],
