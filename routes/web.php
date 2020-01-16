@@ -30,7 +30,7 @@ Route::get('/category/{category}', "WelcomeController@products_category")->name(
 // SEARCH RESULTS
 Route::get('/search', "WelcomeController@search")->name("welcome.search");
 
-# CLIENT #
+# Só o cliente tem acesso a estas páginas #
 Route::get('/client', "ClientController@getCart")->name("client.home_client")->middleware('verified');
 
 // orders client

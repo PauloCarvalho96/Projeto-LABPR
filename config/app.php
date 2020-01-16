@@ -229,6 +229,7 @@ return [
         'PDF' => Barryvdh\DomPDF\Facade::class,
         'Cart' => Gloudemans\Shoppingcart\Facades\Cart::class,
         'Product' => App\Product::class,
+        'User' => App\User::class,
     ],
 
 ];
