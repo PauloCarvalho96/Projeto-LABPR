@@ -135,14 +135,12 @@ class ClientController extends Controller
         try {
             $charge = Stripe::charges()->create([
                 'amount' => Cart::getSubTotal(),
-                'currency' => 'CAD',
+                'currency' => 'EUR',
                 'source' => $request->stripeToken,
                 'description' => 'Order',
                 'receipt_email' => $request->email,
             ]);
-
             return redirect()->route('order.mail');
-
         }catch (Exception $e) {
             return back()->withErrors('Error! ' . $e->getMessage());
         }
@@ -175,11 +173,10 @@ class ClientController extends Controller
                 ]);
 
             try {
-                Mail::send('client.pdf_cart', $data, function ($message) use ($data,$pdf) {
+                Mail::send('product.mail_pdf', $data, function ($message) use ($data,$pdf) {
                     $message->to($data["email"], $data["client_name"]);
                     $message->subject($data["subject"]);
-                    ### tem de ir buscar à pasta do pdf
-                    $message->attachData($pdf->stream(), 'client.pdf_cart');
+                    $message->attachData($pdf->stream(), 'client.pdf');
                 });
             } catch (JWTException $exception) {
                 $this->serverstatuscode = "0";

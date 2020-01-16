@@ -30,7 +30,7 @@
                 <tr>
                     <td>{{ $user->email }}</td>
                     <td>{{ $user->name}}</td>
-                    <td><a href="{{ route('products.removeUser', $user->id) }}" class="btn btn-danger" >Delete User</a></td>
+                    <td><a href="{{ route('products.removeUser', $user->id) }}" class="btn btn-danger">Delete User</a></td>
                 </tr>
                 @empty
                     <h4 class="text-center">No Clients Found!</h4>
