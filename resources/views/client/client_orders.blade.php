@@ -32,7 +32,7 @@
                     @forelse($orders as $order)
                     <tr>
                         <td>{{ $order->order_id}}</td>
-                        <td>{{ Auth::user()->email }}</td>
+                        <td>{{ $order->user_email }}</td>
                         <td>{{ $order->valor_total}}&euro;</td>
                         <td><a href="{{ route('client.orderPDF', $order->pdf) }}" target="_blank">{{ $order->pdf}}</a></td>
                     </tr>

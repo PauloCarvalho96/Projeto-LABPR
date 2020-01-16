@@ -14,12 +14,12 @@ class Orders extends Migration
     public function up()
     {
         Schema::create('orders', function (Blueprint $table) {
-            $table->integer('user_id')->unsigned();
+            $table->string('user_email');
             $table->bigIncrements('order_id');
             $table->text('pdf');
             $table->double('valor_total');
             $table->timestamps();
-            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('user_email')->references('email')->on('users');
         });
     }
 
