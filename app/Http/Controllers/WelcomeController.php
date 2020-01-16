@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-use Request;
+use Request_search;
 use App\Product;
 
 class WelcomeController extends Controller
@@ -40,7 +40,7 @@ class WelcomeController extends Controller
 
     public function search()
     {
-        $query = Request::get ( 'query' );
+        $query = Request_search::get ( 'query' );
 
         $products = Product::where('nome','ILIKE','%'.$query.'%')->orderBy('created_at', 'desc')->paginate(9);
 
