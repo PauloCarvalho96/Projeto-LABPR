@@ -131,14 +131,14 @@ class ClientController extends Controller
         }
     }
     
-    public function sendmail(Request $request){ # Request nao está a ser usado
+    public function sendmail(Request $request){
         if (Cart::getTotalQuantity() > 0) {
             $carts = Cart::getContent();
             $data["email"]=Auth::user()->email;
             $data["client_name"]=Auth::user()->name;
             $data["subject"]="Payment receipt";
 
-            $pdf = PDF::loadView('client.pdf_cart'); # convem criar outra view porque esta fica toda desformatada, podemos criar uma diferente a mandar imagens dos produtos e tudo
+            $pdf = PDF::loadView('client.pdf_cart');
 
             try {
                 Mail::send('client.pdf_cart', $data, function ($message) use ($data,$pdf) {
