@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Product;
-use Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Http\Request;
+use Request_search;
+
 class ProductsController extends Controller
 {
     /**
@@ -175,7 +177,7 @@ class ProductsController extends Controller
 
     public function search_products()
     {
-        $query = Request::get ( 'query' );
+        $query = Request_search::get ( 'query' );
 
         $products = Product::where('nome','ILIKE','%'.$query.'%')->orderBy('created_at', 'desc')->paginate(9);
 
@@ -186,12 +188,23 @@ class ProductsController extends Controller
 
     public function search_orders()
     {
-        $query = Request::get ( 'query' );
+        $query = Request_search::get ( 'query' );
 
         $orders = DB::table('orders')->where('user_email','ILIKE','%'.$query.'%')->orderBy('created_at', 'desc')->paginate(9);
 
         return view('product.orders',[
             'orders' => $orders
+            ]);
+    }
+
+    public function search_users()
+    {
+        $query = Request_search::get ( 'query' );
+
+        $users = DB::table('users')->where([['email','ILIKE','%'.$query.'%'],['is_admin','=',false]])->orderBy('created_at', 'desc')->paginate(9);
+
+        return view('product.show_users',[
+            'users' => $users
             ]);
     }
 }
