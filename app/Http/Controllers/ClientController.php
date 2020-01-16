@@ -155,7 +155,7 @@ class ClientController extends Controller
             $data["client_name"]=Auth::user()->name;
             $data["subject"]="Payment receipt";
 
-            $pdf = PDF::loadView('client.pdf_cart');
+            $pdf = PDF::loadView('product.mail_pdf');
 
             # guarda pdf no servidor #
 
@@ -175,11 +175,11 @@ class ClientController extends Controller
                 ]);
 
             try {
-                Mail::send('client.pdf_cart', $data, function ($message) use ($data,$pdf) {
+                Mail::send('product.mail_pdf', $data, function ($message) use ($data,$pdf) {
                     $message->to($data["email"], $data["client_name"]);
                     $message->subject($data["subject"]);
                     ### tem de ir buscar à pasta do pdf
-                    $message->attachData($pdf->stream(), 'client.pdf_cart');
+                    $message->attachData($pdf->stream(), 'client.pdf_cart.pdf');
                 });
             } catch (JWTException $exception) {
                 $this->serverstatuscode = "0";
