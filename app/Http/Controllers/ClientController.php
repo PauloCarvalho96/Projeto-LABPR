@@ -112,8 +112,14 @@ class ClientController extends Controller
     }
 
     public function getCheckout(){
-        $cart = Cart::getContent();
-        return view('client.checkout',['products' => $cart]);
+        $carts = Cart::getContent();
+        if((Cart::getTotalQuantity() )== 0){
+            return redirect()->route('welcome');
+        }
+        foreach ($carts as $cart){
+            $prod = Product::findOrFail($cart->id);
+            return view('client.checkout',['product' => $cart],['prod' => $prod]);
+        }
     }
 
     public function storeCheckout(Request $request){
@@ -161,9 +167,10 @@ class ClientController extends Controller
 
             try {
                 Mail::send('client.pdf_cart', $data, function ($message) use ($data,$pdf) {
-                    $message->to($data["email"], $data["client_name"])
-            ->subject($data["subject"])
-            ->attachData($pdf->output(), "cart.pdf");
+                    $message->to($data["email"], $data["client_name"]);
+                    $message->subject($data["subject"]);
+                    ### tem de ir buscar à pasta do pdf
+                    $message->attachData($pdf->stream(), 'client.pdf_cart');
                 });
             } catch (JWTException $exception) {
                 $this->serverstatuscode = "0";
