@@ -9,11 +9,11 @@
             </div>
         <div class="form-group">
             <label for="name">Name</label>
-            <input type="text" name="nome" id="title" class="form-control" placeholder="Enter the name">
+            <input type="text" name="nome" id="title" class="form-control" placeholder="Enter the name" required>
         </div>
         <div class="form-group">
             <label for="category"></label>
-                <select name="categoria" class="form-control" id="title">
+                <select name="categoria" class="form-control" id="title" required>
                     <option value="" disabled selected>Category</option>
                     <option name="categoria">Laptop</option>
                     <option name="categoria">Desktop</option>
@@ -34,7 +34,7 @@
 
         <div class="form-group">
             <label for="price">Price</label>
-            <input type="text" name="preco" id="title" class="form-control" value="{{old('preco')}}" placeholder="Enter the price">
+            <input type="text" name="preco" id="title" class="form-control" value="{{old('preco')}}" placeholder="Enter the price" required>
         </div>
         <button type="submit" class="btn btn-primary">Create</button>
     </form>
