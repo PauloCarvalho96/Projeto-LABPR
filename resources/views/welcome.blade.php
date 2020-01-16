@@ -40,7 +40,7 @@
             </div>
 
             <div class="my-4">
-                <form action="/search_products" method="GET" role="search">
+                <form action="{{route('welcome.search')}}" method="GET" role="search">
 			      {{ csrf_field() }}
 			      <div class="input-group">
 			      	<input type="text" class="form-control" name="query" placeholder="Search Itens">
@@ -119,6 +119,9 @@
         </div>
         <!-- /.row -->
 
+        <div class="d-flex justify-content-center">
+            {{$products->links()}}
+        </div>
 
       </div>
       <!-- /.col-lg-9 -->
@@ -137,3 +140,4 @@
 </html>
 
 @endsection
+
