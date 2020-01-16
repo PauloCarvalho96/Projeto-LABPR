@@ -22,13 +22,13 @@ Auth::routes(['verify' => true]);
 Route::get('/', "WelcomeController@welcome")->name("welcome");
 
 // SHOP ITEM
-Route::get('/shop/{id}', "WelcomeController@shop_item")->name("welcome.shop_item")->middleware('verified');
+Route::get('/shop/{id}', "WelcomeController@shop_item")->name("welcome.shop_item");
 
 // SELECT CATEGORY
-Route::get('/category/{category}', "WelcomeController@products_category")->name("welcome.products_category")->middleware('verified');
+Route::get('/category/{category}', "WelcomeController@products_category")->name("welcome.products_category");
 
 // SEARCH RESULTS
-Route::get('/search', "WelcomeController@search")->name("welcome.search")->middleware('verified');
+Route::get('/search', "WelcomeController@search")->name("welcome.search");
 
 # CLIENT #
 Route::get('/client', "ClientController@getCart")->name("client.home_client")->middleware('verified');
@@ -40,6 +40,7 @@ Route::get('/show_orders', "ClientController@show_orders")->name("client.show_or
 Route::get('/changePassword','ClientController@showChangePasswordForm')->name('client.showChangePasswordForm')->middleware('verified');
 Route::post('/changePassword','ClientController@changePassword')->name('changePassword')->middleware('verified');
 Route::post('/changeDataUser','ClientController@changeDataUser')->name('changeDataUser')->middleware('verified');
+Route::post('/deleteUser','ClientController@deleteUser')->name('deleteUser')->middleware('verified');
 
 # CARRINHO DE COMPRAS
 // ADICIONAR AO CARRINHO

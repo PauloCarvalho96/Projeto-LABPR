@@ -86,6 +86,9 @@ class ClientController extends Controller
         return redirect()->back()->with("success","Data changed successfully !");
     }
 
+    public function deleteUser(){
+        var_dump(Auth::user()->name);
+    }
     public function getCart(){
         $cart = Cart::getContent();
         return view('client.client_homepage', ['products' => $cart]);
