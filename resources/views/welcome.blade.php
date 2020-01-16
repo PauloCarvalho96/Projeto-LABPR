@@ -40,7 +40,7 @@
             </div>
 
             <div class="my-4">
-                <form action="/search" method="GET" role="search">
+                <form action="/search_products" method="GET" role="search">
 			      {{ csrf_field() }}
 			      <div class="input-group">
 			      	<input type="text" class="form-control" name="query" placeholder="Search Itens">
