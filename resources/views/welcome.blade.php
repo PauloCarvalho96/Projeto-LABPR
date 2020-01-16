@@ -43,7 +43,7 @@
                 <form action="/search" method="GET" role="search">
 			      {{ csrf_field() }}
 			      <div class="input-group">
-			      	<input type="text" class="form-control" name="q" placeholder="Search Itens">
+			      	<input type="text" class="form-control" name="query" placeholder="Search Itens">
 					    <button type="submit" class="btn btn-primary">Search</button>
 				        </span>
 		      	    </div>
