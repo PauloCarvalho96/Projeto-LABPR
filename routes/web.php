@@ -22,15 +22,15 @@ Auth::routes(['verify' => true]);
 Route::get('/', "WelcomeController@welcome")->name("welcome");
 
 // SHOP ITEM
-Route::get('/shop/{id}', "WelcomeController@shop_item")->name("welcome.shop_item")->middleware('verified');
+Route::get('/shop/{id}', "WelcomeController@shop_item")->name("welcome.shop_item");
 
 // SELECT CATEGORY
-Route::get('/category/{category}', "WelcomeController@products_category")->name("welcome.products_category")->middleware('verified');
+Route::get('/category/{category}', "WelcomeController@products_category")->name("welcome.products_category");
 
 // SEARCH RESULTS
-Route::get('/search', "WelcomeController@search")->name("welcome.search")->middleware('verified');
+Route::get('/search', "WelcomeController@search")->name("welcome.search");
 
-# CLIENT #
+# Só o cliente tem acesso a estas páginas #
 Route::get('/client', "ClientController@getCart")->name("client.home_client")->middleware('verified');
 
 // orders client

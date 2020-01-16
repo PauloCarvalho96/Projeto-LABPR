@@ -36,7 +36,6 @@ class ProductsController extends Controller
     {
         $orders['orders'] = DB::table('orders')->get();
 
-
         return view('product.orders', [
             'orders' => $orders['orders'],
         ]);
@@ -89,6 +88,7 @@ class ProductsController extends Controller
     public function show($id)
     {
         $product = Product::findOrFail($id);
+
         return view('product.show', [
             'product' => $product,
         ]);
