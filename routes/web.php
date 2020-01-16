@@ -95,4 +95,5 @@ Route::delete('/products/{id}','ProductsController@destroy')->name('products.des
 Route::get('/search_products', "ProductsController@search_products")->name("products.search_products")->middleware('is_admin');
 // search orders by email
 Route::get('/search_orders', "ProductsController@search_orders")->name("products.search_orders")->middleware('is_admin');
-
+// search orders by email
+Route::get('/search_users', "ProductsController@search_users")->name("products.search_users")->middleware('is_admin');
