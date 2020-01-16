@@ -48,4 +48,22 @@ class WelcomeController extends Controller
             'products' => $products
             ]);
     }
+
+    public function sortByPriceAscending(){
+
+        $products = Product::orderBy('preco', 'asc')->paginate(9);
+
+        return view('welcome',[
+            'products' => $products
+        ]);
+    }
+
+    public function sortByPriceDescending(){
+
+        $products = Product::orderBy('preco', 'desc')->paginate(9);
+
+        return view('welcome',[
+            'products' => $products
+        ]);
+    }
 }

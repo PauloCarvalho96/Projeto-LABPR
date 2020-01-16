@@ -34,7 +34,7 @@
 
         <div class="form-group">
             <label for="price">Price</label>
-            <input type="text" name="preco" id="title" class="form-control" value="{{old('preco')}}" placeholder="Enter the price" required>
+            <input type="number" name="preco" id="title" class="form-control" value="{{old('preco')}}" placeholder="Enter the price" required>
         </div>
         <button type="submit" class="btn btn-primary">Create</button>
     </form>

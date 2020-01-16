@@ -1,5 +1,6 @@
 <?php
 /*
+|--------------------------------------------------------------------------
 |
 | Universidade Fernando Pessoa
 | Laboratório de Programação
@@ -29,6 +30,10 @@ Route::get('/category/{category}', "WelcomeController@products_category")->name(
 
 // SEARCH RESULTS
 Route::get('/search', "WelcomeController@search")->name("welcome.search");
+
+Route::get('/price_ascending', "WelcomeController@sortByPriceAscending")->name("welcome.sort_by_price_ascending");
+Route::get('/price_descending', "WelcomeController@sortByPriceDescending")->name("welcome.sort_by_price_descending");
+
 
 # Só o cliente tem acesso a estas páginas #
 Route::get('/client', "ClientController@getCart")->name("client.home_client")->middleware('verified');

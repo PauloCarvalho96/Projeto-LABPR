@@ -82,6 +82,9 @@
           </a>
         </div>
 
+        <a href="{{route('welcome.sort_by_price_ascending')}}">Price &#8593;</a>
+        <a href="{{route('welcome.sort_by_price_descending')}}">Price &#8595;</a>
+
         <div class="row">
         @forelse($products as $product)
           <div class="col-lg-4 col-md-6 mb-4">
