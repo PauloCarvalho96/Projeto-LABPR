@@ -141,20 +141,24 @@ class ClientController extends Controller
                 'description' => 'Order',
                 'receipt_email' => $request->email,
             ]);
-            return redirect()->route('order.mail');
+            $data = array('address' => $request->address,'city'=>$request->city,'postalcode'=>$request->postalcode);
+            return redirect()->route('order.mail')->with(['data' => $data]);
         }catch (Exception $e) {
             return back()->withErrors('Error! ' . $e->getMessage());
         }
     }
 
     public function sendmail(){
+
+        $dados[] = session()->get('data');
+
         if (Cart::getTotalQuantity() > 0) {
             $carts = Cart::getContent();
             $data["email"]=Auth::user()->email;
             $data["client_name"]=Auth::user()->name;
             $data["subject"]="Payment receipt";
 
-            $pdf = PDF::loadView('client.pdf_cart');
+            $pdf = PDF::loadView('client.pdf_cart',compact('dados'));
 
             # guarda pdf no servidor #
 
