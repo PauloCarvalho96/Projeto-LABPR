@@ -9,6 +9,7 @@ use Auth;
 use Hash;
 use Cartalyst\Stripe\Laravel\Facades\Stripe;
 use Exception;
+use Illuminate\Support\Facades\Auth as FacadesAuth;
 use Illuminate\Support\Facades\DB;
 use PDF;
 use Illuminate\Support\Facades\Mail;

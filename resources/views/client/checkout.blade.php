@@ -115,12 +115,12 @@
                             <div class="form-group">
                                 <div class="col-md-12"><strong>Zip / Postal Code:</strong></div>
                                 <div class="col-md-12">
-                                    <input type="text" name="postalcode" id="postalcode" class="form-control" value="{{Auth::user()->post_number}}" required>
+                                    <input type="number" name="postalcode" id="postalcode" class="form-control" value="{{Auth::user()->post_number}}" required>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <div class="col-md-12"><strong>Phone Number:</strong></div>
-                                <div class="col-md-12"><input type="text" name="phone_number" id="phone_number" class="form-control"  value="{{Auth::user()->phone_number}}" required></div>
+                                <div class="col-md-12"><input type="number" name="phone_number" id="phone_number" class="form-control"  value="{{Auth::user()->phone_number}}" required></div>
                             </div>
                             <div class="form-group">
                                 <div class="col-md-12"><strong>Email Address:</strong></div>
@@ -149,7 +149,7 @@
                                 <label for="card-element">
                                     <div class="col-md-12"><strong>Credit or debit card:</strong></div>
                                   </label>
-                                  <div id="card-element">
+                                  <div id="card-element" name="card_element">
                                     <!-- A Stripe Element will be inserted here. -->
                                   </div>
 
