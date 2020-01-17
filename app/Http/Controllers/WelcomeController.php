@@ -23,9 +23,10 @@ class WelcomeController extends Controller
     //funçao para mostrar os produtos por categoria
     public function products_category($category)
     {
+
         $products = Product::where('categoria',$category)->orderBy('created_at', 'desc')->paginate(9);
 
-        return view('welcome',[
+        return view('welcome_category',[
             'products' => $products
             ]);
     }
@@ -64,6 +65,26 @@ class WelcomeController extends Controller
         $products = Product::orderBy('preco', 'desc')->paginate(9);
 
         return view('welcome',[
+            'products' => $products
+        ]);
+
+    }
+
+    public function sortByPriceAscendingCategory($category){
+
+        $products = Product::where('categoria',$category)->orderBy('preco', 'asc')->paginate(9);
+
+        return view('welcome_category',[
+            'products' => $products
+        ]);
+
+    }
+
+    public function sortByPriceDescendingCategory($category){
+
+        $products = Product::where('categoria',$category)->orderBy('preco', 'desc')->paginate(9);
+
+        return view('welcome_category',[
             'products' => $products
         ]);
 
