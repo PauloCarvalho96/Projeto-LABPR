@@ -19,6 +19,7 @@ class Orders extends Migration
             $table->text('pdf');
             $table->double('valor_total');
             $table->timestamps();
+            $table->foreign('user_email')->references('email')->on('users');
         });
     }
 
