@@ -21,6 +21,7 @@
                     <td>{{ $product->name }}</td>
                     <td>{{ $product->quantity }}</td>
                     <td>{{ $product->price }}&euro;</td>
+                    <td>{{ $dados[0]['address']  }}</td>
                 </tr>
                 @endforeach
                 @endif
