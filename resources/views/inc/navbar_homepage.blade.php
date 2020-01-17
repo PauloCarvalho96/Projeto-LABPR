@@ -6,7 +6,7 @@
                 <a href="{{ route('product.shoppingCart') }}">{{ Cart::getTotalQuantity() }} Cart</a>
                 @endif
 
-                <a href="{{ url('/index') }}">Bem vindo, {{Auth::user()->name}}</a>
+                <a href="{{ route('pages.orders') }}">Bem vindo, {{Auth::user()->name}}</a>
             @else
                 <a href="{{ route('login') }}">Login</a>
 

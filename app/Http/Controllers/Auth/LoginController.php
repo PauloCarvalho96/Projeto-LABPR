@@ -51,15 +51,11 @@ class LoginController extends Controller
 
         if(auth()->attempt(array('email' => $input['email'], 'password' => $input['password'])))
         {
-            if (auth()->user()->is_admin == 1) {
-                $products = Product::orderBy('created_at', 'desc')->paginate(9);
+            $products = Product::orderBy('created_at', 'desc')->paginate(9);
 
-                return view('welcome',[
-                    'products' => $products,
-                ]);
-            }else{
-                return view('client.client_homepage',['products' => null]);
-            }
+            return view('welcome',[
+                'products' => $products,
+            ]);
         }else{
             return redirect()->route('login')
                 ->with('error','Email-Address And Password Are Wrong.');

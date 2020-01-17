@@ -106,7 +106,6 @@ class ClientController extends Controller
     public function addCart($id){
         $product = Product::findOrFail($id);
         Cart :: add($id,$product->nome,$product->preco,1);
-        $cart = Cart::getcontent();
 
         return redirect()->back();
     }

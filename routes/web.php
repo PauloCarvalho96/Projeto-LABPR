@@ -17,25 +17,26 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+
 Auth::routes(['verify' => true]);
+
+##############################################################
 
 # PAGINA INICIAL # -> TODOS TEM ACESSO A ESTAS PÁGINAS
 Route::get('/', "WelcomeController@welcome")->name("welcome");
-
 // SHOP ITEM
 Route::get('/shop/{id}', "WelcomeController@shop_item")->name("welcome.shop_item");
-
 // SELECT CATEGORY
 Route::get('/category/{category}', "WelcomeController@products_category")->name("welcome.products_category");
-
 // SEARCH RESULTS
 Route::get('/search', "WelcomeController@search")->name("welcome.search");
-
+//sort by price
 Route::get('/price_ascending', "WelcomeController@sortByPriceAscending")->name("welcome.sort_by_price_ascending");
 Route::get('/price_descending', "WelcomeController@sortByPriceDescending")->name("welcome.sort_by_price_descending");
-
 Route::get('/price_ascending/{category}', "WelcomeController@sortByPriceAscendingCategory")->name("welcome.sort_by_price_ascending_category");
 Route::get('/price_descending/{category}', "WelcomeController@sortByPriceDescendingCategory")->name("welcome.sort_by_price_descending_category");
+
+##############################################################
 
 # Só o cliente tem acesso a estas páginas #
 Route::get('/client', "ClientController@getCart")->name("client.home_client")->middleware('verified');
@@ -74,8 +75,9 @@ Route::get('/sendmail','ClientController@sendmail')->name('order.mail')->middlew
 #ver pdf
 Route::get('show_pdf_order_client/{id}', 'ClientController@show_pdf_order')->name('client.orderPDF')->middleware('verified');
 
+##############################################################
+
 # ADMIN # -> So o admin consegue aceder a estas paginas
-Route::get('/index', "PagesController@index")->name("pages.index")->middleware('is_admin');
 ## Show users
 Route::get('/showUsers', "ProductsController@showUsers")->name("products.showUsers")->middleware('is_admin');
 ## Delete Users
@@ -104,3 +106,5 @@ Route::get('/search_products', "ProductsController@search_products")->name("prod
 Route::get('/search_orders', "ProductsController@search_orders")->name("products.search_orders")->middleware('is_admin');
 // search orders by email
 Route::get('/search_users', "ProductsController@search_users")->name("products.search_users")->middleware('is_admin');
+
+##############################################################

@@ -30,7 +30,7 @@ class WelcomeController extends Controller
 
     public function search()
     {
-        $query = Request_search::get ( 'query' );
+        $query = Request_search::get( 'query' );
 
         $products = Product::where('nome','ILIKE','%'.$query.'%')->orderBy('created_at', 'desc')->paginate(9);
 
