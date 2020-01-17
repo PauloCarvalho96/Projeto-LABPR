@@ -10,8 +10,8 @@
                         </tr>
                   <tr>
                     <td valign="middle" class="x_content" style="font-family:Arial; margin:0 auto; padding:0 10px; font-size:13px; line-height:20px; max-width:600px; text-align:center">
-                        Olá {{Auth::user()->name}}! O seu pagamento foi bem sucedido e a sua reserva está confirmada.
-                        Agradecemos a sua compra. Segue em anexo o seu comprovante de pagamento em formato PDF. 
+                        Olá {{Auth::user()->name}}! O seu pagamento foi bem sucedido e a sua encomenda está confirmada.
+                        Agradecemos a sua compra. Segue em anexo o seu comprovativo de pagamento em formato PDF.
                         <br style="font-family:Arial; margin:0; padding:0">
                         <br style="font-family:Arial; margin:0; padding:0">
                         <p style="font-family:Arial; font-weight:700; font-size:12px; margin-bottom:24px; text-align:center">
