@@ -66,9 +66,6 @@ Route::post('/Checkout','ClientController@storeCheckout')->name('product.storeCh
 // UPDATE DO CARRINHO
 Route::get('/update_from_cart/{id}','ClientController@updateCart')->name('product.updateFromCart')->middleware('verified');
 
-#mail
-Route::get('/sendmail','ClientController@sendmail')->name('order.mail')->middleware('verified');
-
 #ver pdf
 Route::get('show_pdf_order_client/{id}', 'ClientController@show_pdf_order')->name('client.orderPDF')->middleware('verified');
 
@@ -103,5 +100,3 @@ Route::get('/search_products', "ProductsController@search_products")->name("prod
 Route::get('/search_orders', "ProductsController@search_orders")->name("products.search_orders")->middleware('is_admin');
 // search orders by email
 Route::get('/search_users', "ProductsController@search_users")->name("products.search_users")->middleware('is_admin');
-
-##############################################################

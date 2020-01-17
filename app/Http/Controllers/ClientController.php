@@ -141,15 +141,17 @@ class ClientController extends Controller
                 'receipt_email' => $request->email,
             ]);
             $data = array('address' => $request->address,'city'=>$request->city,'postalcode'=>$request->postalcode);
-            return redirect()->route('order.mail')->with(['data' => $data]);
+            $this->sendmail($data);
+
+            $cart = Cart::getContent();
+            return view('client.client_homepage', ['products' => $cart]);
+
         }catch (Exception $e) {
             return back()->withErrors('Error! ' . $e->getMessage());
         }
     }
 
-    public function sendmail(){
-
-        $dados[] = session()->get('data');
+    public function sendmail($dados){
 
         if (Cart::getTotalQuantity() > 0) {
             $carts = Cart::getContent();
@@ -196,8 +198,6 @@ class ClientController extends Controller
             foreach ($carts as $cart) {
                 Cart::remove($cart->id);
             }
-            $cart = Cart::getContent();
-            return view('client.client_homepage', ['products' => $cart]);
         }
         $cart = Cart::getContent();
         return view('client.client_homepage', ['products' => $cart]);
