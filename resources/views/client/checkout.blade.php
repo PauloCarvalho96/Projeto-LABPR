@@ -149,7 +149,7 @@
                                 <label for="card-element">
                                     <div class="col-md-12"><strong>Credit or debit card:</strong></div>
                                   </label>
-                                  <div id="card-element">
+                                  <div id="card-element" name="card_element">
                                     <!-- A Stripe Element will be inserted here. -->
                                   </div>
 
