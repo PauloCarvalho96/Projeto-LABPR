@@ -20,17 +20,6 @@ class WelcomeController extends Controller
         ]);
     }
 
-    //funçao para mostrar os produtos por categoria
-    public function products_category($category)
-    {
-
-        $products = Product::where('categoria',$category)->orderBy('created_at', 'desc')->paginate(9);
-
-        return view('welcome_category',[
-            'products' => $products
-            ]);
-    }
-
     public function shop_item($id)
     {
         $product = Product::findOrFail($id);
@@ -68,6 +57,17 @@ class WelcomeController extends Controller
             'products' => $products
         ]);
 
+    }
+
+    //funçao para mostrar os produtos por categoria
+    public function products_category($category)
+    {
+
+        $products = Product::where('categoria',$category)->orderBy('created_at', 'desc')->paginate(9);
+
+        return view('welcome_category',[
+            'products' => $products
+            ]);
     }
 
     public function sortByPriceAscendingCategory($category){
