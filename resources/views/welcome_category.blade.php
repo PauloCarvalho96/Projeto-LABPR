@@ -82,8 +82,8 @@
           </a>
         </div>
 
-        <a href="{{route('welcome.sort_by_price_ascending')}}">Price &#8593;</a>
-        <a href="{{route('welcome.sort_by_price_descending')}}">Price &#8595;</a>
+        <a href="{{route('welcome.sort_by_price_ascending_category',request()->segment(2))}}">Price &#8593;</a>
+        <a href="{{route('welcome.sort_by_price_descending_category',request()->segment(2))}}">Price &#8595;</a>
 
         <div class="row">
         @forelse($products as $product)
