@@ -81,14 +81,14 @@
                         <div class="form-group row">
                             <label for="post_number" class="col-md-4 col-form-label text-md-right">{{ __('Post number') }}</label>
                             <div class="col-md-6">
-                                <input id="post_number" type="text" class="form-control" name="post_number" value="{{ old('post_number') }}">
+                                <input id="post_number" type="number" class="form-control" name="post_number" value="{{ old('post_number') }}">
                             </div>
                         </div>
 
                         <div class="form-group row">
                             <label for="phone_number" class="col-md-4 col-form-label text-md-right">{{ __('Phone number') }}</label>
                             <div class="col-md-6">
-                                <input id="phone_number" type="text" class="form-control" name="phone_number" value="{{ old('phone_number') }}">
+                                <input id="phone_number" type="number" class="form-control" name="phone_number" value="{{ old('phone_number') }}">
                             </div>
                         </div>
 

@@ -1,7 +1,11 @@
         <img class="img-thumbnail" src="{{ public_path() }}/img/logo.png" alt="Logo" height="150px">
 
         <div class="card-header py-3">
-          <h6 class="m-0 font-weight-bold text-primary">Shopping Cart</h6>
+          <h4 class="m-0 font-weight-bold text-primary">Payment Received</h4>
+          <h6 class="font-weight-bold text-primary">{{Auth::user()->name }}</h6>
+          <h6 class="font-weight-bold text-primary">{{$dados[0]['address'] }}</h6>
+          <h6 class="font-weight-bold text-primary">{{$dados[0]['city'] }}</h6>
+          <h6 class="font-weight-bold text-primary">{{$dados[0]['postalcode'] }}</h6>
         </div>
         <div class="card-body">
           <div class="table-responsive">
