@@ -48,7 +48,6 @@
             </table>
                 @if(Cart::getTotalQuantity() > 0)
                 <strong>Total Quantity: {{ Cart::getTotalQuantity()}}<br>Total: {{ Cart::getSubTotal() }}&euro;</strong><br>
-                <a href="{{route('client.downloadPDFcart')}}" target="_blank">Generate PDF</a>
                 @endif
           </div>
         </div>

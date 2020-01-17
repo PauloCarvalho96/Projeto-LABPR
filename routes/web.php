@@ -66,9 +66,6 @@ Route::post('/Checkout','ClientController@storeCheckout')->name('product.storeCh
 // UPDATE DO CARRINHO
 Route::get('/update_from_cart/{id}','ClientController@updateCart')->name('product.updateFromCart')->middleware('verified');
 
-// Gerar PDF
-Route::get('/downloadPDFcart','ClientController@downloadPDFcart')->name('client.downloadPDFcart')->middleware('verified');
-
 #mail
 Route::get('/sendmail','ClientController@sendmail')->name('order.mail')->middleware('verified');
 

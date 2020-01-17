@@ -214,11 +214,6 @@ class ClientController extends Controller
         ]);
     }
 
-    public function downloadPDFcart(){
-        $pdf = PDF::loadView('client.pdf_cart');
-        return $pdf->stream('cart.pdf');
-    }
-
     public function show_pdf_order($filename){
 
         return response()->file(storage_path('app/public/pdf/'.$filename));
