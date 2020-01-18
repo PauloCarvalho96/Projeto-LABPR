@@ -20,7 +20,7 @@
 
                   <div class="my-4">
                       <form action="/search" method="POST" role="search">
-                        {{ csrf_field() }}
+                        @csrf
                         <div class="input-group">
                             <input type="text" class="form-control" name="q" placeholder="Search Itens">
                               <button type="submit" class="btn btn-primary">Search</button>

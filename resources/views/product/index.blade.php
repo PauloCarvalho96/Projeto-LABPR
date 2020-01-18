@@ -6,7 +6,7 @@
 
 <div class="my-4">
 <form action="{{ route('products.search_products') }}" method="GET" role="search">
-      {{ csrf_field() }}
+    @csrf
       <div class="input-group">
           <input type="text" class="form-control" name="query" placeholder="Search Itens">
             <button type="submit" class="btn btn-primary">Search</button>

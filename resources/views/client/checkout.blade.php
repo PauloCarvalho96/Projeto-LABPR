@@ -30,7 +30,7 @@
                 {{Session::get('error')}}
             </div>
         <form class="form-horizontal" method="POST" action="{{route('product.storeCheckout')}}" id="payment-form">
-            {{ csrf_field() }}
+            @csrf
                 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 col-md-push-6 col-sm-push-6">
                     <!--REVIEW ORDER-->
                     <div class="panel panel-info">
@@ -177,7 +177,7 @@
                     </div>
                     <!--CREDIT CART PAYMENT END-->
                 </div>
-                {{ csrf_field() }}
+                @csrf
                 </form>
             </div>
             <div class="row cart-footer">

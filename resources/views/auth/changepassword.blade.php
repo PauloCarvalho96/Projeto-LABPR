@@ -18,7 +18,7 @@
                         @endif
 
                         <form class="form-horizontal" method="POST" action="{{ route('changeDataUser') }}">
-                            {{ csrf_field() }}
+                            @csrf
 
                         <div class="form-group">
                             <label for="name" class="col-md-4 control-label">Name</label>
@@ -135,7 +135,7 @@
                             
                         </form>
                         <form class="form-horizontal" method="POST" action="{{ route('deleteUser') }}">
-                            {{ csrf_field() }}
+                            @csrf
                             <div class="form-group{{ $errors->has('password_delete') ? ' has-error' : '' }}">
                                 <label for="password_delete" class="col-md-4 control-label">Current Password</label>
 
