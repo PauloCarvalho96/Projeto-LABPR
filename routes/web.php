@@ -60,9 +60,9 @@ Route::get('/remove_from_cart/{id}','ClientController@deleteCart')->name('produc
 Route::get('/lessItem/{id}','ClientController@lessItem')->name('product.lessItem')->middleware('verified');
 // CARRINHO
 Route::get('/Checkout','ClientController@getCheckout')->name('product.getCheckout')->middleware('verified');
-
 // Checkout store
 Route::post('/Checkout','ClientController@storeCheckout')->name('product.storeCheckout')->middleware('verified');
+
 // UPDATE DO CARRINHO
 Route::get('/update_from_cart/{id}','ClientController@updateCart')->name('product.updateFromCart')->middleware('verified');
 
