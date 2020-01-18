@@ -6,7 +6,6 @@
 <link rel="stylesheet" href="{{asset('css/checkout.css')}}"> {{-- <- your css --}}
 <!------ Include the above in your HEAD tag ---------->
 
-<!-- Styles    <script src=" URL ::to('js/checkout.js')}}"></script>  -->
 <div class="container wrapper">
             <div class="row cart-head">
                 <div class="container">
@@ -16,7 +15,7 @@
                 <div class="row">
                     <div style="display: table; margin: auto;">
                     <span class="step step_complete"> <a href="{{route('product.shoppingCart')}}" class="check-bc">Cart</a> <span class="step_line step_complete"> </span> <span class="step_line backline"> </span> </span>
-                        <span class="step step_complete"> <a href="#" class="check-bc">Checkout</a> <span class="step_line "> </span> <span class="step_line step_complete"> </span> </span>
+                        <span class="step step_complete"> <a href="" class="check-bc">Checkout</a> <span class="step_line "> </span> <span class="step_line step_complete"> </span> </span>
                         <span class="step_thankyou check-bc step_complete">Thank you</span>
                     </div>
                 </div>
