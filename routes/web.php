@@ -9,7 +9,7 @@
 | Pedro Pinheiro nº 36763
 |
 |--------------------------------------------------------------------------
-| Web Routes
+| Web Routesa
 |--------------------------------------------------------------------------
 |
 | Here is where you can register web routes for your application. These
@@ -45,7 +45,7 @@ Route::get('/client', "ClientController@getCart")->name("client.home_client")->m
 Route::get('/show_orders', "ClientController@show_orders")->name("client.show_orders")->middleware('verified');
 
 // FORM TO UPDATE CLIENT
-Route::get('/changePassword','ClientController@showChangePasswordForm')->name('client.showChangePasswordForm')->middleware('verified');
+Route::get('/changeClient','ClientController@changeClient')->name('changeClient')->middleware('verified');
 Route::post('/changePassword','ClientController@changePassword')->name('changePassword')->middleware('verified');
 Route::post('/changeDataUser','ClientController@changeDataUser')->name('changeDataUser')->middleware('verified');
 Route::post('/deleteUser','ClientController@deleteUser')->name('deleteUser')->middleware('verified');
@@ -65,9 +65,6 @@ Route::post('/Checkout','ClientController@storeCheckout')->name('product.storeCh
 
 // UPDATE DO CARRINHO
 Route::get('/update_from_cart/{id}','ClientController@updateCart')->name('product.updateFromCart')->middleware('verified');
-
-#mail
-Route::get('/sendmail','ClientController@sendmail')->name('order.mail')->middleware('verified');
 
 #ver pdf
 Route::get('show_pdf_order_client/{id}', 'ClientController@show_pdf_order')->name('client.orderPDF')->middleware('verified');
@@ -103,5 +100,3 @@ Route::get('/search_products', "ProductsController@search_products")->name("prod
 Route::get('/search_orders', "ProductsController@search_orders")->name("products.search_orders")->middleware('is_admin');
 // search orders by email
 Route::get('/search_users', "ProductsController@search_users")->name("products.search_users")->middleware('is_admin');
-
-##############################################################
