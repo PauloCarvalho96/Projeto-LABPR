@@ -14,7 +14,7 @@
                     <a href="{{ route('client.show_orders') }}" class="nav-link">Orders</a>
                 </li>
                 <li class="nav-item">
-                    <a href="{{route('client.showChangePasswordForm')}}" class="nav-link">Edit Profile</a>
+                    <a href="{{route('changeClient')}}" class="nav-link">Edit Profile</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('logout') }}"

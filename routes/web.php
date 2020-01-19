@@ -45,7 +45,7 @@ Route::get('/client', "ClientController@getCart")->name("client.home_client")->m
 Route::get('/show_orders', "ClientController@show_orders")->name("client.show_orders")->middleware('verified');
 
 // FORM TO UPDATE CLIENT
-Route::get('/changePassword','ClientController@showChangePasswordForm')->name('client.showChangePasswordForm')->middleware('verified');
+Route::get('/changeClient','ClientController@changeClient')->name('changeClient')->middleware('verified');
 Route::post('/changePassword','ClientController@changePassword')->name('changePassword')->middleware('verified');
 Route::post('/changeDataUser','ClientController@changeDataUser')->name('changeDataUser')->middleware('verified');
 Route::post('/deleteUser','ClientController@deleteUser')->name('deleteUser')->middleware('verified');

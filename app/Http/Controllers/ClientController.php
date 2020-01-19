@@ -39,8 +39,8 @@ class ClientController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-    public function showChangePasswordForm(){
-        return view('auth.changepassword');
+    public function changeClient(){
+        return view('auth.changeClient');
     }
 
     //muda a password do utilizador
