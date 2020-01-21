@@ -221,7 +221,7 @@ class ClientController extends Controller
         $user_email = Auth::user()->email;    # id do utilizador
 
         #encomendas com o seu id
-        $orders['orders'] = DB::table('orders')->orderBy('order_id', 'desc')->where('user_email','=',$user_email)->paginate(5);
+        $orders['orders'] = DB::table('orders')->orderBy('order_id', 'desc')->where('user_email','=',$user_email)->paginate(9);
 
         return view('client.client_orders', [
             'orders' => $orders['orders'],
