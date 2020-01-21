@@ -170,7 +170,7 @@ class ProductsController extends Controller
         $users = DB::table('users')->where('is_admin','=',false)->orderBy('created_at', 'desc')->paginate(5);
         return view('product.show_users',['users' => $users]);
     }
-    
+
     public function removeUser($id){
         DB::table('users')->where('id', '=',$id)->delete();
         return redirect()->back();
