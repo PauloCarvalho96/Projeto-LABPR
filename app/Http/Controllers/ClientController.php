@@ -232,9 +232,11 @@ class ClientController extends Controller
         return view('client.client_homepage', ['products' => $cart]);
     }
 
+    #CORRIGIR WHERE
     public function orders_search(){
         $query = Request_search::get( 'query' );
-        $orders = DB::table('orders')->where('order_id','ILIKE','%'.$query.'%')->orderBy('order_id', 'desc')->paginate(9);
+        $user_email = Auth::user()->email;
+        $orders = DB::table('orders')->where('order_id','ILIKE','%'.$query.'%')->orderBy('order_id', 'desc')->where('user_email','=',$user_email)->paginate(9);
 
         return view('client.client_orders', [
             'orders' => $orders
