@@ -43,7 +43,7 @@ Route::get('/client', "ClientController@getCart")->name("client.home_client")->m
 
 // orders client
 Route::get('/show_orders', "ClientController@show_orders")->name("client.show_orders")->middleware('verified');
-
+Route::get('/orders_search', "ClientController@orders_search")->name("orders_search")->middleware('verified');
 // FORM TO UPDATE CLIENT
 Route::get('/changeClient','ClientController@changeClient')->name('changeClient')->middleware('verified');
 Route::post('/changePassword','ClientController@changePassword')->name('changePassword')->middleware('verified');

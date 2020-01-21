@@ -19,6 +19,15 @@
             </div>
             <div class="card-body">
               <div class="table-responsive">
+                <div class="my-4">
+                  <form action="{{route('orders_search')}}" method="GET" role="search">
+                    @csrf
+                    <div class="input-group">
+                      <input type="number" class="form-control" name="query" placeholder="Search Orders by id">
+                      <button type="submit" class="btn btn-primary">Search</button>
+                    </div>
+                  </form>
+              </div>
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                   <thead>
                     <tr>
