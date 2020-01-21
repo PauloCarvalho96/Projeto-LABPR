@@ -9,7 +9,7 @@
         <div class="card-body">
             <div class="my-4">
                 <form action="{{route('products.search_users')}}" method="GET" role="search">
-			      {{ csrf_field() }}
+			      @csrf
 			      <div class="input-group">
 			      	<input type="text" class="form-control" name="query" placeholder="Search Users by email">
 					    <button type="submit" class="btn btn-primary">Search</button>

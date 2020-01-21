@@ -60,6 +60,11 @@ class ProductsController extends Controller
      */
     public function store(Request $request)
     {
+
+        if($request->preco < 0){
+            return redirect()->back()->with('error','O preço que inseriu não é válido!');
+        }
+
         //Create a Product
         $product = new Product;
 
@@ -77,7 +82,7 @@ class ProductsController extends Controller
         $product->preco = $request->preco;
         $product->save(); // save it to the database.
         //Redirect to a specified route
-        return redirect()->route('products.index');
+        return redirect()->route('products.index')->with('success','Produto inserido com sucesso!');
     }
 
     /**

@@ -3,6 +3,13 @@
     <h3 class="text-center">Create a Product</h3>
     <form action="{{route('products.store')}}" method="post" enctype="multipart/form-data">
         @csrf {{-- <- Required for protection or the form is rejected --}}
+
+        @if (session('error'))
+            <div class="alert alert-danger">
+                {{session('error')}}
+            </div>
+        @endif
+
             <div class="form-group">
               <label for="exampleFormControlFile1">Image</label>
               <input type="file" name="imagem" class="form-control-file" id="exampleFormControlFile1">
@@ -34,7 +41,7 @@
 
         <div class="form-group">
             <label for="price">Price</label>
-            <input type="number" name="preco" id="title" class="form-control" value="{{old('preco')}}" placeholder="Enter the price" required>
+            <input type="number" min="0" name="preco" id="title" class="form-control" value="{{old('preco')}}" placeholder="Enter the price" required>
         </div>
         <button type="submit" class="btn btn-primary">Create</button>
     </form>
