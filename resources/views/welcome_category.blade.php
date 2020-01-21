@@ -97,19 +97,42 @@
                 <h5>Category: {{$product->categoria}}</h5><br>
               </h4>
               <h5><p>Price: {{$product->preco}}&euro;</p></h5>
+
+              @if($product->stock > 0)
+                <p style="color:green"><strong>Stock</strong>: Available &#9989;</p>
+              @else
+                <p style="color:red"><strong>Stock</strong>: Unavailable &#10060;</p>
+              @endif
+
               </div>
 
-              @auth
-              @if(!auth()->user()->is_admin)
-              <div class="card-footer">
-                <a class="btn btn-primary" href="{{ route('product.addToCart',$product->id)}}" >Add to Cart</a>
-              </div>
-              @endauth
+              @if($product->stock > 0)
+
+                @auth
+                @if(!auth()->user()->is_admin)
+                <div class="card-footer">
+                    <a class="btn btn-primary" href="{{ route('product.addToCart',$product->id)}}" >Add to Cart</a>
+                </div>
+                @endauth
+                @else
+                <div class="card-footer">
+                    <a class="btn btn-primary" href="{{ route('product.addToCart',$product->id)}}" >Add to Cart</a>
+                </div>
+                @endif
 
               @else
-              <div class="card-footer">
-                <a class="btn btn-primary" href="{{ route('product.addToCart',$product->id)}}" >Add to Cart</a>
-              </div>
+
+                @auth
+                @if(!auth()->user()->is_admin)
+                <div class="card-footer">
+                    <button class="btn btn-secundary" disabled>Out Of Stock</button>
+                </div>
+                @endauth
+                @else
+                <div class="card-footer">
+                    <button class="btn btn-secundary" disabled>Out Of Stock</button>
+                </div>
+                @endif
 
               @endif
 

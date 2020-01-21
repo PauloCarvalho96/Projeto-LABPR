@@ -39,6 +39,11 @@
             <input type="text" name="preco" id="title" class="form-control" value="{{old('preco') ? : $product->preco }}" placeholder="Enter the price">
         </div>
 
+        <div class="form-group">
+            <label for="stock">Stock</label>
+            <input type="number" min="0" name="stock" id="title" class="form-control" value="{{old('stock') ? : $product->stock}}" placeholder="Enter the stock" required>
+        </div>
+
         <button type="submit" class="btn btn-primary">Update</button>
     </form>
 

@@ -80,6 +80,7 @@ class ProductsController extends Controller
         $product->categoria = $request->categoria;
         $product->descricao = $request->descricao;
         $product->preco = $request->preco;
+        $product->stock = $request->stock;
         $product->save(); // save it to the database.
         //Redirect to a specified route
         return redirect()->route('products.index')->with('success','Produto inserido com sucesso!');
@@ -141,8 +142,9 @@ class ProductsController extends Controller
         $product->nome = $request->nome;
         $product->descricao = $request->descricao;
         $product->preco = $request->preco;
+        $product->stock = $request->stock;
         $product->save(); //Can be used for both creating and updating
-        return redirect()->route('products.show', $id);
+        return redirect()->route('products.index')->with('success','Produto atualizado com sucesso!');
     }
 
     /**

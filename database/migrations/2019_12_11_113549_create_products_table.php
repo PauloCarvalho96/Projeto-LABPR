@@ -20,6 +20,7 @@ class CreateProductsTable extends Migration
             $table->char('categoria',100);
             $table->text('descricao')->nullable();
             $table->double('preco');
+            $table->integer('stock')->default(0);
             $table->timestamps();
         });
     }

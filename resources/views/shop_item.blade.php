@@ -57,19 +57,41 @@
             <h4>{{$product->preco}}&euro;</h4>
             <p class="card-text">{!!$product->descricao!!}</p>
 
-            @auth
+            @if($product->stock > 0)
+                <p style="color:green"><strong>Stock</strong>: Available &#9989;</p>
+              @else
+                <p style="color:red"><strong>Stock</strong>: Unavailable &#10060;</p>
+              @endif
+
+              @if($product->stock > 0)
+
+              @auth
               @if(!auth()->user()->is_admin)
               <div class="card-footer">
-                <a class="btn btn-primary" href="{{ route('product.addToCart',$product->id)}}" >Add to Cart</a>
+                  <a class="btn btn-primary" href="{{ route('product.addToCart',$product->id)}}" >Add to Cart</a>
               </div>
               @endauth
-
               @else
               <div class="card-footer">
-                <a class="btn btn-primary" href="{{ route('product.addToCart',$product->id)}}" >Add to Cart</a>
+                  <a class="btn btn-primary" href="{{ route('product.addToCart',$product->id)}}" >Add to Cart</a>
               </div>
-
               @endif
+
+            @else
+
+              @auth
+              @if(!auth()->user()->is_admin)
+              <div class="card-footer">
+                  <button class="btn btn-secundary" disabled>Out Of Stock</button>
+              </div>
+              @endauth
+              @else
+              <div class="card-footer">
+                  <button class="btn btn-secundary" disabled>Out Of Stock</button>
+              </div>
+              @endif
+
+            @endif
 
           </div>
         </div>
