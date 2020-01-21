@@ -107,6 +107,21 @@ class ClientController extends Controller
 
     public function addCart($id){
         $product = Product::findOrFail($id);
+
+        if(!Cart::isEmpty()){
+            $cart = Cart::getContent();
+            foreach($cart as $prod){
+                if($product->id == $prod->id){
+                    if($product->stock <= $prod->quantity){
+                        return redirect()->back();
+                    } else {
+                        Cart :: add($id,$product->nome,$product->preco,1);
+                        return redirect()->back();
+                    }
+                }
+            }
+        }
+
         Cart :: add($id,$product->nome,$product->preco,1);
 
         return redirect()->back();
