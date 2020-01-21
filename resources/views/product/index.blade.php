@@ -2,7 +2,12 @@
 
 @section('content')
 
-<h2 class="text-center">All Products</h2>
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary">All Products</h6>
+    </div>
+
+    <div class="card-body">
 
         @if (session('success'))
             <div class="alert alert-success">
@@ -21,22 +26,38 @@
     </form>
 </div>
 
-<ul class="list-group py-3 mb-3">
-    @forelse($products as $product)
-    <li class="list-group-item my-2">
-        <a href="{{route('products.show',$product->id)}}">
-            <h5>Name: {{$product->nome}}</h5><br>
-            <h5>Category: {{$product->categoria}}</h5><br>
-            <p>Price: {{$product->preco}}&euro;</p>
-            <small class="float-right">{{$product->created_at->diffForHumans()}}</small>
-        </a>
-    </li>
-    @empty
-    <h4 class="text-center">No Products Found!</h4>
-    @endforelse
-</ul>
+
+<div class="table-responsive">
+    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+      <thead>
+        <tr>
+          <th>Image</th>
+          <th>Description</th>
+          <th>Stock</th>
+          <th>Created at</th>
+        </tr>
+      </thead>
+      <tbody>
+        @forelse($products as $product)
+        <tr>
+            <td><img height="200px" width="200px" class="rounded mx-auto d-block" src="{{asset('img/products/'.$product->imagem)}}" alt=""></td>
+            <td><strong>Name:</strong> {{$product->nome}}<br><strong>Category:</strong> {{$product->categoria}}<br><strong>Price:</strong> {{$product->preco}}&euro;</td>
+            <td>{{$product->stock}}</td>
+            <td>{{$product->created_at->diffForHumans()}}</td>
+            <td><a href="{{route('products.show',$product->id)}}">Show details</a></td>
+        </tr>
+        @empty
+            <h4 class="text-center">No Products Found!</h4>
+        @endforelse
+      </tbody>
+    </table>
+  </div>
+
 <div class="d-flex justify-content-center">
     {{$products->links()}}
+</div>
+
+</div>
 </div>
 
 @endsection

@@ -97,6 +97,13 @@
                 <h5>Category: {{$product->categoria}}</h5><br>
               </h4>
               <h5><p>Price: {{$product->preco}}&euro;</p></h5>
+
+              @if($product->stock > 0)
+                <p style="color:green"><strong>Stock</strong>: Available &#9989;</p>
+              @else
+                <p style="color:red"><strong>Stock</strong>: Unavailable &#10060;</p>
+              @endif
+
               </div>
 
               @auth

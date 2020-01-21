@@ -2,13 +2,16 @@
 
 @section('content')
 
+<a class="btn btn-primary" href="{{ url()->previous() }}">Voltar</a>
+
 <div class="card h-100">
 
     <img class="rounded mx-auto d-block" src="{{asset('img/products/'.$product->imagem)}}" alt="">
     <h5> <strong><u>Name:</u></strong> {{$product->nome}}</h5><br>
     <h5> <strong><u>Category:</u></strong> {{$product->categoria}}</h5><br>
     <h5> <strong><u>Description:</u></strong> <br>{!!$product->descricao!!}</h5><br>
-    <h5> <strong><u>Price:</u></strong>  {{$product->preco}}&euro;</h5>
+    <h5> <strong><u>Price:</u></strong>  {{$product->preco}}&euro;</h5><br>
+    <h5> <strong><u>Stock:</u></strong>  {{$product->stock}}</h5>
     <br>
 
 </div>

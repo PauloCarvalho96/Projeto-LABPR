@@ -57,6 +57,12 @@
             <h4>{{$product->preco}}&euro;</h4>
             <p class="card-text">{!!$product->descricao!!}</p>
 
+            @if($product->stock > 0)
+                <p style="color:green"><strong>Stock</strong>: Available &#9989;</p>
+              @else
+                <p style="color:red"><strong>Stock</strong>: Unavailable &#10060;</p>
+              @endif
+
             @auth
               @if(!auth()->user()->is_admin)
               <div class="card-footer">
