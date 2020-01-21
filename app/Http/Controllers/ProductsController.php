@@ -197,19 +197,30 @@ class ProductsController extends Controller
     public function search_orders()
     {
         $query = Request_search::get ( 'query' );
+        $search = Request_search::get( 'search' );
 
-        $orders = DB::table('orders')->where('user_email','ILIKE','%'.$query.'%')->orderBy('created_at', 'desc')->paginate(9);
+        if ($search == 'ID') {
+            $orders = DB::table('orders')->where('order_id','ILIKE','%'.$query.'%')->orderBy('created_at', 'desc')->paginate(9);
+        }else{
+            $orders = DB::table('orders')->where('user_email','ILIKE','%'.$query.'%')->orderBy('created_at', 'desc')->paginate(9);
+        }
 
         return view('product.orders',[
-            'orders' => $orders
-            ]);
+           'orders' => $orders
+        ]);
     }
 
     public function search_users()
     {
         $query = Request_search::get ( 'query' );
+        $search = Request_search::get( 'search' );
 
-        $users = DB::table('users')->where([['email','ILIKE','%'.$query.'%'],['is_admin','=',false]])->orderBy('created_at', 'desc')->paginate(9);
+        if ($search == 'name') {
+            $users = DB::table('users')->where([['name','ILIKE','%'.$query.'%'],['is_admin','=',false]])->orderBy('created_at', 'desc')->paginate(9);
+        }else{
+            $users = DB::table('users')->where([['email','ILIKE','%'.$query.'%'],['is_admin','=',false]])->orderBy('created_at', 'desc')->paginate(9);
+        }
+
 
         return view('product.show_users',[
             'users' => $users
