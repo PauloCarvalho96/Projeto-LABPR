@@ -144,7 +144,7 @@ class ClientController extends Controller
             $this->sendmail($data);
 
             $cart = Cart::getContent();
-            return view('client.client_homepage',['products' => $cart]);
+            return view('client.client_homepage', ['products' => $cart]);
 
         }catch (Exception $e) {
             return back()->withErrors('Error! ' . $e->getMessage());
@@ -152,8 +152,6 @@ class ClientController extends Controller
     }
 
     public function sendmail($dados){
-
-        $dados[] = session()->get('data');
 
         if (Cart::getTotalQuantity() > 0) {
             $carts = Cart::getContent();
