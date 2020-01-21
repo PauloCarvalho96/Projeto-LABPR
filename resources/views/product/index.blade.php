@@ -40,7 +40,7 @@
       <tbody>
         @forelse($products as $product)
         <tr>
-            <td><img height="200px" width="200px" class="rounded mx-auto d-block" src="{{asset('img/products/'.$product->imagem)}}" alt=""></td>
+            <td><img height="250px" width="250px" class="rounded mx-auto d-block" src="{{asset('img/products/'.$product->imagem)}}" alt=""></td>
             <td><strong>Name:</strong> {{$product->nome}}<br><strong>Category:</strong> {{$product->categoria}}<br><strong>Price:</strong> {{$product->preco}}&euro;</td>
             <td>{{$product->stock}}</td>
             <td>{{$product->created_at->diffForHumans()}}</td>

@@ -2,22 +2,28 @@
 
 @section('content')
 
-<a class="btn btn-primary" href="{{ url()->previous() }}">Voltar</a>
+<div class="rounded mx-auto d-block">
+    <a class="btn btn-primary" href="{{ url()->previous() }}">Voltar</a>
+    <div class="card mt-4">
+      <img id="img_show" class="card-img-top img-fluid" src="{{asset('img/products/'.$product->imagem)}}" alt="">
+      <div class="card-body">
+        <h3 class="card-title">{{$product->nome}}</h3>
+        <h4>{{$product->preco}}&euro;</h4>
+        <p class="card-text">{!!$product->descricao!!}</p>
 
-<div class="card h-100">
+        @if($product->stock > 0)
+            <p style="color:green"><strong>Stock</strong>: Available &#9989;</p>
+          @else
+            <p style="color:red"><strong>Stock</strong>: Unavailable &#10060;</p>
+          @endif
 
-    <img class="rounded mx-auto d-block" src="{{asset('img/products/'.$product->imagem)}}" alt="">
-    <h5> <strong><u>Name:</u></strong> {{$product->nome}}</h5><br>
-    <h5> <strong><u>Category:</u></strong> {{$product->categoria}}</h5><br>
-    <h5> <strong><u>Description:</u></strong> <br>{!!$product->descricao!!}</h5><br>
-    <h5> <strong><u>Price:</u></strong>  {{$product->preco}}&euro;</h5><br>
-    <h5> <strong><u>Stock:</u></strong>  {{$product->stock}}</h5>
-    <br>
+          <a href="{{route('products.edit',$product->id)}}" class="btn btn-primary float-left">Update</a>
+          <a href="#" class="btn btn-danger float-right" data-toggle="modal" data-target="#delete-modal">Delete</a>
 
+      </div>
+    </div>
 </div>
 
-    <a href="{{route('products.edit',$product->id)}}" class="btn btn-primary float-left">Update</a>
-    <a href="#" class="btn btn-danger float-right" data-toggle="modal" data-target="#delete-modal">Delete</a>
     <div class="clearfix"></div>
     <div class="modal fade" id="delete-modal">
         <div class="modal-dialog" role="document">
