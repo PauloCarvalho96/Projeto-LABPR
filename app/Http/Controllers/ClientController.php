@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Gloudemans\Shoppingcart\Facades\Cart;
 use Auth;
 use Hash;
+use Request_search;
 use Cartalyst\Stripe\Laravel\Facades\Stripe;
 use Exception;
 use Illuminate\Support\Facades\Auth as FacadesAuth;
@@ -229,6 +230,15 @@ class ClientController extends Controller
         }
         $cart = Cart::getContent();
         return view('client.client_homepage', ['products' => $cart]);
+    }
+
+    public function orders_search(){
+        $query = Request_search::get( 'query' );
+        $orders = DB::table('orders')->where('order_id','ILIKE','%'.$query.'%')->orderBy('order_id', 'desc')->paginate(9);
+
+        return view('client.client_orders', [
+            'orders' => $orders
+        ]);
     }
 
     public function show_orders(){
