@@ -35,7 +35,7 @@ class ProductsController extends Controller
 
     public function orders()
     {
-        $orders['orders'] = DB::table('orders')->get();
+        $orders['orders'] = DB::table('orders')->orderBy('created_at','desc')->paginate(5);
 
         return view('product.orders', [
             'orders' => $orders['orders'],

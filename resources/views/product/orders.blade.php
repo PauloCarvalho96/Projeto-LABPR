@@ -49,5 +49,7 @@
     </div>
     <!-- /.container-fluid -->
   </div>
-
+  <div class="d-flex justify-content-center">
+    {{$orders->links()}}
+  </div>
 @endsection

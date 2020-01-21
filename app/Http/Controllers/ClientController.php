@@ -73,6 +73,8 @@ class ClientController extends Controller
         }
         $validatedData = $request->validate([
             'new_name' => ['required', 'string', 'max:255'],
+            'new_post_number' => ['nullable','string','min:7','max:7'],
+            'new_phone_number' => ['nullable','string','min:9','max:9'],
         ]);
         $user = Auth::user();
         $user->name = $request->get('new_name');

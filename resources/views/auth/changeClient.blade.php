@@ -57,14 +57,14 @@
                                     <div class="form-group">
                                         <label for="post_number" class="col-md-4 control-label">Post Number</label>
                                         <div class="col-md-6">
-                                            <input id="new_post_number" type="text" class="form-control" name="new_post_number" value="{{Auth::user()->post_number}}">
+                                            <input id="new_post_number" type="text" inputmode="numeric" class="form-control" min="0" placeholder="0000-000" pattern="[0-9]{7}" name="new_post_number" value="{{Auth::user()->post_number}}">
                                         </div>
                                     </div>
 
                                     <div class="form-group">
                                         <label for="phone_number" class="col-md-4 control-label">Phone Number</label>
                                         <div class="col-md-6">
-                                            <input id="new_phone_number" type="text" class="form-control" name="new_phone_number" value="{{Auth::user()->phone_number}}">
+                                            <input id="new_phone_number" min="0" type="text" inputmode="numeric" class="form-control"placeholder="900000000" pattern="[0-9]{9}" name="new_phone_number" value="{{Auth::user()->phone_number}}">
                                         </div>
                                     </div>
 
