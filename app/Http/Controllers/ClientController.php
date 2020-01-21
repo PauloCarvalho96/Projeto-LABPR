@@ -140,6 +140,15 @@ class ClientController extends Controller
                 'description' => 'Order',
                 'receipt_email' => $request->email,
             ]);
+
+            ############## ELIMINA DO STOCK ####################
+            $carts = Cart::getContent();
+            foreach($carts as $product){
+                $prod = Product::findOrFail($product->id);
+                $qnt = $product->quantity;
+                DB::table('products')->where('id','=',$prod->id)->decrement('stock',$qnt);
+            }
+
             $data = array('address' => $request->address,'city'=>$request->city,'postalcode'=>$request->postalcode);
             $this->sendmail($data);
 
