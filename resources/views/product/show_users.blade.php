@@ -7,16 +7,30 @@
           <h6 class="m-0 font-weight-bold text-primary">Show Clients</h6>
         </div>
         <div class="card-body">
-            <div class="my-4">
-                <form action="{{route('products.search_users')}}" method="GET" role="search">
-			      @csrf
-			      <div class="input-group">
-			      	<input type="text" class="form-control" name="query" placeholder="Search Users by email">
-					    <button type="submit" class="btn btn-primary">Search</button>
-				        </span>
-		      	    </div>
-                </form>
+            
+
+
+          <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+            <form action="{{ route('products.search_users') }}" method="GET" role="search">
+            @csrf
+            <div class="row align-items-end">
+              <div class="col-3 col-md-2">
+                <label for="category"></label>
+                <select name="search" class="form-control" id="title">
+                  <option name="name">Name</option>
+                  <option name="email">Email</option>
+                </select>
+              </div>
+              <div class="col-15 col-md-10">
+                <div class="input-group">
+                  <input type="text" class="form-control" name="query" placeholder="Search Users by email / name">
+                  <button type="submit" class="btn btn-primary">Search</button>
+                </div>
+              </div>
             </div>
+          </form>
+          </table>
+
           <div class="table-responsive">
             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
               <thead>

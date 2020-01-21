@@ -193,7 +193,8 @@ class ClientController extends Controller
             # guarda pdf no servidor #
 
             #vai ficar dentro da pasta storage/app/public/pdf
-            $pdf_name = time();
+        
+            $pdf_name = Auth::user()->id.time();
             Storage::put('public/pdf/'.$pdf_name.'.pdf',$pdf->output());
 
             # Insere na tabela das orders #
