@@ -6,18 +6,28 @@
         <div class="card-header py-3">
           <h6 class="m-0 font-weight-bold text-primary">Clients Orders</h6>
         </div>
-
         <div class="card-body">
-            <div class="my-4">
-                <form action="{{ route('products.search_orders') }}" method="GET" role="search">
-                      @csrf
-                      <div class="input-group">
+          <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+            <div class="row align-items-end">
+              <div class="col-3 col-md-2">
+                    <label for="category"></label>
+                    <select name="categoria" class="form-control" id="title">
+                      <!-- <option value="categoria" disabled selected></option> -->
+                        <option name="search">ID</option>
+                        <option name="search">EMAIL</option>
+                    </select>
+              </div>
+              <div class="col-15 col-md-10">
+                    <form action="{{ route('products.search_orders') }}" method="GET" role="search">
+                        @csrf
+                        <div class="input-group">
                           <input type="text" class="form-control" name="query" placeholder="Search Orders by email">
-                            <button type="submit" class="btn btn-primary">Search</button>
-                            </span>
-                          </div>
+                          <button type="submit" class="btn btn-primary">Search</button>
+                        </div>
                     </form>
-                </div>
+              </div>
+            </div>
+          </table>
 
           <div class="table-responsive">
             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
